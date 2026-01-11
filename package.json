@@ -1,0 +1,19 @@
+{
+  "name": "usamacrash-bot",
+  "version": "1.0.0",
+  "description": "UsamaCrash Bot - Professional Trading Bot",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve -s . -p $PORT",
+    "dev": "npx serve -s . -p 3000"
+  },
+  "keywords": ["trading", "bot", "crypto", "usamacrash"],
+  "author": "USAMA DHUDDI",
+  "license": "MIT",
+  "dependencies": {
+    "serve": "^14.2.0"
+  },
+  "engines": {
+    "node": "18.x"
+  }
+}
