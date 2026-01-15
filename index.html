@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>UsamaCrash Bot</title>
+    <title>UsamaCrash Bot - Under Maintenance</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -29,7 +29,7 @@
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
             border: 1px solid rgba(255, 255, 255, 0.1);
             text-align: center;
-            max-width: 600px;
+            max-width: 700px;
             width: 100%;
         }
 
@@ -80,48 +80,126 @@
             margin-right: 8px;
         }
 
-        .bot-link {
-            display: inline-block;
-            background: linear-gradient(90deg, #ff4757, #ff6b81);
-            color: white;
-            font-size: 22px;
-            font-weight: 600;
-            text-decoration: none;
-            padding: 18px 40px;
-            border-radius: 12px;
+        .maintenance-box {
+            background: rgba(255, 71, 87, 0.1);
+            border: 2px solid rgba(255, 71, 87, 0.3);
+            border-radius: 15px;
+            padding: 25px;
             margin: 25px 0;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 20px rgba(255, 71, 87, 0.4);
-            border: none;
-            cursor: pointer;
+            text-align: left;
         }
 
-        .bot-link:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(255, 71, 87, 0.6);
+        .maintenance-icon {
+            font-size: 60px;
+            color: #ffa502;
+            margin-bottom: 20px;
+            text-align: center;
         }
 
-        .bot-link i {
-            margin-right: 10px;
-            animation: bounce 2s infinite;
+        .maintenance-title {
+            font-size: 28px;
+            color: #ffa502;
+            margin-bottom: 15px;
+            text-align: center;
         }
 
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
+        .maintenance-text {
+            color: #a4b0be;
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            text-align: center;
         }
 
-        .status {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 15px;
+        .countdown {
+            background: rgba(0, 0, 0, 0.3);
             border-radius: 10px;
-            margin-top: 20px;
-            border-left: 4px solid #2ed573;
+            padding: 20px;
+            margin: 20px 0;
         }
 
-        .status span {
-            color: #2ed573;
-            font-weight: 600;
+        .countdown-title {
+            font-size: 18px;
+            color: #a4b0be;
+            margin-bottom: 15px;
+        }
+
+        .timer {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .time-unit {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 15px;
+            min-width: 80px;
+        }
+
+        .time-value {
+            font-size: 32px;
+            font-weight: 800;
+            color: #ff4757;
+            margin-bottom: 5px;
+        }
+
+        .time-label {
+            font-size: 14px;
+            color: #a4b0be;
+        }
+
+        .translation-box {
+            background: rgba(30, 144, 255, 0.1);
+            border-radius: 15px;
+            padding: 25px;
+            margin-top: 30px;
+        }
+
+        .translation-title {
+            font-size: 22px;
+            color: #1e90ff;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .language-selector {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .lang-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 14px;
+        }
+
+        .lang-btn:hover, .lang-btn.active {
+            background: rgba(30, 144, 255, 0.3);
+            border-color: #1e90ff;
+        }
+
+        .translated-text {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            min-height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: 16px;
+            line-height: 1.5;
         }
 
         .features {
@@ -158,6 +236,14 @@
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
+        .status-offline {
+            background: rgba(255, 71, 87, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            border-left: 4px solid #ff4757;
+        }
+
         @media (max-width: 600px) {
             .container {
                 padding: 30px 20px;
@@ -167,9 +253,17 @@
                 font-size: 32px;
             }
             
-            .bot-link {
-                font-size: 18px;
-                padding: 15px 30px;
+            .timer {
+                gap: 10px;
+            }
+            
+            .time-unit {
+                min-width: 70px;
+                padding: 12px;
+            }
+            
+            .time-value {
+                font-size: 28px;
             }
             
             .features {
@@ -193,14 +287,59 @@
             </div>
         </div>
 
-        <a href="http://node.ndraandree.my.id:19133" class="bot-link" id="openBot">
-            <i class="fas fa-external-link-alt"></i>
-            OPEN BOT PANEL
-        </a>
+        <div class="maintenance-box">
+            <div class="maintenance-icon">
+                <i class="fas fa-tools"></i>
+            </div>
+            <div class="maintenance-title">
+                <i class="fas fa-exclamation-triangle"></i> UNDER MAINTENANCE
+            </div>
+            <div class="maintenance-text" id="maintenanceText">
+                We're currently performing scheduled maintenance to improve our services. The bot will be back online in a few hours with enhanced features and better performance.
+            </div>
+            
+            <div class="countdown">
+                <div class="countdown-title">Expected to be back in:</div>
+                <div class="timer">
+                    <div class="time-unit">
+                        <div class="time-value" id="hours">03</div>
+                        <div class="time-label">HOURS</div>
+                    </div>
+                    <div class="time-unit">
+                        <div class="time-value" id="minutes">45</div>
+                        <div class="time-label">MINUTES</div>
+                    </div>
+                    <div class="time-unit">
+                        <div class="time-value" id="seconds">00</div>
+                        <div class="time-label">SECONDS</div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-        <div class="status">
-            <i class="fas fa-circle" style="color:#2ed573; font-size:12px; margin-right:8px;"></i>
-            Bot Status: <span>ONLINE & RUNNING</span>
+        <div class="translation-box">
+            <div class="translation-title">
+                <i class="fas fa-language"></i> TRANSLATION FOR INTERNATIONAL USERS
+            </div>
+            
+            <div class="language-selector">
+                <button class="lang-btn active" data-lang="en">English</button>
+                <button class="lang-btn" data-lang="es">Español</button>
+                <button class="lang-btn" data-lang="ar">العربية</button>
+                <button class="lang-btn" data-lang="fr">Français</button>
+                <button class="lang-btn" data-lang="de">Deutsch</button>
+                <button class="lang-btn" data-lang="ru">Русский</button>
+                <button class="lang-btn" data-lang="zh">中文</button>
+            </div>
+            
+            <div class="translated-text" id="translatedText">
+                We're currently performing scheduled maintenance to improve our services. The bot will be back online in a few hours with enhanced features and better performance.
+            </div>
+        </div>
+
+        <div class="status-offline">
+            <i class="fas fa-circle" style="color:#ff4757; font-size:12px; margin-right:8px;"></i>
+            Bot Status: <span style="color:#ff4757;">UNDER MAINTENANCE</span>
         </div>
 
         <div class="features">
@@ -224,40 +363,131 @@
 
         <div class="footer">
             <p>© 2023 UsamaCrash Bot | All Rights Reserved</p>
-            <p style="margin-top:5px; font-size:12px;">Designed for professional trading</p>
+            <p style="margin-top:5px; font-size:12px;">We apologize for the inconvenience. Thank you for your patience.</p>
         </div>
     </div>
 
     <script>
-        // Smooth button click effect
-        document.getElementById('openBot').addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // Button animation
-            this.style.transform = 'scale(0.95)';
-            this.style.opacity = '0.8';
-            
-            setTimeout(() => {
-                this.style.transform = '';
-                this.style.opacity = '';
+        // Countdown Timer (3 hours 45 minutes from now)
+        const countdownDate = new Date();
+        countdownDate.setHours(countdownDate.getHours() + 3);
+        countdownDate.setMinutes(countdownDate.getMinutes() + 45);
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = countdownDate - now;
+
+            if (distance < 0) {
+                document.getElementById('hours').innerHTML = '00';
+                document.getElementById('minutes').innerHTML = '00';
+                document.getElementById('seconds').innerHTML = '00';
+                return;
+            }
+
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('hours').innerHTML = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').innerHTML = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').innerHTML = seconds.toString().padStart(2, '0');
+        }
+
+        // Update countdown every second
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+        // Translation System
+        const translations = {
+            en: {
+                maintenance: "We're currently performing scheduled maintenance to improve our services. The bot will be back online in a few hours with enhanced features and better performance.",
+                status: "UNDER MAINTENANCE",
+                countdown: "Expected to be back in:",
+                apology: "We apologize for the inconvenience. Thank you for your patience."
+            },
+            es: {
+                maintenance: "Actualmente estamos realizando mantenimiento programado para mejorar nuestros servicios. El bot volverá a estar en línea en unas horas con funciones mejoradas y mejor rendimiento.",
+                status: "EN MANTENIMIENTO",
+                countdown: "Se espera que vuelva en:",
+                apology: "Nos disculpamos por las molestias. Gracias por su paciencia."
+            },
+            ar: {
+                maintenance: "نقوم حاليًا بإجراء صيانة مجدولة لتحسين خدماتنا. سيعود البوت للعمل خلال ساعات قليلة بميزات محسنة وأداء أفضل.",
+                status: "تحت الصيانة",
+                countdown: "من المتوقع أن يعود خلال:",
+                apology: "نعتذر عن الإزعاج. شكرًا لك على صبرك."
+            },
+            fr: {
+                maintenance: "Nous effectuons actuellement une maintenance planifiée pour améliorer nos services. Le bot sera de nouveau en ligne dans quelques heures avec des fonctionnalités améliorées et de meilleures performances.",
+                status: "EN MAINTENANCE",
+                countdown: "Prévu de revenir dans:",
+                apology: "Nous nous excusons pour le dérangement. Merci pour votre patience."
+            },
+            de: {
+                maintenance: "Wir führen derzeit geplante Wartungsarbeiten durch, um unsere Dienste zu verbessern. Der Bot wird in wenigen Stunden mit erweiterten Funktionen und besserer Leistung wieder online sein.",
+                status: "IN WARUNG",
+                countdown: "Voraussichtlich zurück in:",
+                apology: "Wir entschuldigen uns für die Unannehmlichkeiten. Vielen Dank für Ihre Geduld."
+            },
+            ru: {
+                maintenance: "В настоящее время мы проводим плановое техническое обслуживание для улучшения наших услуг. Бот вернется в сеть через несколько часов с улучшенными функциями и производительностью.",
+                status: "НА ТЕХНИЧЕСКОМ ОБСЛУЖИВАНИИ",
+                countdown: "Ожидается возвращение через:",
+                apology: "Приносим извинения за неудобства. Спасибо за ваше терпение."
+            },
+            zh: {
+                maintenance: "我们目前正在进行定期维护以改进我们的服务。该机器人将在几小时后重新上线，具有增强的功能和更好的性能。",
+                status: "维护中",
+                countdown: "预计恢复时间:",
+                apology: "对于给您带来的不便，我们深表歉意。感谢您的耐心等待。"
+            }
+        };
+
+        // Language selector functionality
+        const langButtons = document.querySelectorAll('.lang-btn');
+        const maintenanceText = document.getElementById('maintenanceText');
+        const translatedText = document.getElementById('translatedText');
+        const countdownTitle = document.querySelector('.countdown-title');
+        const statusSpan = document.querySelector('.status-offline span');
+        const apologyText = document.querySelector('.footer p:nth-child(2)');
+
+        langButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class from all buttons
+                langButtons.forEach(btn => btn.classList.remove('active'));
                 
-                // Open the bot panel
-                window.location.href = this.href;
-            }, 200);
+                // Add active class to clicked button
+                this.classList.add('active');
+                
+                // Get selected language
+                const lang = this.getAttribute('data-lang');
+                
+                // Update all text elements
+                if (translations[lang]) {
+                    maintenanceText.textContent = translations[lang].maintenance;
+                    translatedText.textContent = translations[lang].maintenance;
+                    countdownTitle.textContent = translations[lang].countdown;
+                    statusSpan.textContent = translations[lang].status;
+                    apologyText.textContent = translations[lang].apology;
+                }
+            });
         });
 
-        // Add some dynamic effect to status
-        const statusText = document.querySelector('.status span');
-        let isOnline = true;
+        // Add some visual effects
+        const statusText = document.querySelector('.status-offline span');
         
         setInterval(() => {
-            if (isOnline) {
-                statusText.style.opacity = '0.7';
-                setTimeout(() => {
-                    statusText.style.opacity = '1';
-                }, 300);
-            }
-        }, 3000);
+            statusText.style.opacity = statusText.style.opacity === '0.7' ? '1' : '0.7';
+        }, 1000);
+
+        // Maintenance icon animation
+        const maintenanceIcon = document.querySelector('.maintenance-icon i');
+        let rotation = 0;
+        
+        setInterval(() => {
+            rotation = (rotation + 5) % 360;
+            maintenanceIcon.style.transform = `rotate(${rotation}deg)`;
+        }, 100);
     </script>
 </body>
-  </html>
+</html>
