@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>UsamaCrash Bot</title>
+    <title>UsamaCrash Bot - Multi Server</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -94,35 +94,67 @@
             color: #ffa502;
         }
 
+        .server-options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .server-option {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 15px;
+            border-left: 4px solid #1e90ff;
+        }
+
+        .server-label {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            color: #1e90ff;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .server-label i {
+            margin-right: 8px;
+            font-size: 18px;
+        }
+
+        .server-url {
+            font-family: monospace;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 14px;
+            margin: 8px 0;
+            word-break: break-all;
+            color: #ffa502;
+        }
+
         .bot-link {
             display: block;
-            background: linear-gradient(90deg, #ff4757, #ff6b81);
+            background: linear-gradient(90deg, #2ed573, #1e90ff);
             color: white;
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 600;
             text-decoration: none;
-            padding: 18px 25px;
-            border-radius: 15px;
-            margin: 15px 0;
+            padding: 15px;
+            border-radius: 12px;
             transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(255, 71, 87, 0.4);
+            box-shadow: 0 4px 12px rgba(30, 144, 255, 0.3);
             border: none;
             cursor: pointer;
         }
 
         .bot-link:hover, .bot-link:active {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(255, 71, 87, 0.6);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(30, 144, 255, 0.5);
         }
 
         .bot-link i {
             margin-right: 8px;
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-3px); }
         }
 
         .status {
@@ -274,8 +306,8 @@
             }
             
             .bot-link {
-                font-size: 18px;
-                padding: 16px 20px;
+                font-size: 16px;
+                padding: 14px;
             }
             
             .features-grid {
@@ -326,22 +358,47 @@
         <div class="main-content">
             <div class="bot-panel-section">
                 <div class="panel-title">
-                    <i class="fas fa-external-link-alt"></i> BOT CONTROL PANEL
+                    <i class="fas fa-server"></i> BOT SERVERS
                 </div>
-                
-                <a href="http://node2.ravage.biz.id:2001/" class="bot-link" id="openBot">
-                    <i class="fas fa-rocket"></i>
-                    OPEN BOT PANEL
-                </a>
                 
                 <div class="warning-note">
                     <i class="fas fa-exclamation-circle"></i>
                     Use the bot responsibly. Trading involves risks.
                 </div>
                 
+                <!-- Server 1 -->
+                <div class="server-options">
+                    <div class="server-option">
+                        <div class="server-label">
+                            <i class="fas fa-server"></i> SERVER 1
+                        </div>
+                        <div class="server-url">
+                            http://node2.ravage.biz.id:2001/
+                        </div>
+                        <a href="http://node2.ravage.biz.id:2001/" class="bot-link">
+                            <i class="fas fa-rocket"></i>
+                            OPEN SERVER 1 PANEL
+                        </a>
+                    </div>
+                    
+                    <!-- Server 2 -->
+                    <div class="server-option">
+                        <div class="server-label">
+                            <i class="fas fa-server"></i> SERVER 2
+                        </div>
+                        <div class="server-url">
+                            http://node2.ravage.biz.id:2063/
+                        </div>
+                        <a href="http://node2.ravage.biz.id:2063/" class="bot-link">
+                            <i class="fas fa-rocket"></i>
+                            OPEN SERVER 2 PANEL
+                        </a>
+                    </div>
+                </div>
+                
                 <div class="status">
                     <i class="fas fa-circle"></i>
-                    Bot Status: <span>ONLINE & RUNNING</span>
+                    Bot Status: <span>ALL SERVERS ONLINE</span>
                 </div>
             </div>
 
@@ -384,10 +441,11 @@
                         <i class="fas fa-info-circle"></i> HOW TO USE
                     </div>
                     <div class="info-text">
-                        1. Click "OPEN BOT PANEL" to access the control panel<br>
-                        2. Configure your trading preferences<br>
-                        3. Set your risk management parameters<br>
-                        4. Start the bot and monitor performance
+                        1. Select a server from the options above<br>
+                        2. Click "OPEN SERVER PANEL" to access control panel<br>
+                        3. Configure your trading preferences<br>
+                        4. Set your risk management parameters<br>
+                        5. Start the bot and monitor performance
                     </div>
                 </div>
                 
@@ -401,8 +459,8 @@
                         <div class="stat-label">ACCURACY</div>
                     </div>
                     <div class="stat">
-                        <div class="stat-value">FAST</div>
-                        <div class="stat-label">EXECUTION</div>
+                        <div class="stat-value">2</div>
+                        <div class="stat-label">SERVERS</div>
                     </div>
                     <div class="stat">
                         <div class="stat-value">SECURE</div>
@@ -414,7 +472,7 @@
 
         <div class="footer">
             <p>© 2023 UsamaCrash Bot | All Rights Reserved</p>
-            <p style="margin-top:8px; font-size:11px;">Designed for mobile trading experience</p>
+            <p style="margin-top:8px; font-size:11px;">Multi-Server Trading Platform</p>
             <p style="margin-top:5px; font-size:11px; color:#ffa502;">
                 <i class="fas fa-mobile-alt"></i> Optimized for Mobile Devices
             </p>
@@ -422,42 +480,43 @@
     </div>
 
     <script>
-        // Mobile-optimized touch interactions
         document.addEventListener('DOMContentLoaded', function() {
-            const botLink = document.getElementById('openBot');
+            const botLinks = document.querySelectorAll('.bot-link');
             
             // Touch feedback for mobile
-            botLink.addEventListener('touchstart', function() {
-                this.style.transform = 'scale(0.95)';
-                this.style.opacity = '0.9';
-            });
-            
-            botLink.addEventListener('touchend', function() {
-                this.style.transform = '';
-                this.style.opacity = '';
+            botLinks.forEach(link => {
+                link.addEventListener('touchstart', function() {
+                    this.style.transform = 'scale(0.95)';
+                    this.style.opacity = '0.9';
+                });
                 
-                // Open bot panel after animation
-                setTimeout(() => {
-                    window.location.href = this.href;
-                }, 200);
-            });
-            
-            // Prevent default behavior for touch events
-            botLink.addEventListener('touchmove', function(e) {
-                e.preventDefault();
-            });
-            
-            // Add click effect for desktop users on mobile
-            botLink.addEventListener('click', function(e) {
-                e.preventDefault();
-                this.style.transform = 'scale(0.95)';
-                this.style.opacity = '0.9';
-                
-                setTimeout(() => {
+                link.addEventListener('touchend', function() {
                     this.style.transform = '';
                     this.style.opacity = '';
-                    window.location.href = this.href;
-                }, 200);
+                    
+                    // Open bot panel after animation
+                    setTimeout(() => {
+                        window.location.href = this.href;
+                    }, 200);
+                });
+                
+                // Prevent default behavior for touch events
+                link.addEventListener('touchmove', function(e) {
+                    e.preventDefault();
+                });
+                
+                // Add click effect for desktop users on mobile
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    this.style.transform = 'scale(0.95)';
+                    this.style.opacity = '0.9';
+                    
+                    setTimeout(() => {
+                        this.style.transform = '';
+                        this.style.opacity = '';
+                        window.location.href = this.href;
+                    }, 200);
+                });
             });
             
             // Animate status indicator
@@ -494,15 +553,8 @@
                 observer.observe(feature);
             });
             
-            // Update URL display for mobile users
-            const urlInfo = document.createElement('div');
-            urlInfo.className = 'warning-note';
-            urlInfo.innerHTML = `<i class="fas fa-link"></i> Bot Panel URL: node2.ravage.biz.id:2001`;
-            document.querySelector('.bot-panel-section').appendChild(urlInfo);
-            
             // Mobile device detection and optimization
             if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-                // Add mobile-specific optimizations
                 document.body.classList.add('mobile-device');
                 
                 // Prevent zoom on double tap
@@ -517,6 +569,9 @@
                     e.preventDefault();
                 });
             }
+            
+            // Update title to show current year
+            document.querySelector('h1').textContent = 'UsamaCrash Bot v2.0';
         });
     </script>
 </body>
