@@ -104,57 +104,63 @@
         .server-option {
             background: rgba(255, 255, 255, 0.05);
             border-radius: 12px;
-            padding: 15px;
-            border-left: 4px solid #1e90ff;
+            padding: 20px 15px;
+            border: 2px solid rgba(30, 144, 255, 0.3);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .server-option:hover {
+            border-color: #1e90ff;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(30, 144, 255, 0.2);
         }
 
         .server-label {
             display: flex;
             align-items: center;
-            margin-bottom: 10px;
+            justify-content: center;
+            margin-bottom: 15px;
             color: #1e90ff;
-            font-size: 16px;
-            font-weight: 600;
+            font-size: 18px;
+            font-weight: 700;
         }
 
         .server-label i {
-            margin-right: 8px;
-            font-size: 18px;
-        }
-
-        .server-url {
-            font-family: monospace;
-            background: rgba(0, 0, 0, 0.3);
-            padding: 8px 12px;
-            border-radius: 8px;
-            font-size: 14px;
-            margin: 8px 0;
-            word-break: break-all;
-            color: #ffa502;
+            margin-right: 12px;
+            font-size: 22px;
         }
 
         .bot-link {
             display: block;
-            background: linear-gradient(90deg, #2ed573, #1e90ff);
+            background: linear-gradient(90deg, #ff4757, #ff6b81);
             color: white;
             font-size: 18px;
             font-weight: 600;
             text-decoration: none;
-            padding: 15px;
-            border-radius: 12px;
+            padding: 16px;
+            border-radius: 10px;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(30, 144, 255, 0.3);
+            box-shadow: 0 4px 12px rgba(255, 71, 87, 0.3);
             border: none;
             cursor: pointer;
         }
 
         .bot-link:hover, .bot-link:active {
             transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(30, 144, 255, 0.5);
+            box-shadow: 0 6px 16px rgba(255, 71, 87, 0.5);
         }
 
         .bot-link i {
             margin-right: 8px;
+        }
+
+        .server-info {
+            font-size: 12px;
+            color: #a4b0be;
+            margin-top: 10px;
+            font-style: italic;
         }
 
         .status {
@@ -319,6 +325,10 @@
                 grid-template-columns: 1fr;
                 gap: 12px;
             }
+            
+            .server-label {
+                font-size: 16px;
+            }
         }
 
         /* Touch-friendly button styles */
@@ -358,7 +368,7 @@
         <div class="main-content">
             <div class="bot-panel-section">
                 <div class="panel-title">
-                    <i class="fas fa-server"></i> BOT SERVERS
+                    <i class="fas fa-server"></i> SELECT BOT SERVER
                 </div>
                 
                 <div class="warning-note">
@@ -366,33 +376,50 @@
                     Use the bot responsibly. Trading involves risks.
                 </div>
                 
-                <!-- Server 1 -->
                 <div class="server-options">
+                    <!-- UsamaCrash 1 -->
                     <div class="server-option">
                         <div class="server-label">
-                            <i class="fas fa-server"></i> SERVER 1
-                        </div>
-                        <div class="server-url">
-                            http://node2.ravage.biz.id:2001/
+                            <i class="fas fa-rocket"></i>
+                            UsamaCrash 1
                         </div>
                         <a href="http://node2.ravage.biz.id:2001/" class="bot-link">
-                            <i class="fas fa-rocket"></i>
-                            OPEN SERVER 1 PANEL
+                            <i class="fas fa-external-link-alt"></i>
+                            ACCESS SERVER 1
                         </a>
+                        <div class="server-info">
+                            Primary Server | High Performance
+                        </div>
                     </div>
                     
-                    <!-- Server 2 -->
+                    <!-- UsamaCrash 2 -->
                     <div class="server-option">
                         <div class="server-label">
-                            <i class="fas fa-server"></i> SERVER 2
-                        </div>
-                        <div class="server-url">
-                            http://node2.ravage.biz.id:2063/
+                            <i class="fas fa-server"></i>
+                            UsamaCrash 2
                         </div>
                         <a href="http://node2.ravage.biz.id:2063/" class="bot-link">
-                            <i class="fas fa-rocket"></i>
-                            OPEN SERVER 2 PANEL
+                            <i class="fas fa-external-link-alt"></i>
+                            ACCESS SERVER 2
                         </a>
+                        <div class="server-info">
+                            Backup Server | Stable Connection
+                        </div>
+                    </div>
+                    
+                    <!-- UsamaCrash 3 -->
+                    <div class="server-option">
+                        <div class="server-label">
+                            <i class="fas fa-bolt"></i>
+                            UsamaCrash 3
+                        </div>
+                        <a href="http://node2.ravage.biz.id:2064/" class="bot-link">
+                            <i class="fas fa-external-link-alt"></i>
+                            ACCESS SERVER 3
+                        </a>
+                        <div class="server-info">
+                            New Server | Fast Response
+                        </div>
                     </div>
                 </div>
                 
@@ -442,7 +469,7 @@
                     </div>
                     <div class="info-text">
                         1. Select a server from the options above<br>
-                        2. Click "OPEN SERVER PANEL" to access control panel<br>
+                        2. Click "ACCESS SERVER" button to open control panel<br>
                         3. Configure your trading preferences<br>
                         4. Set your risk management parameters<br>
                         5. Start the bot and monitor performance
@@ -455,12 +482,12 @@
                         <div class="stat-label">UPTIME</div>
                     </div>
                     <div class="stat">
-                        <div class="stat-value">99%</div>
-                        <div class="stat-label">ACCURACY</div>
+                        <div class="stat-value">3</div>
+                        <div class="stat-label">SERVERS</div>
                     </div>
                     <div class="stat">
-                        <div class="stat-value">2</div>
-                        <div class="stat-label">SERVERS</div>
+                        <div class="stat-value">99%</div>
+                        <div class="stat-label">ACCURACY</div>
                     </div>
                     <div class="stat">
                         <div class="stat-value">SECURE</div>
@@ -571,7 +598,7 @@
             }
             
             // Update title to show current year
-            document.querySelector('h1').textContent = 'UsamaCrash Bot v2.0';
+            document.querySelector('h1').textContent = 'UsamaCrash Bot v3.0';
         });
     </script>
 </body>
