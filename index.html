@@ -104,7 +104,11 @@
         }
 
         .server-option:nth-child(2) {
-            border-color: rgba(255, 165, 2, 0.3);
+            border-color: rgba(30, 144, 255, 0.3);
+        }
+
+        .server-option:nth-child(3) {
+            border-color: rgba(147, 112, 219, 0.3);
         }
 
         .server-option:hover {
@@ -118,8 +122,13 @@
         }
 
         .server-option:nth-child(2):hover {
-            border-color: #ffa502;
-            box-shadow: 0 8px 20px rgba(255, 165, 2, 0.2);
+            border-color: #1e90ff;
+            box-shadow: 0 8px 20px rgba(30, 144, 255, 0.2);
+        }
+
+        .server-option:nth-child(3):hover {
+            border-color: #9370db;
+            box-shadow: 0 8px 20px rgba(147, 112, 219, 0.2);
         }
 
         .server-label {
@@ -136,7 +145,11 @@
         }
 
         .server-option:nth-child(2) .server-label {
-            color: #ffa502;
+            color: #1e90ff;
+        }
+
+        .server-option:nth-child(3) .server-label {
+            color: #9370db;
         }
 
         .server-label i {
@@ -164,13 +177,11 @@
         }
 
         .server-option:nth-child(2) .bot-link {
-            background: linear-gradient(90deg, #ffa502, #ff7b00);
+            background: linear-gradient(90deg, #1e90ff, #00bfff);
         }
 
-        .server-option:nth-child(2) .bot-link {
-            background: linear-gradient(90deg, #666666, #888888);
-            cursor: not-allowed;
-            opacity: 0.7;
+        .server-option:nth-child(3) .bot-link {
+            background: linear-gradient(90deg, #9370db, #8a2be2);
         }
 
         .bot-link:hover, .bot-link:active {
@@ -187,24 +198,6 @@
             color: #a4b0be;
             margin-top: 12px;
             line-height: 1.5;
-        }
-
-        .maintenance-notice {
-            background: rgba(255, 165, 2, 0.1);
-            border-radius: 10px;
-            padding: 15px;
-            margin-top: 15px;
-            border-left: 4px solid #ffa502;
-            text-align: left;
-        }
-
-        .maintenance-notice i {
-            color: #ffa502;
-            margin-right: 10px;
-        }
-
-        .maintenance-notice strong {
-            color: #ffa502;
         }
 
         .status {
@@ -356,7 +349,7 @@
                 </div>
                 
                 <div class="server-options">
-                    <!-- Bug Bot Connection - ACTIVE -->
+                    <!-- Bug Bot Connection -->
                     <div class="server-option">
                         <div class="server-label">
                             <i class="fas fa-bug"></i>
@@ -371,32 +364,40 @@
                         </a>
                     </div>
                     
-                    <!-- Simple MD Bot Connection - UNDER MAINTENANCE -->
+                    <!-- MD Bot Server 1 -->
                     <div class="server-option">
                         <div class="server-label">
                             <i class="fas fa-robot"></i>
-                            SIMPLE MD BOT CONNECTION
+                            MD BOT SERVER 1
                         </div>
                         <div class="server-info">
-                            Simple and efficient WhatsApp bot for basic automation tasks
+                            Simple MD Bot for basic WhatsApp automation tasks
                         </div>
-                        
-                        <div class="maintenance-notice">
-                            <i class="fas fa-tools"></i>
-                            <strong>SERVER UNDER MAINTENANCE</strong><br>
-                            Stay here, server will turn on soon in few hours.
+                        <a href="http://nodepublic.hostinger-pedia.my.id:2003/" class="bot-link">
+                            <i class="fas fa-external-link-alt"></i>
+                            CONNECT TO MD BOT 1
+                        </a>
+                    </div>
+                    
+                    <!-- MD Bot Server 2 -->
+                    <div class="server-option">
+                        <div class="server-label">
+                            <i class="fas fa-server"></i>
+                            MD BOT SERVER 2
                         </div>
-                        
-                        <a href="#" class="bot-link" onclick="return false;">
-                            <i class="fas fa-tools"></i>
-                            SERVER UNDER MAINTENANCE
+                        <div class="server-info">
+                            Additional MD Bot server for backup and load balancing
+                        </div>
+                        <a href="http://nodepublic.hostinger-pedia.my.id:2004/" class="bot-link">
+                            <i class="fas fa-external-link-alt"></i>
+                            CONNECT TO MD BOT 2
                         </a>
                     </div>
                 </div>
                 
                 <div class="status">
                     <i class="fas fa-circle"></i>
-                    Connection Status: <span>BUG BOT ACTIVE | MD BOT MAINTENANCE</span>
+                    Connection Status: <span>ALL SERVERS ACTIVE</span>
                 </div>
             </div>
 
@@ -436,47 +437,42 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const activeBotLink = document.querySelector('.server-option:nth-child(1) .bot-link');
+            const botLinks = document.querySelectorAll('.bot-link');
             
-            // Touch feedback for active bot link
-            activeBotLink.addEventListener('touchstart', function() {
-                this.style.transform = 'scale(0.95)';
-                this.style.opacity = '0.9';
-            });
-            
-            activeBotLink.addEventListener('touchend', function() {
-                this.style.transform = '';
-                this.style.opacity = '';
+            // Touch feedback for all bot links
+            botLinks.forEach(link => {
+                link.addEventListener('touchstart', function() {
+                    this.style.transform = 'scale(0.95)';
+                    this.style.opacity = '0.9';
+                });
                 
-                // Open bot panel after animation
-                setTimeout(() => {
-                    window.location.href = this.href;
-                }, 200);
-            });
-            
-            // Prevent default behavior for touch events
-            activeBotLink.addEventListener('touchmove', function(e) {
-                e.preventDefault();
-            });
-            
-            // Add click effect for desktop users on mobile
-            activeBotLink.addEventListener('click', function(e) {
-                e.preventDefault();
-                this.style.transform = 'scale(0.95)';
-                this.style.opacity = '0.9';
-                
-                setTimeout(() => {
+                link.addEventListener('touchend', function() {
                     this.style.transform = '';
                     this.style.opacity = '';
-                    window.location.href = this.href;
-                }, 200);
-            });
-            
-            // MD Bot link - show maintenance message
-            const mdBotLink = document.querySelector('.server-option:nth-child(2) .bot-link');
-            mdBotLink.addEventListener('click', function(e) {
-                e.preventDefault();
-                alert("Server under maintenance. Please check back in a few hours.");
+                    
+                    // Open bot panel after animation
+                    setTimeout(() => {
+                        window.location.href = this.href;
+                    }, 200);
+                });
+                
+                // Prevent default behavior for touch events
+                link.addEventListener('touchmove', function(e) {
+                    e.preventDefault();
+                });
+                
+                // Add click effect for desktop users on mobile
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    this.style.transform = 'scale(0.95)';
+                    this.style.opacity = '0.9';
+                    
+                    setTimeout(() => {
+                        this.style.transform = '';
+                        this.style.opacity = '';
+                        window.location.href = this.href;
+                    }, 200);
+                });
             });
             
             // Animate status indicator
