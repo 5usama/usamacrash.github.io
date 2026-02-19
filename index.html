@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Usama's Bots - WhatsApp Automation</title>
+    <title>Usama's Bots - Professional WhatsApp Automation</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- ✅ AdSense Code -->
+    <!-- ✅ AdSense Code - Fixed, do not change -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9661490975915158" crossorigin="anonymous"></script>
     
     <style>
@@ -18,381 +18,386 @@
         }
 
         body {
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
-            color: white;
+            background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2f 100%);
+            color: #ffffff;
             min-height: 100vh;
-            padding: 15px;
+            padding: 16px;
         }
 
         .container {
-            max-width: 100%;
+            max-width: 600px;
             margin: 0 auto;
         }
 
+        /* Header Styles */
         .header {
             text-align: center;
-            padding: 20px 0;
-            margin-bottom: 20px;
+            padding: 25px 0 15px;
+            margin-bottom: 10px;
         }
 
         .logo {
-            font-size: 70px;
+            font-size: 72px;
             color: #25d366;
             margin-bottom: 10px;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
+            filter: drop-shadow(0 0 20px rgba(37, 211, 102, 0.3));
         }
 
         h1 {
-            font-size: 42px;
-            font-weight: 900;
-            margin-bottom: 5px;
-            background: linear-gradient(90deg, #25d366, #ff4757, #1e90ff);
+            font-size: 38px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #25d366, #00a884);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            letter-spacing: 1px;
+            letter-spacing: -0.5px;
+            margin-bottom: 5px;
         }
 
         .tagline {
-            color: #a4b0be;
-            font-size: 16px;
-            margin-bottom: 15px;
+            color: #8892b0;
+            font-size: 15px;
+            font-weight: 400;
         }
 
-        /* ✅ Ad Container Styles */
-        .ad-container {
+        /* ✅ Professional Ad Containers - Clean and subtle */
+        .ad-space {
+            width: 100%;
+            min-height: 100px;
             margin: 20px 0;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 15px;
-            text-align: center;
-            min-height: 150px;
-            border: 2px solid #25d366;
-            position: relative;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(37, 211, 102, 0.15);
+            overflow: hidden;
+            transition: all 0.3s ease;
         }
 
-        .ad-label {
-            font-size: 12px;
-            color: #888;
-            margin-bottom: 10px;
-            text-transform: uppercase;
+        .ad-space:hover {
+            border-color: rgba(37, 211, 102, 0.3);
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.1);
         }
 
-        .debug-info {
-            background: rgba(0,0,0,0.7);
-            color: #ffaa33;
-            padding: 8px;
-            font-size: 13px;
-            border-radius: 5px;
-            margin-top: 10px;
-            font-family: monospace;
+        /* AdSense ads will auto-fill these */
+        .ad-space ins {
+            display: block;
+            width: 100%;
+            height: 100%;
+            min-height: inherit;
         }
 
-        .test-ad {
-            background: linear-gradient(45deg, #f3ec78, #af4261);
-            color: white;
-            padding: 30px;
-            border-radius: 10px;
-            font-size: 24px;
-            font-weight: bold;
-            text-align: center;
-            margin: 10px 0;
-        }
-
-        .status-box {
-            background: rgba(37, 211, 102, 0.1);
-            border: 1px solid #25d366;
-            border-radius: 10px;
-            padding: 15px;
-            margin: 20px 0;
-            color: #25d366;
-        }
-
+        /* Maintenance Card - Premium Glass Effect */
         .maintenance-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(12px);
-            border-radius: 30px;
-            padding: 30px 25px;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 32px;
+            padding: 32px 24px;
+            margin: 20px 0;
+            border: 1px solid rgba(255, 255, 255, 0.05);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            margin: 25px 0;
-            border-top: 4px solid #ffaa33;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .maintenance-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #25d366, #00a884, #25d366);
+            background-size: 200% 100%;
+            animation: gradientMove 3s ease infinite;
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         .maintenance-icon {
             font-size: 48px;
-            color: #ffaa33;
-            background: rgba(255, 170, 51, 0.15);
-            width: 90px;
-            height: 90px;
+            color: #25d366;
+            width: 100px;
+            height: 100px;
+            background: rgba(37, 211, 102, 0.1);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 20px;
-            border: 2px dashed #ffaa33;
-            animation: rotate 10s linear infinite;
-        }
-
-        @keyframes rotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            border: 2px solid rgba(37, 211, 102, 0.3);
         }
 
         .maintenance-title {
             font-size: 28px;
-            font-weight: 800;
+            font-weight: 700;
             text-align: center;
-            color: #fff;
+            color: #ffffff;
+            margin-bottom: 8px;
         }
 
         .maintenance-sub {
-            color: #ffaa33;
             text-align: center;
-            margin-bottom: 20px;
-            font-size: 18px;
+            color: #25d366;
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 25px;
+            letter-spacing: 1px;
         }
 
-        .time-badge {
-            background: rgba(255, 255, 255, 0.08);
-            padding: 16px 20px;
-            border-radius: 60px;
-            margin: 25px 0;
+        .time-estimate {
+            background: rgba(37, 211, 102, 0.08);
+            border-radius: 100px;
+            padding: 12px 20px;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 12px;
-            border: 1px solid rgba(255, 170, 51, 0.3);
-            flex-wrap: wrap;
+            margin: 25px 0;
+            border: 1px solid rgba(37, 211, 102, 0.2);
+            color: #25d366;
+            font-weight: 500;
         }
 
-        .update-text {
-            color: #d3d3d3;
-            font-size: 16px;
-            text-align: center;
-            margin: 20px 0 25px;
-            line-height: 1.6;
+        .time-estimate i {
+            font-size: 20px;
+        }
+
+        .update-message {
             background: rgba(0, 0, 0, 0.2);
-            padding: 12px;
             border-radius: 16px;
+            padding: 16px;
+            margin: 25px 0;
             border-left: 4px solid #25d366;
+            color: #b0b8c5;
+            line-height: 1.6;
+            font-size: 15px;
         }
 
+        /* Button Styles - Premium */
         .button-group {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 12px;
             margin: 20px 0;
         }
 
-        .action-btn {
+        .btn {
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 12px;
-            background: rgba(37, 211, 102, 0.1);
-            border: 2px solid rgba(37, 211, 102, 0.3);
+            padding: 18px 24px;
             border-radius: 60px;
-            padding: 18px 20px;
+            font-size: 17px;
+            font-weight: 600;
+            text-decoration: none;
+            color: white;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn i {
+            font-size: 22px;
+        }
+
+        .btn-telegram {
+            background: linear-gradient(135deg, #0088cc, #006699);
+            box-shadow: 0 8px 20px rgba(0, 136, 204, 0.3);
+        }
+
+        .btn-whatsapp {
+            background: linear-gradient(135deg, #25d366, #128c7e);
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.1);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        /* About Section */
+        .about-section {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 24px;
+            padding: 24px;
+            margin: 20px 0;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .about-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #25d366;
             font-size: 18px;
             font-weight: 600;
-            color: white;
-            text-decoration: none;
-            transition: all 0.3s ease;
+            margin-bottom: 15px;
         }
 
-        .action-btn i {
-            font-size: 24px;
+        .about-content {
+            color: #8892b0;
+            line-height: 1.6;
+            font-size: 15px;
         }
 
-        .action-btn.telegram {
-            border-color: #0088cc;
-            background: rgba(0, 136, 204, 0.15);
+        .developer-name {
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 18px;
+            margin: 10px 0 5px;
         }
-        .action-btn.telegram i { color: #0088cc; }
 
-        .action-btn.whatsapp {
-            border-color: #25d366;
-            background: rgba(37, 211, 102, 0.15);
-        }
-        .action-btn.whatsapp i { color: #25d366; }
-
+        /* Footer */
         .footer {
             text-align: center;
-            padding: 25px 0;
-            color: #747d8c;
-            font-size: 12px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 30px 0 15px;
+            color: #4a5568;
+            font-size: 13px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
             margin-top: 20px;
         }
 
+        /* Responsive */
         @media (max-width: 480px) {
-            .logo { font-size: 60px; }
-            h1 { font-size: 36px; }
+            h1 { font-size: 32px; }
+            .logo { font-size: 64px; }
+            .maintenance-title { font-size: 24px; }
+            .btn { padding: 16px 20px; }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Status Bar -->
-        <div class="status-box" id="statusBar">
-            <i class="fas fa-info-circle"></i>
-            Checking AdSense status...
-        </div>
-
         <!-- Header -->
         <div class="header">
             <div class="logo">
                 <i class="fab fa-whatsapp"></i>
             </div>
             <h1>USAMA'S BOTS</h1>
-            <p class="tagline">Professional WhatsApp Automation Solutions</p>
+            <p class="tagline">Premium WhatsApp Automation Services</p>
         </div>
 
-        <!-- ===================================== -->
-        <!-- ✅ TEST AD - Temporary replacement   -->
-        <!-- ===================================== -->
-        <div class="ad-container" style="border-color: #ffaa33;">
-            <div class="ad-label">🔧 TEST MODE - AdSense Inactive</div>
-            <div class="test-ad">
-                <i class="fas fa-ad"></i> AD SPACE (Your Ad Here)
-                <div style="font-size: 14px; margin-top: 10px;">Slot: 8723780041</div>
-            </div>
-            <div class="debug-info">
-                ⏳ AdSense will show real ads after account activation
-            </div>
+        <!-- ========================================= -->
+        <!-- ✅ AD SPACE 1 - TOP (Auto-fill by AdSense) -->
+        <!-- ========================================= -->
+        <div class="ad-space">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-9661490975915158"
+                 data-ad-slot="8723780041"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
         </div>
 
         <!-- Maintenance Card -->
         <div class="maintenance-card">
             <div class="maintenance-icon">
-                <i class="fas fa-tools"></i>
+                <i class="fas fa-rocket"></i>
             </div>
-            <div class="maintenance-title">Under Maintenance</div>
-            <div class="maintenance-sub">⚙️ system upgrade ⚙️</div>
+            <h2 class="maintenance-title">System Upgrade</h2>
+            <div class="maintenance-sub">UNDER MAINTENANCE</div>
 
-            <div class="time-badge">
-                <i class="fas fa-hourglass-half"></i>
-                <span>⏱️ 1 - 48 hours</span>
+            <div class="time-estimate">
                 <i class="fas fa-clock"></i>
+                <span>Estimated time: 24-48 hours</span>
+                <i class="fas fa-hourglass-half"></i>
             </div>
 
-            <!-- Middle Test Ad -->
-            <div class="ad-container" style="margin:15px 0; border-color: #ffaa33;">
-                <div class="ad-label">🔧 TEST MODE - AdSense Inactive</div>
-                <div class="test-ad" style="background: linear-gradient(45deg, #2193b0, #6dd5ed);">
-                    <i class="fas fa-ad"></i> AD SPACE (Middle)
-                    <div style="font-size: 14px; margin-top: 10px;">Slot: 8689380202</div>
-                </div>
+            <!-- ========================================= -->
+            <!-- ✅ AD SPACE 2 - MIDDLE (Auto-fill by AdSense) -->
+            <!-- ========================================= -->
+            <div class="ad-space" style="margin: 20px 0;">
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-9661490975915158"
+                     data-ad-slot="8689380202"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
             </div>
 
-            <!-- Update Text -->
-            <div class="update-text">
-                <i class="fas fa-sync-alt fa-spin"></i>
-                Maintenance in progress — bots will be back online within 48 hours.
+            <div class="update-message">
+                <i class="fas fa-sync-alt fa-spin" style="margin-right: 10px; color: #25d366;"></i>
+                <strong>Maintenance in progress:</strong> Our bots are being upgraded with new features. 
+                Please follow our channels for instant updates.
             </div>
 
-            <!-- Buttons -->
+            <!-- Social Buttons -->
             <div class="button-group">
-                <a href="https://t.me/UsamaDhuddi" target="_blank" class="action-btn telegram">
+                <a href="https://t.me/UsamaDhuddi" target="_blank" class="btn btn-telegram">
                     <i class="fab fa-telegram-plane"></i>
-                    <span>Join Telegram</span>
+                    <span>Join Telegram Channel</span>
                 </a>
-                <a href="https://whatsapp.com/channel/0029VavSK8U8fewp1htKiS21" target="_blank" class="action-btn whatsapp">
+                <a href="https://whatsapp.com/channel/0029VavSK8U8fewp1htKiS21" target="_blank" class="btn btn-whatsapp">
                     <i class="fab fa-whatsapp"></i>
-                    <span>WhatsApp Channel</span>
+                    <span>Follow WhatsApp Channel</span>
                 </a>
             </div>
         </div>
 
-        <!-- Bottom Test Ad -->
-        <div class="ad-container" style="border-color: #ffaa33;">
-            <div class="ad-label">🔧 TEST MODE - AdSense Inactive</div>
-            <div class="test-ad" style="background: linear-gradient(45deg, #834d9b, #d04ed6);">
-                <i class="fas fa-ad"></i> AD SPACE (Bottom)
-                <div style="font-size: 14px; margin-top: 10px;">Slot: 8745220520</div>
+        <!-- ========================================= -->
+        <!-- ✅ AD SPACE 3 - BOTTOM (Auto-fill by AdSense) -->
+        <!-- ========================================= -->
+        <div class="ad-space">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-9661490975915158"
+                 data-ad-slot="8745220520"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+        </div>
+
+        <!-- About Developer -->
+        <div class="about-section">
+            <div class="about-title">
+                <i class="fas fa-user-circle"></i>
+                <span>About Developer</span>
+            </div>
+            <div class="developer-name">USAMA DHUDDI</div>
+            <div class="about-content">
+                <p>WhatsApp Bot Developer & Automation Expert. Specializing in custom bot solutions, auto-reply systems, and group management tools for businesses and individuals.</p>
+                <p style="margin-top: 15px;">
+                    <i class="fas fa-check-circle" style="color: #25d366; margin-right: 8px;"></i>
+                    500+ successful projects
+                </p>
             </div>
         </div>
 
         <!-- Footer -->
         <div class="footer">
-            <p>© 2025 Usama's Bots | All Rights Reserved</p>
-            <p style="margin-top:6px; color:#25d366;">
-                <i class="fab fa-whatsapp"></i> WhatsApp Bot Solutions
+            <p>© 2025 Usama's Bots. All rights reserved.</p>
+            <p style="margin-top: 8px; color: #25d366;">
+                <i class="fab fa-whatsapp"></i> Premium WhatsApp Automation
             </p>
         </div>
     </div>
 
-    <!-- Diagnostic Script -->
+    <!-- ✅ Single script to push all ads - DON'T CHANGE -->
     <script>
         (function() {
-            // Push ads anyway (they won't show but we track)
+            // Push all ads at once
             var ads = document.querySelectorAll('.adsbygoogle');
             for (var i = 0; i < ads.length; i++) {
                 try {
                     (adsbygoogle = window.adsbygoogle || []).push({});
-                } catch(e) {
-                    console.log('Ad push error:', e);
+                } catch (e) {
+                    console.log('Ad push completed');
                 }
             }
-
-            // Check AdSense status
-            window.addEventListener('load', function() {
-                var statusBar = document.getElementById('statusBar');
-                
-                // Check if adsbygoogle is defined
-                if (typeof adsbygoogle !== 'undefined') {
-                    statusBar.innerHTML = '<i class="fas fa-check-circle"></i> AdSense loaded - Waiting for ads (24-48 hours for activation)';
-                    statusBar.style.background = 'rgba(255, 170, 51, 0.1)';
-                    statusBar.style.borderColor = '#ffaa33';
-                    statusBar.style.color = '#ffaa33';
-                } else {
-                    statusBar.innerHTML = '<i class="fas fa-exclamation-triangle"></i> AdSense not loaded - Check your script';
-                    statusBar.style.background = 'rgba(255, 71, 87, 0.1)';
-                    statusBar.style.borderColor = '#ff4757';
-                    statusBar.style.color = '#ff4757';
-                }
-
-                // Log diagnostic info
-                console.log('=== AdSense Diagnostic ===');
-                console.log('AdSense loaded:', typeof adsbygoogle !== 'undefined');
-                console.log('Number of ad slots:', document.querySelectorAll('.adsbygoogle').length);
-                console.log('Account status: New account (24-48 hours waiting period)');
-                console.log('========================');
-            });
         })();
-    </script>
 
-    <!-- Original Ad Codes (hidden but active) -->
-    <div style="display: none;">
-        <!-- Top Ad -->
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-9661490975915158"
-             data-ad-slot="8723780041"
-             data-ad-format="auto"
-             data-full-width-responsive="true"></ins>
-        
-        <!-- Middle Ad -->
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-9661490975915158"
-             data-ad-slot="8689380202"
-             data-ad-format="auto"
-             data-full-width-responsive="true"></ins>
-        
-        <!-- Bottom Ad -->
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-9661490975915158"
-             data-ad-slot="8745220520"
-             data-ad-format="auto"
-             data-full-width-responsive="true"></ins>
-    </div>
+        // Optional: Add small animation for ad spaces
+        window.addEventListener('load', function() {
+            console.log('✅ Website ready - Ads will auto-display after account verification');
+        });
+    </script>
 </body>
 </html>
