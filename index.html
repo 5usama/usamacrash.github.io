@@ -6,7 +6,7 @@
     <title>Usama's Bots - WhatsApp Automation</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- ✅ AdSense Code (Sirf ek baar head mein) -->
+    <!-- ✅ AdSense Code - Head mein ek baar -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9661490975915158" crossorigin="anonymous"></script>
     
     <style>
@@ -64,7 +64,7 @@
             margin-bottom: 15px;
         }
 
-        /* ✅ Ad Container Styles */
+        /* ✅ Ad Container Styles - Debug Mode */
         .ad-container {
             margin: 20px 0;
             padding: 15px;
@@ -72,25 +72,28 @@
             border-radius: 15px;
             text-align: center;
             min-height: 120px;
-            border: 1px dashed rgba(37, 211, 102, 0.2);
+            border: 2px solid #25d366;  /* Green border for visibility */
             position: relative;
+            overflow: hidden;
         }
 
         .ad-label {
-            font-size: 10px;
-            color: #666;
-            margin-bottom: 8px;
+            font-size: 12px;
+            color: #25d366;
+            margin-bottom: 10px;
             text-transform: uppercase;
             letter-spacing: 1px;
+            font-weight: bold;
         }
 
-        .ad-container::before {
-            content: '';
-            position: absolute;
-            top: 5px;
-            right: 10px;
-            font-size: 10px;
-            color: #444;
+        /* ✅ Debug Info */
+        .debug-info {
+            background: rgba(0,0,0,0.5);
+            color: #ffaa33;
+            padding: 5px;
+            font-size: 12px;
+            border-radius: 5px;
+            margin-top: 5px;
         }
 
         /* Maintenance Card */
@@ -230,7 +233,6 @@
             margin-top: 20px;
         }
 
-        /* Mobile Optimization */
         @media (max-width: 480px) {
             .logo { font-size: 60px; }
             h1 { font-size: 36px; }
@@ -250,17 +252,22 @@
         </div>
 
         <!-- ===================================== -->
-        <!-- ✅ AD 1: TOP BANNER (1st Ad)         -->
+        <!-- ✅ AD 1: TOP BANNER (8723780041)     -->
         <!-- ===================================== -->
-        <div class="ad-container">
-            <div class="ad-label">Advertisement</div>
+        <div class="ad-container" id="ad-top">
+            <div class="ad-label">📢 ADVERTISEMENT (Top)</div>
             <ins class="adsbygoogle"
-                 style="display:block"
+                 style="display:block; min-height: 100px;"
                  data-ad-client="ca-pub-9661490975915158"
                  data-ad-slot="8723780041"
                  data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
-            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+                 data-full-width-responsive="true"
+                 data-adtest="off"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+                console.log('✅ Top Ad Pushed (8723780041)');
+            </script>
+            <div class="debug-info" id="debug-top">⏳ Loading ad...</div>
         </div>
 
         <!-- Maintenance Card -->
@@ -278,17 +285,22 @@
             </div>
 
             <!-- ===================================== -->
-            <!-- ✅ AD 2: MIDDLE (2nd Ad - 8689380202) -->
+            <!-- ✅ AD 2: MIDDLE (8689380202)         -->
             <!-- ===================================== -->
-            <div class="ad-container" style="margin:15px 0;">
-                <div class="ad-label">Sponsored</div>
+            <div class="ad-container" id="ad-middle" style="margin:15px 0;">
+                <div class="ad-label">💎 SPONSORED (Middle)</div>
                 <ins class="adsbygoogle"
-                     style="display:block"
+                     style="display:block; min-height: 100px;"
                      data-ad-client="ca-pub-9661490975915158"
                      data-ad-slot="8689380202"
                      data-ad-format="auto"
-                     data-full-width-responsive="true"></ins>
-                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+                     data-full-width-responsive="true"
+                     data-adtest="off"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                    console.log('✅ Middle Ad Pushed (8689380202)');
+                </script>
+                <div class="debug-info" id="debug-middle">⏳ Loading ad...</div>
             </div>
 
             <!-- Update Text -->
@@ -316,17 +328,22 @@
         </div>
 
         <!-- ===================================== -->
-        <!-- ✅ AD 3: BOTTOM (3rd Ad - 8745220520) -->
+        <!-- ✅ AD 3: BOTTOM (8745220520)         -->
         <!-- ===================================== -->
-        <div class="ad-container">
-            <div class="ad-label">Advertisement</div>
+        <div class="ad-container" id="ad-bottom">
+            <div class="ad-label">📢 ADVERTISEMENT (Bottom)</div>
             <ins class="adsbygoogle"
-                 style="display:block"
+                 style="display:block; min-height: 100px;"
                  data-ad-client="ca-pub-9661490975915158"
                  data-ad-slot="8745220520"
                  data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
-            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+                 data-full-width-responsive="true"
+                 data-adtest="off"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+                console.log('✅ Bottom Ad Pushed (8745220520)');
+            </script>
+            <div class="debug-info" id="debug-bottom">⏳ Loading ad...</div>
         </div>
 
         <!-- Mini About -->
@@ -350,18 +367,52 @@
         </div>
     </div>
 
+    <!-- ✅ Debugging Script -->
     <script>
-        // ✅ Sab ads ko ek saath push karo
-        (function() {
-            var ads = document.querySelectorAll('.adsbygoogle');
-            for (var i = 0; i < ads.length; i++) {
-                (adsbygoogle = window.adsbygoogle || []).push({});
+        // Wait for ads to load
+        window.addEventListener('load', function() {
+            console.log('🚀 Page loaded, checking ads...');
+            
+            // Check each ad container
+            setTimeout(function() {
+                // Top ad
+                var topAd = document.querySelector('#ad-top ins');
+                var topDebug = document.getElementById('debug-top');
+                if (topAd && topAd.innerHTML.trim() === '') {
+                    topDebug.innerHTML = '❌ Ad not loaded - ' + getAdSenseError();
+                } else {
+                    topDebug.innerHTML = '✅ Ad loaded successfully!';
+                }
+                
+                // Middle ad
+                var middleAd = document.querySelector('#ad-middle ins');
+                var middleDebug = document.getElementById('debug-middle');
+                if (middleAd && middleAd.innerHTML.trim() === '') {
+                    middleDebug.innerHTML = '❌ Ad not loaded - ' + getAdSenseError();
+                } else {
+                    middleDebug.innerHTML = '✅ Ad loaded successfully!';
+                }
+                
+                // Bottom ad
+                var bottomAd = document.querySelector('#ad-bottom ins');
+                var bottomDebug = document.getElementById('debug-bottom');
+                if (bottomAd && bottomAd.innerHTML.trim() === '') {
+                    bottomDebug.innerHTML = '❌ Ad not loaded - ' + getAdSenseError();
+                } else {
+                    bottomDebug.innerHTML = '✅ Ad loaded successfully!';
+                }
+            }, 3000);
+        });
+        
+        function getAdSenseError() {
+            // Check common issues
+            if (window.adsbygoogle === undefined) {
+                return 'AdSense script not loaded';
             }
-        })();
-
-        // Mobile optimization
-        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)) {
-            document.body.classList.add('mobile-device');
+            if (document.querySelector('ins.adsbygoogle[data-ad-slot]') === null) {
+                return 'No ad elements found';
+            }
+            return 'Check AdSense console (F12)';
         }
     </script>
 </body>
