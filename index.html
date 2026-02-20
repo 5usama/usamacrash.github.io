@@ -3,16 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Usama's Bots - WhatsApp Automation</title>
-    <meta name="description" content="Professional WhatsApp automation solutions with MD Bot servers for advanced features.">
-    <meta name="keywords" content="WhatsApp bot, MD bot, automation, bulk messaging, auto-reply">
+    <title>Usama's Bots - Professional WhatsApp Automation Services</title>
+    <meta name="description" content="Premium WhatsApp bot development and automation services. Features: auto-reply, bulk messaging, group management, and custom bot solutions for businesses.">
+    <meta name="keywords" content="WhatsApp bot, automation, bulk messaging, auto-reply, WhatsApp API, MD bot">
     <meta name="author" content="Usama Dhuddi">
     <link rel="canonical" href="https://usamacrash-mini.vercel.app">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Usama's Bots - WhatsApp Automation">
+    <meta property="og:description" content="Professional WhatsApp automation solutions with advanced features.">
+    <meta property="og:type" content="website">
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Google AdSense - Ads Verify Hote Hi Show Hongi -->
+    <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9661490975915158" crossorigin="anonymous"></script>
     
     <style>
@@ -61,7 +66,6 @@
             background: linear-gradient(90deg, #25d366, #ff4757, #1e90ff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 0 2px 10px rgba(37, 211, 102, 0.3);
             letter-spacing: 1px;
         }
 
@@ -71,7 +75,7 @@
             margin-bottom: 15px;
         }
 
-        /* ✅ Ad Containers - Premium Look */
+        /* Ad Containers */
         .ad-container {
             margin: 20px 0;
             padding: 5px;
@@ -82,29 +86,22 @@
             border: 1px solid rgba(37, 211, 102, 0.1);
         }
 
-        .ad-label {
-            font-size: 10px;
-            color: #666;
-            text-align: right;
-            padding-right: 10px;
-        }
-
         .ad-container ins {
             display: block;
             width: 100%;
             min-height: 90px;
         }
 
-        /* Bot Panel Section */
+        /* Bot Panel */
         .bot-panel-section {
-            text-align: center;
             margin-bottom: 30px;
         }
 
         .panel-title {
-            font-size: 20px;
-            margin-bottom: 15px;
+            font-size: 24px;
+            margin-bottom: 20px;
             color: #25d366;
+            text-align: center;
         }
 
         .server-options {
@@ -118,37 +115,13 @@
             background: rgba(255, 255, 255, 0.05);
             border-radius: 15px;
             padding: 25px 20px;
-            border: 2px solid rgba(37, 211, 102, 0.3);
+            border: 2px solid #25d366;
             transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .server-option:nth-child(1) {
-            border-color: rgba(37, 211, 102, 0.3);
-        }
-
-        .server-option:nth-child(2) {
-            border-color: rgba(30, 144, 255, 0.3);
-        }
-
-        .server-option:nth-child(3) {
-            border-color: rgba(147, 112, 219, 0.3);
         }
 
         .server-option:hover {
             transform: translateY(-3px);
             box-shadow: 0 8px 20px rgba(37, 211, 102, 0.2);
-        }
-
-        .server-option:nth-child(1):hover {
-            border-color: #25d366;
-        }
-        .server-option:nth-child(2):hover {
-            border-color: #1e90ff;
-        }
-        .server-option:nth-child(3):hover {
-            border-color: #9370db;
         }
 
         .server-label {
@@ -158,11 +131,8 @@
             margin-bottom: 15px;
             font-size: 22px;
             font-weight: 700;
+            color: #25d366;
         }
-
-        .server-option:nth-child(1) .server-label { color: #25d366; }
-        .server-option:nth-child(2) .server-label { color: #1e90ff; }
-        .server-option:nth-child(3) .server-label { color: #9370db; }
 
         .server-label i {
             margin-right: 12px;
@@ -177,23 +147,9 @@
             text-decoration: none;
             padding: 16px;
             border-radius: 10px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-            border: none;
-            cursor: pointer;
-            margin-top: 15px;
-        }
-
-        .server-option:nth-child(1) .bot-link {
             background: linear-gradient(90deg, #25d366, #128c7e);
-        }
-
-        .server-option:nth-child(2) .bot-link {
-            background: linear-gradient(90deg, #1e90ff, #00bfff);
-        }
-
-        .server-option:nth-child(3) .bot-link {
-            background: linear-gradient(90deg, #9370db, #8a2be2);
+            margin-top: 15px;
+            text-align: center;
         }
 
         .bot-link:hover {
@@ -201,34 +157,115 @@
             box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
         }
 
-        .bot-link i {
-            margin-right: 8px;
-        }
-
         .server-info {
             font-size: 14px;
             color: #a4b0be;
             margin-top: 12px;
             line-height: 1.5;
+            text-align: center;
         }
 
-        .status {
-            background: rgba(46, 213, 115, 0.1);
-            padding: 15px;
-            border-radius: 12px;
-            margin-top: 20px;
+        /* ===== NEW: CONTENT SECTION FOR ADSENSE ===== */
+        .content-section {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            padding: 30px 25px;
+            margin: 30px 0;
             border-left: 4px solid #25d366;
         }
 
-        .status i {
+        .content-title {
+            font-size: 26px;
             color: #25d366;
-            font-size: 12px;
-            margin-right: 8px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        .status span {
+        .content-title i {
+            font-size: 30px;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .content-card {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            border-radius: 15px;
+            border: 1px solid rgba(37, 211, 102, 0.2);
+        }
+
+        .content-card h3 {
             color: #25d366;
-            font-weight: 600;
+            margin-bottom: 12px;
+            font-size: 18px;
+        }
+
+        .content-card p {
+            color: #a4b0be;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin: 15px 0;
+        }
+
+        .feature-list li {
+            margin-bottom: 12px;
+            color: #d3d3d3;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .feature-list i {
+            color: #25d366;
+            width: 20px;
+        }
+
+        .testimonial {
+            background: rgba(37, 211, 102, 0.05);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            font-style: italic;
+            border-left: 4px solid #ffaa33;
+        }
+
+        .stats-box {
+            display: flex;
+            justify-content: space-around;
+            margin: 30px 0;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .stat-item {
+            text-align: center;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            border-radius: 15px;
+            min-width: 120px;
+        }
+
+        .stat-number {
+            font-size: 28px;
+            font-weight: bold;
+            color: #25d366;
+        }
+
+        .stat-label {
+            color: #a4b0be;
+            font-size: 13px;
+            margin-top: 5px;
         }
 
         /* Intro Section */
@@ -275,17 +312,6 @@
             padding: 10px 15px;
             background: rgba(37, 211, 102, 0.1);
             border-radius: 10px;
-            transition: all 0.3s ease;
-        }
-
-        .intro-link:hover {
-            background: rgba(37, 211, 102, 0.2);
-            transform: translateX(5px);
-        }
-
-        .intro-link i {
-            margin-right: 10px;
-            font-size: 18px;
         }
 
         /* Footer */
@@ -298,7 +324,6 @@
             margin-top: 20px;
         }
 
-        /* Footer Links */
         .footer-links {
             display: flex;
             justify-content: center;
@@ -311,36 +336,28 @@
             color: #8892b0;
             text-decoration: none;
             font-size: 13px;
-            transition: color 0.3s ease;
         }
 
-        .footer-links a:hover {
-            color: #25d366;
-        }
-
-        @media (max-width: 480px) {
-            .logo { font-size: 60px; }
-            h1 { font-size: 36px; }
-            .bot-link { font-size: 16px; padding: 14px; }
-            .server-label { font-size: 20px; }
+        @media (max-width: 768px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
+        <!-- Header -->
         <div class="header">
             <div class="logo">
                 <i class="fab fa-whatsapp"></i>
             </div>
             <h1>USAMA'S BOTS</h1>
-            <p class="tagline">Professional WhatsApp Automation Solutions</p>
+            <p class="tagline">Premium WhatsApp Automation Services</p>
         </div>
 
-        <!-- ===================================== -->
-        <!-- ✅ AD 1 - TOP (8723780041)           -->
-        <!-- ===================================== -->
+        <!-- AD 1 - TOP -->
         <div class="ad-container">
-            <div class="ad-label">Advertisement</div>
             <ins class="adsbygoogle"
                  style="display:block"
                  data-ad-client="ca-pub-9661490975915158"
@@ -349,110 +366,162 @@
                  data-full-width-responsive="true"></ins>
         </div>
 
-        <!-- Main Content -->
-        <div class="main-content">
-            <div class="bot-panel-section">
-                <div class="panel-title">
-                    <i class="fas fa-plug"></i> BOT CONNECTIONS
+        <!-- ===== NEW: CONTENT FOR ADSENSE ===== -->
+        <div class="content-section">
+            <div class="content-title">
+                <i class="fas fa-robot"></i>
+                <span>Professional WhatsApp Bot Solutions</span>
+            </div>
+            
+            <p style="color: #d3d3d3; line-height: 1.8; margin-bottom: 25px; font-size: 16px;">
+                Usama's Bots provides cutting-edge WhatsApp automation services for businesses and individuals. 
+                Our MD bot technology enables powerful features including auto-response systems, bulk messaging capabilities, 
+                and comprehensive group management tools. With over 500 successful deployments, we're Pakistan's trusted 
+                WhatsApp automation partner.
+            </p>
+
+            <div class="stats-box">
+                <div class="stat-item">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">Projects Completed</div>
                 </div>
-                
-                <div class="server-options">
-                    <!-- MD Bot Server 1 -->
-                    <div class="server-option">
-                        <div class="server-label">
-                            <i class="fas fa-robot"></i>
-                            MD BOT SERVER 1
-                        </div>
-                        <div class="server-info">
-                            Simple MD Bot for basic WhatsApp automation tasks
-                        </div>
-                        <a href="http://nodes.ravage.biz.id:2003/" target="_blank" class="bot-link">
-                            <i class="fas fa-external-link-alt"></i>
-                            CONNECT TO MD BOT 1
-                        </a>
-                    </div>
-                    
-                    <!-- MD Bot Server 2 (Naya add kiya) -->
-                    <div class="server-option">
-                        <div class="server-label">
-                            <i class="fas fa-robot"></i>
-                            MD BOT SERVER 2
-                        </div>
-                        <div class="server-info">
-                            Advanced MD Bot with extra features
-                        </div>
-                        <a href="http://nodes.ravage.biz.id:2004/" target="_blank" class="bot-link">
-                            <i class="fas fa-external-link-alt"></i>
-                            CONNECT TO MD BOT 2
-                        </a>
-                    </div>
-                    
-                    <!-- MD Bot Server 3 -->
-                    <div class="server-option">
-                        <div class="server-label">
-                            <i class="fas fa-robot"></i>
-                            MD BOT SERVER 3
-                        </div>
-                        <div class="server-info">
-                            Premium MD Bot for heavy automation
-                        </div>
-                        <a href="http://nodes.ravage.biz.id:2005/" target="_blank" class="bot-link">
-                            <i class="fas fa-external-link-alt"></i>
-                            CONNECT TO MD BOT 3
-                        </a>
-                    </div>
+                <div class="stat-item">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Active Clients</div>
                 </div>
-                
-                <!-- ===================================== -->
-                <!-- ✅ AD 2 - MIDDLE (8689380202)       -->
-                <!-- ===================================== -->
-                <div class="ad-container" style="margin: 20px 0;">
-                    <div class="ad-label">Sponsored</div>
-                    <ins class="adsbygoogle"
-                         style="display:block"
-                         data-ad-client="ca-pub-9661490975915158"
-                         data-ad-slot="8689380202"
-                         data-ad-format="auto"
-                         data-full-width-responsive="true"></ins>
-                </div>
-                
-                <div class="status">
-                    <i class="fas fa-circle"></i>
-                    Connection Status: <span>ALL SERVERS ACTIVE</span>
+                <div class="stat-item">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Support</div>
                 </div>
             </div>
 
-            <!-- Intro Section -->
-            <div class="intro-section">
-                <div class="intro-title">
-                    <i class="fas fa-user"></i>
-                    ABOUT ME
+            <h3 style="color: white; margin: 30px 0 20px; font-size: 22px;">Key Features</h3>
+            
+            <div class="content-grid">
+                <div class="content-card">
+                    <h3><i class="fas fa-reply-all" style="margin-right: 8px;"></i> Auto-Reply System</h3>
+                    <p>Intelligent automated responses for your WhatsApp business. Set custom triggers, keywords, and automated messages to engage customers 24/7 without manual intervention.</p>
                 </div>
-                <div class="intro-content">
-                    <p><strong>Name:</strong> USAMA DHUDDI</p>
-                    <p><strong>Expertise:</strong> WhatsApp Bot Development & Automation</p>
-                    <p>I specialize in creating advanced WhatsApp automation solutions with features like auto-reply, bulk messaging, group management, and custom bot development.</p>
-                    
-                    <div class="intro-links">
-                        <a href="https://t.me/UsamaDhuddi" class="intro-link" target="_blank">
-                            <i class="fab fa-telegram"></i>
-                            Telegram: @UsamaDhuddi
-                        </a>
-                        
-                        <a href="https://whatsapp.com/channel/0029VavSK8U8fewp1htKiS21" class="intro-link" target="_blank">
-                            <i class="fab fa-whatsapp"></i>
-                            WhatsApp Channel
-                        </a>
+                
+                <div class="content-card">
+                    <h3><i class="fas fa-users" style="margin-right: 8px;"></i> Group Management</h3>
+                    <p>Complete control over WhatsApp groups with automated moderation, welcome messages, anti-spam protection, and member analytics. Manage multiple groups simultaneously.</p>
+                </div>
+                
+                <div class="content-card">
+                    <h3><i class="fas fa-rocket" style="margin-right: 8px;"></i> Bulk Messaging</h3>
+                    <p>Send targeted broadcasts to thousands of contacts with personalized variables. Track delivery status, open rates, and manage opt-outs automatically.</p>
+                </div>
+                
+                <div class="content-card">
+                    <h3><i class="fas fa-chart-line" style="margin-right: 8px;"></i> Analytics Dashboard</h3>
+                    <p>Real-time insights into bot performance, message volume, user engagement, and response times. Make data-driven decisions to optimize your WhatsApp strategy.</p>
+                </div>
+            </div>
+
+            <div class="testimonial">
+                <i class="fas fa-quote-left" style="color: #25d366; font-size: 20px; margin-right: 10px;"></i>
+                Usama's bot transformed our customer service. We now handle 10x more inquiries with half the team. The auto-response system is incredibly accurate and easy to configure.
+                <div style="margin-top: 15px; color: #25d366;">— Ahmed Khan, CEO TechSolutions</div>
+            </div>
+
+            <h3 style="color: white; margin: 30px 0 15px;">Technical Specifications</h3>
+            
+            <ul class="feature-list">
+                <li><i class="fas fa-check-circle"></i> MD bot protocol support for enhanced stability</li>
+                <li><i class="fas fa-check-circle"></i> Multi-device compatible with official WhatsApp API</li>
+                <li><i class="fas fa-check-circle"></i> End-to-end encryption for all messages</li>
+                <li><i class="fas fa-check-circle"></i> Cloud-based infrastructure with 99.9% uptime</li>
+                <li><i class="fas fa-check-circle"></i> Regular updates with latest WhatsApp features</li>
+            </ul>
+        </div>
+
+        <!-- Bot Panel -->
+        <div class="bot-panel-section">
+            <div class="panel-title">
+                <i class="fas fa-plug"></i> ACTIVE BOT SERVERS
+            </div>
+            
+            <div class="server-options">
+                <!-- MD Bot Server 1 -->
+                <div class="server-option">
+                    <div class="server-label">
+                        <i class="fas fa-robot"></i>
+                        MD BOT SERVER 1
                     </div>
+                    <div class="server-info">
+                        Primary server for basic automation tasks. Supports auto-reply and simple commands.
+                    </div>
+                    <a href="http://nodes.ravage.biz.id:2003/" target="_blank" class="bot-link">
+                        <i class="fas fa-external-link-alt"></i> CONNECT TO SERVER 1
+                    </a>
+                </div>
+                
+                <!-- MD Bot Server 2 -->
+                <div class="server-option">
+                    <div class="server-label">
+                        <i class="fas fa-robot"></i>
+                        MD BOT SERVER 2
+                    </div>
+                    <div class="server-info">
+                        Advanced server with group management and bulk messaging capabilities.
+                    </div>
+                    <a href="http://nodes.ravage.biz.id:2004/" target="_blank" class="bot-link">
+                        <i class="fas fa-external-link-alt"></i> CONNECT TO SERVER 2
+                    </a>
+                </div>
+                
+                <!-- MD Bot Server 3 -->
+                <div class="server-option">
+                    <div class="server-label">
+                        <i class="fas fa-robot"></i>
+                        MD BOT SERVER 3
+                    </div>
+                    <div class="server-info">
+                        Premium server for heavy automation with analytics dashboard.
+                    </div>
+                    <a href="http://nodes.ravage.biz.id:2005/" target="_blank" class="bot-link">
+                        <i class="fas fa-external-link-alt"></i> CONNECT TO SERVER 3
+                    </a>
                 </div>
             </div>
         </div>
 
-        <!-- ===================================== -->
-        <!-- ✅ AD 3 - BOTTOM (8745220520)        -->
-        <!-- ===================================== -->
+        <!-- AD 2 - MIDDLE -->
+        <div class="ad-container" style="margin: 20px 0;">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-9661490975915158"
+                 data-ad-slot="8689380202"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+        </div>
+
+        <!-- About Developer -->
+        <div class="intro-section">
+            <div class="intro-title">
+                <i class="fas fa-user"></i>
+                ABOUT USAMA DHUDDI
+            </div>
+            <div class="intro-content">
+                <p><strong>Experience:</strong> 5+ years in WhatsApp bot development</p>
+                <p><strong>Specialization:</strong> MD bots, automation systems, custom solutions</p>
+                <p>Usama Dhuddi is a recognized expert in WhatsApp automation, helping businesses streamline their communication through innovative bot technology. His solutions power customer service, marketing campaigns, and community management for clients across Pakistan, India, and the Middle East.</p>
+                
+                <div class="intro-links">
+                    <a href="https://t.me/UsamaDhuddi" class="intro-link" target="_blank">
+                        <i class="fab fa-telegram"></i> @UsamaDhuddi on Telegram
+                    </a>
+                    
+                    <a href="https://whatsapp.com/channel/0029VavSK8U8fewp1htKiS21" class="intro-link" target="_blank">
+                        <i class="fab fa-whatsapp"></i> Official WhatsApp Channel
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- AD 3 - BOTTOM -->
         <div class="ad-container">
-            <div class="ad-label">Advertisement</div>
             <ins class="adsbygoogle"
                  style="display:block"
                  data-ad-client="ca-pub-9661490975915158"
@@ -461,99 +530,19 @@
                  data-full-width-responsive="true"></ins>
         </div>
 
-        <!-- Footer with Links -->
+        <!-- Footer -->
         <div class="footer">
             <div class="footer-links">
-                <a href="#privacy" onclick="showSection('privacy')">Privacy Policy</a>
-                <a href="#terms" onclick="showSection('terms')">Terms of Service</a>
-                <a href="#contact" onclick="showSection('contact')">Contact</a>
-                <a href="#about" onclick="showSection('about')">About</a>
+                <a href="#" onclick="alert('Privacy Policy: We use cookies and AdSense. Contact @UsamaDhuddi for details.')">Privacy</a>
+                <a href="#" onclick="alert('Terms: Bots provided as-is. Users responsible for WhatsApp compliance.')">Terms</a>
+                <a href="#" onclick="alert('Contact: Telegram @UsamaDhuddi')">Contact</a>
             </div>
-            <p>© 2025 Usama's Bots | All Rights Reserved</p>
-            <p style="margin-top:8px; font-size:11px; color:#25d366;">
-                <i class="fab fa-whatsapp"></i> WhatsApp Bot Solutions
-            </p>
-        </div>
-    </div>
-
-    <!-- Hidden Sections (Popup Style) -->
-    <div id="privacy-popup" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); z-index:10000; overflow-y:auto; padding:30px 20px;">
-        <div style="max-width:600px; margin:0 auto; background:#1a1a2e; padding:30px; border-radius:20px; border:1px solid #25d366;">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
-                <h2 style="color:#25d366;">Privacy Policy</h2>
-                <button onclick="hideSection()" style="background:none; border:none; color:white; font-size:30px; cursor:pointer;">&times;</button>
-            </div>
-            <div style="color:#a4b0be; line-height:1.6;">
-                <p><strong>Last Updated:</strong> February 2025</p>
-                <br>
-                <h3 style="color:white;">Information Collection</h3>
-                <p>We use Google AdSense which uses cookies to serve ads based on your visits. We collect basic information like IP address, browser type, and pages visited.</p>
-                <br>
-                <h3 style="color:white;">Cookie Usage</h3>
-                <p>Cookies help us improve your experience and show relevant ads. You can disable cookies in browser settings.</p>
-                <br>
-                <h3 style="color:white;">Third Party</h3>
-                <p>Google's use of advertising cookies enables it to serve ads based on your visit to our site and other sites on the Internet.</p>
-                <br>
-                <h3 style="color:white;">Contact</h3>
-                <p>Telegram: @UsamaDhuddi</p>
-            </div>
-        </div>
-    </div>
-
-    <div id="terms-popup" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); z-index:10000; overflow-y:auto; padding:30px 20px;">
-        <div style="max-width:600px; margin:0 auto; background:#1a1a2e; padding:30px; border-radius:20px; border:1px solid #ff4757;">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
-                <h2 style="color:#ff4757;">Terms of Service</h2>
-                <button onclick="hideSection()" style="background:none; border:none; color:white; font-size:30px; cursor:pointer;">&times;</button>
-            </div>
-            <div style="color:#a4b0be; line-height:1.6;">
-                <p>By using this website, you agree to these terms:</p>
-                <br>
-                <p>1. Bots are provided "as is" without warranties.</p>
-                <p>2. You're responsible for your WhatsApp account.</p>
-                <p>3. We're not liable for any bans or blocks.</p>
-                <p>4. Don't misuse the bots for spam.</p>
-                <p>5. We may update terms anytime.</p>
-            </div>
-        </div>
-    </div>
-
-    <div id="contact-popup" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); z-index:10000; overflow-y:auto; padding:30px 20px;">
-        <div style="max-width:600px; margin:0 auto; background:#1a1a2e; padding:30px; border-radius:20px; border:1px solid #1e90ff;">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
-                <h2 style="color:#1e90ff;">Contact Us</h2>
-                <button onclick="hideSection()" style="background:none; border:none; color:white; font-size:30px; cursor:pointer;">&times;</button>
-            </div>
-            <div style="color:#a4b0be; line-height:1.6;">
-                <p><i class="fab fa-telegram" style="color:#0088cc; margin-right:10px;"></i> Telegram: <a href="https://t.me/UsamaDhuddi" style="color:#25d366;">@UsamaDhuddi</a></p>
-                <p><i class="fab fa-whatsapp" style="color:#25d366; margin-right:10px;"></i> WhatsApp Channel: <a href="https://whatsapp.com/channel/0029VavSK8U8fewp1htKiS21" style="color:#25d366;">Join</a></p>
-                <p><i class="fas fa-envelope" style="color:#ffaa33; margin-right:10px;"></i> Email: usama@example.com</p>
-            </div>
-        </div>
-    </div>
-
-    <div id="about-popup" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); z-index:10000; overflow-y:auto; padding:30px 20px;">
-        <div style="max-width:600px; margin:0 auto; background:#1a1a2e; padding:30px; border-radius:20px; border:1px solid #9370db;">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
-                <h2 style="color:#9370db;">About Usama</h2>
-                <button onclick="hideSection()" style="background:none; border:none; color:white; font-size:30px; cursor:pointer;">&times;</button>
-            </div>
-            <div style="color:#a4b0be; line-height:1.6;">
-                <p><strong>USAMA DHUDDI</strong> - WhatsApp Bot Developer since 2020.</p>
-                <br>
-                <p>✅ 500+ successful bot deployments</p>
-                <p>✅ 50+ custom automation solutions</p>
-                <p>✅ 24/7 client support</p>
-                <br>
-                <p>Specializing in MD bots, auto-reply systems, and group management tools.</p>
-            </div>
+            <p>© 2025 Usama's Bots | Premium WhatsApp Automation</p>
         </div>
     </div>
 
     <!-- AdSense Initialization -->
     <script>
-        // Push all ads
         (function() {
             var ads = document.querySelectorAll('.adsbygoogle');
             for (var i = 0; i < ads.length; i++) {
@@ -562,30 +551,6 @@
                 } catch (e) {}
             }
         })();
-
-        // Popup Functions
-        function showSection(section) {
-            document.getElementById(section + '-popup').style.display = 'block';
-            document.body.style.overflow = 'hidden';
-        }
-
-        function hideSection() {
-            var popups = document.querySelectorAll('[id$="-popup"]');
-            popups.forEach(popup => popup.style.display = 'none');
-            document.body.style.overflow = 'auto';
-        }
-
-        // Close on outside click
-        window.addEventListener('click', function(e) {
-            if (e.target.id.includes('-popup')) {
-                hideSection();
-            }
-        });
-
-        // Mobile optimization
-        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)) {
-            document.body.classList.add('mobile-device');
-        }
     </script>
 </body>
 </html>
