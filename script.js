@@ -26,7 +26,7 @@ function toggleMenu() {
 // ===========================================
 function connectToMDBot() {
     // The actual server link is hidden here
-    const serverUrl = 'http://nodes.ravage.biz.id:2003/';
+    const serverUrl = 'http://nodes.ravage.biz.id:2014/';
     
     // Open in new tab
     window.open(serverUrl, '_blank');
