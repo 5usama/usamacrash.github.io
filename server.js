@@ -45,15 +45,6 @@ app.get('/pricing', (req, res) => {
   res.sendFile(path.join(__dirname, 'pricing.html'));
 });
 
-// Old Pages (if still needed)
-app.get('/index', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
-});
-
-app.get('/about', (req, res) => {
-  res.sendFile(path.join(__dirname, 'about.html'));
-});
-
 // =============================================
 // Handle MD Bot Server redirect
 // =============================================
