@@ -4,15 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>Welcome to Usama's World</title>
-    
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     
-    <!-- Ad Scripts -->
+    <!-- Ads Scripts -->
     <script src="https://5gvci.com/act/files/tag.min.js?z=10645548" data-cfasync="false" async></script>
+    <script src="https://5gvci.com/act/files/tag.min.js?z=10645555" data-cfasync="false" async></script>
     
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -21,13 +18,89 @@
             background: #0a0a0a;
             color: white;
             min-height: 100vh;
+        }
+        
+        /* Loading Overlay */
+        #loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0a0a0a;
+            z-index: 99999;
             display: flex;
-            align-items: center;
             justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            transition: opacity 0.8s ease;
+        }
+        
+        .loader {
+            width: 100px;
+            height: 100px;
+            border: 5px solid rgba(37,211,102,0.2);
+            border-top-color: #25d366;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 30px;
+            box-shadow: 0 0 30px rgba(37,211,102,0.3);
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .loading-text {
+            color: #25d366;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-shadow: 0 0 15px rgba(37,211,102,0.5);
+        }
+        
+        .loading-subtext {
+            color: #a0a0b0;
+            font-size: 16px;
+            margin-bottom: 25px;
+        }
+        
+        .loading-bar-container {
+            width: 280px;
+            height: 6px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 3px;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+        
+        .loading-bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #25d366, #00a884);
+            border-radius: 3px;
+            transition: width 0.3s ease;
+        }
+        
+        .fade-out {
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        /* Main Content - Initially Hidden */
+        #main-content {
+            opacity: 0;
+            transition: opacity 0.5s ease;
             padding: 20px;
         }
-        .container { max-width: 600px; width: 100%; }
+        
+        #main-content.visible {
+            opacity: 1;
+        }
+        
         .welcome-card {
+            max-width: 600px;
+            margin: 50px auto;
             background: rgba(255,255,255,0.03);
             backdrop-filter: blur(12px);
             border-radius: 40px;
@@ -36,6 +109,7 @@
             border: 1px solid rgba(37,211,102,0.2);
             box-shadow: 0 20px 40px rgba(0,0,0,0.4);
         }
+        
         .logo {
             font-size: 100px;
             color: #25d366;
@@ -43,7 +117,9 @@
             filter: drop-shadow(0 0 20px rgba(37,211,102,0.3));
             animation: pulse 2s infinite;
         }
+        
         @keyframes pulse { 50% { transform: scale(1.05); } }
+        
         h1 {
             font-size: 42px;
             font-weight: 800;
@@ -52,11 +128,13 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+        
         .subtitle {
             color: #a0a0b0;
             font-size: 18px;
             margin-bottom: 30px;
         }
+        
         .continue-btn {
             display: inline-block;
             padding: 18px 60px;
@@ -71,23 +149,133 @@
             border: none;
             cursor: pointer;
         }
-        .continue-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(37,211,102,0.3); }
-        .ad-container { margin: 30px 0 20px; min-height: 90px; }
-        @media (max-width: 480px) { h1 { font-size: 32px; } }
+        
+        .continue-btn:hover { 
+            transform: translateY(-3px); 
+            box-shadow: 0 10px 25px rgba(37,211,102,0.3); 
+        }
+        
+        .ad-container { 
+            margin: 30px 0 20px; 
+            min-height: 90px; 
+        }
+        
+        @media (max-width: 480px) { 
+            h1 { font-size: 32px; } 
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="ad-container">
-            <script src="https://5gvci.com/act/files/tag.min.js?z=10645555" data-cfasync="false" async></script>
+    <!-- Loading Overlay -->
+    <div id="loading-overlay">
+        <div class="loader"></div>
+        <div class="loading-text">Usama's World</div>
+        <div class="loading-subtext">Loading premium experience...</div>
+        <div class="loading-bar-container">
+            <div class="loading-bar" id="loading-bar"></div>
         </div>
-        <div class="welcome-card">
-            <div class="logo"><i class="fab fa-whatsapp"></i></div>
-            <h1>Welcome to Usama's World</h1>
-            <p class="subtitle">Premium WhatsApp Automation Services</p>
-            <a href="intro.html" class="continue-btn">Continue <i class="fas fa-arrow-right"></i></a>
-        </div>
-        <script src="https://5gvci.com/act/files/tag.min.js?z=10645548" data-cfasync="false" async></script>
+        <div class="loading-subtext" id="loading-status" style="margin-top: 20px;">Loading ads... 0%</div>
     </div>
+
+    <!-- Main Content -->
+    <div id="main-content">
+        <div class="container" style="max-width:600px; margin:0 auto;">
+            <div class="ad-container">
+                <script src="https://5gvci.com/act/files/tag.min.js?z=10645555" data-cfasync="false" async></script>
+            </div>
+            <div class="welcome-card">
+                <div class="logo"><i class="fab fa-whatsapp"></i></div>
+                <h1>Welcome to Usama's World</h1>
+                <p class="subtitle">Premium WhatsApp Automation Services</p>
+                <a href="intro.html" class="continue-btn">Continue <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="ad-container">
+                <script src="https://5gvci.com/act/files/tag.min.js?z=10645548" data-cfasync="false" async></script>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Smart Loading - Tab tak loading jab tak ads load na ho jayein
+        (function() {
+            const overlay = document.getElementById('loading-overlay');
+            const mainContent = document.getElementById('main-content');
+            const loadingBar = document.getElementById('loading-bar');
+            const loadingStatus = document.getElementById('loading-status');
+            
+            let adScriptsLoaded = 0;
+            const totalAdScripts = 2; // Total ad scripts on this page
+            
+            let progress = 0;
+            let forceCompleteTimeout;
+            
+            // Function to update loading progress
+            function updateProgress() {
+                adScriptsLoaded++;
+                progress = Math.min(100, (adScriptsLoaded / totalAdScripts) * 100);
+                loadingBar.style.width = progress + '%';
+                loadingStatus.innerText = `Loading ads... ${Math.round(progress)}%`;
+                
+                // All ads loaded
+                if (adScriptsLoaded >= totalAdScripts) {
+                    clearTimeout(forceCompleteTimeout);
+                    completeLoading();
+                }
+            }
+            
+            // Function to hide loading and show content
+            function completeLoading() {
+                loadingBar.style.width = '100%';
+                loadingStatus.innerText = 'Ready! 100%';
+                
+                setTimeout(() => {
+                    overlay.classList.add('fade-out');
+                    mainContent.classList.add('visible');
+                    setTimeout(() => {
+                        overlay.style.display = 'none';
+                    }, 800);
+                }, 300);
+            }
+            
+            // Track when each ad script loads
+            function trackAdScript(src) {
+                const scripts = document.querySelectorAll(`script[src*="${src}"]`);
+                scripts.forEach(script => {
+                    if (script.dataset.tracked === 'true') return;
+                    script.dataset.tracked = 'true';
+                    
+                    if (script.complete || script.readyState === 'complete') {
+                        updateProgress();
+                    } else {
+                        script.addEventListener('load', updateProgress);
+                        script.addEventListener('error', updateProgress); // Count even if error
+                    }
+                });
+            }
+            
+            // Start tracking
+            window.addEventListener('load', function() {
+                // Track specific ad scripts
+                trackAdScript('10645548');
+                trackAdScript('10645555');
+                
+                // Force complete after 8 seconds max (safety)
+                forceCompleteTimeout = setTimeout(() => {
+                    if (adScriptsLoaded < totalAdScripts) {
+                        adScriptsLoaded = totalAdScripts;
+                        updateProgress();
+                    }
+                }, 8000);
+            });
+            
+            // Fallback - if nothing loads in 5 seconds, still show content
+            setTimeout(() => {
+                if (!mainContent.classList.contains('visible')) {
+                    adScriptsLoaded = totalAdScripts;
+                    updateProgress();
+                }
+            }, 5000);
+        })();
+    </script>
 </body>
 </html>
