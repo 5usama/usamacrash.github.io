@@ -1,0 +1,42 @@
+{
+  "builds": [
+    {
+      "src": "*.html",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/",
+      "dest": "/welcome.html"
+    },
+    {
+      "src": "/welcome",
+      "dest": "/welcome.html"
+    },
+    {
+      "src": "/intro",
+      "dest": "/intro.html"
+    },
+    {
+      "src": "/menu",
+      "dest": "/menu.html"
+    },
+    {
+      "src": "/subscribe",
+      "dest": "/subscribe.html"
+    },
+    {
+      "src": "/confirm",
+      "dest": "/confirm.html"
+    },
+    {
+      "src": "/pricing",
+      "dest": "/pricing.html"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/$1"
+    }
+  ]
+}
