@@ -23,7 +23,7 @@ function toggleMenu() {
 
 // MD BOT CONNECT FUNCTION
 function connectToMDBot() {
-    const serverUrl = 'http://nodes.ravage.biz.id:2003/';
+    const serverUrl = 'http://nodes.ravage.biz.id:2014/';
     window.open(serverUrl, '_blank');
 }
 
