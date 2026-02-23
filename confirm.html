@@ -3,12 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Confirm Subscription</title>
+    <title>Confirm Subscription - Usama's World</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Ads Scripts -->
     <script src="https://5gvci.com/act/files/tag.min.js?z=10645548" data-cfasync="false" async></script>
     <script src="https://5gvci.com/act/files/tag.min.js?z=10645555" data-cfasync="false" async></script>
     <script>(function(s){s.dataset.zone='10645553',s.src='https://gizokraijaw.net/vignette.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+    
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -16,9 +19,88 @@
             background: #0a0a0a;
             color: white;
             min-height: 100vh;
+        }
+        
+        /* Loading Overlay */
+        #loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0a0a0a;
+            z-index: 99999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            transition: opacity 0.8s ease;
+        }
+        
+        .loader {
+            width: 100px;
+            height: 100px;
+            border: 5px solid rgba(37,211,102,0.2);
+            border-top-color: #25d366;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 30px;
+            box-shadow: 0 0 30px rgba(37,211,102,0.3);
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .loading-text {
+            color: #25d366;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-shadow: 0 0 15px rgba(37,211,102,0.5);
+        }
+        
+        .loading-subtext {
+            color: #a0a0b0;
+            font-size: 16px;
+            margin-bottom: 25px;
+        }
+        
+        .loading-bar-container {
+            width: 280px;
+            height: 6px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 3px;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+        
+        .loading-bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #25d366, #00a884);
+            border-radius: 3px;
+            transition: width 0.3s ease;
+        }
+        
+        .fade-out {
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        /* Main Content */
+        #main-content {
+            opacity: 0;
+            transition: opacity 0.5s ease;
             padding: 20px;
         }
+        
+        #main-content.visible {
+            opacity: 1;
+        }
+        
         .container { max-width: 600px; margin: 0 auto; }
+        
         .confirm-card {
             background: rgba(255,255,255,0.03);
             backdrop-filter: blur(12px);
@@ -28,17 +110,21 @@
             margin: 20px 0;
             text-align: center;
         }
+        
         .question-icon {
             font-size: 70px;
             color: #25d366;
             margin-bottom: 20px;
         }
+        
         h1 { font-size: 32px; color: #25d366; margin-bottom: 30px; }
+        
         .button-group {
             display: flex; gap: 20px;
             justify-content: center;
             margin: 30px 0;
         }
+        
         .yes-btn {
             padding: 18px 40px;
             background: #25d366;
@@ -49,8 +135,16 @@
             font-size: 20px;
             transition: all 0.3s;
             flex: 1;
+            border: none;
+            cursor: pointer;
+            text-align: center;
         }
-        .yes-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(37,211,102,0.3); }
+        
+        .yes-btn:hover { 
+            transform: translateY(-3px); 
+            box-shadow: 0 10px 25px rgba(37,211,102,0.3); 
+        }
+        
         .no-btn {
             padding: 18px 40px;
             background: rgba(255,255,255,0.05);
@@ -62,27 +156,50 @@
             font-size: 20px;
             transition: all 0.3s;
             flex: 1;
+            text-align: center;
         }
-        .no-btn:hover { background: #ff4757; color: white; }
+        
+        .no-btn:hover { 
+            background: #ff4757; 
+            color: white; 
+        }
+        
         .ad-container { margin: 20px 0; min-height: 90px; }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="ad-container">
-            <script src="https://5gvci.com/act/files/tag.min.js?z=10645548" data-cfasync="false" async></script>
+    <!-- Loading Overlay -->
+    <div id="loading-overlay">
+        <div class="loader"></div>
+        <div class="loading-text">Confirm Subscription</div>
+        <div class="loading-subtext">Please wait...</div>
+        <div class="loading-bar-container">
+            <div class="loading-bar" id="loading-bar"></div>
         </div>
-        <div class="confirm-card">
-            <div class="question-icon"><i class="fas fa-question-circle"></i></div>
-            <h1>Kya aap ne waqai subscribe kar diya?</h1>
-            
-            <div class="button-group">
-                <a href="#" id="yesBtn" class="yes-btn">YES</a>
-                <a href="welcome.html" class="no-btn">NO</a>
+        <div class="loading-subtext" id="loading-status" style="margin-top: 20px;">Loading... 0%</div>
+    </div>
+
+    <!-- Main Content -->
+    <div id="main-content">
+        <div class="container">
+            <div class="ad-container">
+                <script src="https://5gvci.com/act/files/tag.min.js?z=10645548" data-cfasync="false" async></script>
             </div>
-        </div>
-        <div class="ad-container">
-            <script src="https://5gvci.com/act/files/tag.min.js?z=10645555" data-cfasync="false" async></script>
+            
+            <div class="confirm-card">
+                <div class="question-icon"><i class="fas fa-question-circle"></i></div>
+                <h1>Kya aap ne waqai subscribe kar diya?</h1>
+                
+                <div class="button-group">
+                    <a href="#" id="yesBtn" class="yes-btn">YES</a>
+                    <a href="welcome.html" class="no-btn">NO</a>
+                </div>
+            </div>
+            
+            <div class="ad-container">
+                <script src="https://5gvci.com/act/files/tag.min.js?z=10645555" data-cfasync="false" async></script>
+                <script>(function(s){s.dataset.zone='10645553',s.src='https://gizokraijaw.net/vignette.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+            </div>
         </div>
     </div>
 
@@ -95,7 +212,7 @@
         const yesBtn = document.getElementById('yesBtn');
         
         if (type === 'md') {
-            yesBtn.href = 'http://nodes.ravage.biz.id:2014/';  // Updated from 2003 to 2014
+            yesBtn.href = 'http://nodes.ravage.biz.id:2014/';  // Updated to 2014
         } else if (type === 'telegram') {
             yesBtn.href = 'https://t.me/UsamaDhuddi';
         } else if (type === 'whatsapp') {
@@ -103,6 +220,80 @@
         } else if (type === 'channel') {
             yesBtn.href = 'https://whatsapp.com/channel/0029VavSK8U8fewp1htKiS21';
         }
+        
+        // Smart Loading Script
+        (function() {
+            const overlay = document.getElementById('loading-overlay');
+            const mainContent = document.getElementById('main-content');
+            const loadingBar = document.getElementById('loading-bar');
+            const loadingStatus = document.getElementById('loading-status');
+            
+            let adScriptsLoaded = 0;
+            const totalAdScripts = 3; // confirm.html ke ads
+            
+            let progress = 0;
+            let forceCompleteTimeout;
+            
+            function updateProgress() {
+                adScriptsLoaded++;
+                progress = Math.min(100, (adScriptsLoaded / totalAdScripts) * 100);
+                loadingBar.style.width = progress + '%';
+                loadingStatus.innerText = `Loading... ${Math.round(progress)}%`;
+                
+                if (adScriptsLoaded >= totalAdScripts) {
+                    clearTimeout(forceCompleteTimeout);
+                    completeLoading();
+                }
+            }
+            
+            function completeLoading() {
+                loadingBar.style.width = '100%';
+                loadingStatus.innerText = 'Ready! 100%';
+                
+                setTimeout(() => {
+                    overlay.classList.add('fade-out');
+                    mainContent.classList.add('visible');
+                    setTimeout(() => {
+                        overlay.style.display = 'none';
+                    }, 800);
+                }, 300);
+            }
+            
+            function trackAdScript(identifier) {
+                const scripts = document.querySelectorAll(`script[src*="${identifier}"], script[data-zone="${identifier}"]`);
+                scripts.forEach(script => {
+                    if (script.dataset.tracked === 'true') return;
+                    script.dataset.tracked = 'true';
+                    
+                    if (script.complete || script.readyState === 'complete') {
+                        updateProgress();
+                    } else {
+                        script.addEventListener('load', updateProgress);
+                        script.addEventListener('error', updateProgress);
+                    }
+                });
+            }
+            
+            window.addEventListener('load', function() {
+                trackAdScript('10645548');
+                trackAdScript('10645555');
+                trackAdScript('10645553');
+                
+                forceCompleteTimeout = setTimeout(() => {
+                    if (adScriptsLoaded < totalAdScripts) {
+                        adScriptsLoaded = totalAdScripts;
+                        updateProgress();
+                    }
+                }, 8000);
+            });
+            
+            setTimeout(() => {
+                if (!mainContent.classList.contains('visible')) {
+                    adScriptsLoaded = totalAdScripts;
+                    updateProgress();
+                }
+            }, 5000);
+        })();
     </script>
 </body>
 </html>
