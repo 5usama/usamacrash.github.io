@@ -11,6 +11,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9661490975915158" crossorigin="anonymous"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/sw.js').catch(err => console.log('SW registration failed:', err));
+            });
+        }
+    </script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -35,9 +42,8 @@
     </nav>
 
     <div class="container">
-        <!-- AD 1 - TOP -->
+        <!-- Ad Container 1 -->
         <div class="ad-container">
-            <div class="ad-label">Advertisement</div>
             <ins class="adsbygoogle"
                  style="display:block"
                  data-ad-client="ca-pub-9661490975915158"
@@ -93,9 +99,8 @@
             </div>
         </div>
 
-        <!-- AD 2 - MIDDLE -->
+        <!-- Ad Container 2 -->
         <div class="ad-container">
-            <div class="ad-label">Sponsored</div>
             <ins class="adsbygoogle"
                  style="display:block"
                  data-ad-client="ca-pub-9661490975915158"
@@ -146,9 +151,8 @@
             </div>
         </div>
 
-        <!-- AD 3 - BOTTOM -->
+        <!-- Ad Container 3 -->
         <div class="ad-container">
-            <div class="ad-label">Advertisement</div>
             <ins class="adsbygoogle"
                  style="display:block"
                  data-ad-client="ca-pub-9661490975915158"
@@ -160,7 +164,7 @@
     </div>
 
     <footer class="footer">
-        <!-- Same footer -->
+        <!-- Same footer as pricing.html -->
     </footer>
 
     <div id="popup" class="popup">

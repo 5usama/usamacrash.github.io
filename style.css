@@ -1,4 +1,4 @@
-/* style.css - Common styles for all pages */
+/* style.css - Complete styles for all pages */
 
 * {
     margin: 0;
@@ -101,16 +101,6 @@ body {
     overflow: hidden;
     border: 1px solid rgba(37, 211, 102, 0.2);
     position: relative;
-}
-
-.ad-label {
-    position: absolute;
-    top: 5px;
-    right: 10px;
-    font-size: 10px;
-    color: #666;
-    text-transform: uppercase;
-    z-index: 1;
 }
 
 .ad-container ins {
@@ -417,12 +407,6 @@ body {
     white-space: nowrap;
 }
 
-.pricing-card h3 {
-    font-size: 24px;
-    margin-bottom: 15px;
-    color: white;
-}
-
 .price {
     font-size: 42px;
     font-weight: 800;
@@ -497,10 +481,6 @@ body {
     font-size: 32px;
     font-weight: 800;
     color: #25d366;
-}
-
-.about-stat div:last-child {
-    color: #a0a0b0;
 }
 
 .about-image {
@@ -798,10 +778,6 @@ body {
     
     .pricing-card.popular {
         transform: scale(1);
-    }
-    
-    .server-features {
-        grid-template-columns: 1fr;
     }
     
     .logo-text {

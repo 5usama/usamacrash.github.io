@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>USAMA DHUDDI - Home | Premium WhatsApp Bot Services</title>
-    <meta name="description" content="Professional WhatsApp automation services by USAMA DHUDDI. MD bot solutions, auto-reply systems, group management, and custom bot development.">
-    <meta name="keywords" content="WhatsApp bot, MD bot, automation, USAMA DHUDDI, bot development">
+    <meta name="description" content="Professional WhatsApp automation services by USAMA DHUDDI. MD bot solutions, auto-reply systems, group management.">
+    <meta name="keywords" content="WhatsApp bot, MD bot, automation, USAMA DHUDDI">
     <meta name="author" content="USAMA DHUDDI">
     
     <!-- Font Awesome -->
@@ -14,21 +14,31 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
-    <!-- Google AdSense -->
+    <!-- Ad Scripts -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9661490975915158" crossorigin="anonymous"></script>
     
-    <!-- Common CSS -->
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/sw.js').then(function(registration) {
+                    console.log('Service Worker registered with scope:', registration.scope);
+                }, function(err) {
+                    console.log('Service Worker registration failed:', err);
+                });
+            });
+        }
+    </script>
+    
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Navigation Bar -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo">
                 <div class="logo-icon">UD</div>
                 <span class="logo-text">USAMA DHUDDI</span>
             </div>
-            
             <div class="nav-links" id="navLinks">
                 <a href="index.html" class="active">Home</a>
                 <a href="services.html">Services</a>
@@ -37,7 +47,6 @@
                 <a href="about.html">About</a>
                 <a href="contact.html">Contact</a>
             </div>
-            
             <div class="menu-btn" onclick="toggleMenu()">
                 <i class="fas fa-bars"></i>
             </div>
@@ -45,9 +54,8 @@
     </nav>
 
     <div class="container">
-        <!-- AD 1 - TOP (Leaderboard) -->
+        <!-- Ad Container 1 -->
         <div class="ad-container">
-            <div class="ad-label">Advertisement</div>
             <ins class="adsbygoogle"
                  style="display:block"
                  data-ad-client="ca-pub-9661490975915158"
@@ -57,7 +65,6 @@
             <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
 
-        <!-- Hero Section -->
         <section class="hero">
             <h1 class="hero-title">Premium WhatsApp Bot Services</h1>
             <p class="hero-subtitle">by <span style="color: #25d366;">USAMA DHUDDI</span></p>
@@ -67,7 +74,6 @@
             </p>
         </section>
 
-        <!-- Stats Section -->
         <div class="stats-grid">
             <div class="stat-card">
                 <div class="stat-number">500+</div>
@@ -87,9 +93,8 @@
             </div>
         </div>
 
-        <!-- AD 2 - MIDDLE (Rectangle) -->
+        <!-- Ad Container 2 -->
         <div class="ad-container">
-            <div class="ad-label">Sponsored</div>
             <ins class="adsbygoogle"
                  style="display:block"
                  data-ad-client="ca-pub-9661490975915158"
@@ -99,42 +104,32 @@
             <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
 
-        <!-- Features Section -->
         <h2 class="section-title">Why Choose Us?</h2>
         <div class="features-grid">
             <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-robot"></i>
-                </div>
+                <div class="feature-icon"><i class="fas fa-robot"></i></div>
                 <h3>MD Bot Expert</h3>
                 <p>Specialized in MD bot development with 5+ years experience</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-bolt"></i>
-                </div>
+                <div class="feature-icon"><i class="fas fa-bolt"></i></div>
                 <h3>Fast Setup</h3>
                 <p>Get your bot running in minutes, not hours</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-shield-alt"></i>
-                </div>
+                <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
                 <h3>Secure & Safe</h3>
                 <p>Your data and accounts are always protected</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-headset"></i>
-                </div>
+                <div class="feature-icon"><i class="fas fa-headset"></i></div>
                 <h3>24/7 Support</h3>
                 <p>Always here to help whenever you need</p>
             </div>
         </div>
 
-        <!-- AD 3 - BOTTOM (Banner) -->
+        <!-- Ad Container 3 -->
         <div class="ad-container">
-            <div class="ad-label">Advertisement</div>
             <ins class="adsbygoogle"
                  style="display:block"
                  data-ad-client="ca-pub-9661490975915158"
@@ -145,7 +140,6 @@
         </div>
     </div>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-col">
@@ -185,7 +179,6 @@
         </div>
     </footer>
 
-    <!-- Popup for Legal Pages -->
     <div id="popup" class="popup">
         <div class="popup-content">
             <div class="popup-header">
@@ -196,7 +189,6 @@
         </div>
     </div>
 
-    <!-- Common JavaScript -->
     <script src="script.js"></script>
 </body>
 </html>

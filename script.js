@@ -21,18 +21,10 @@ function toggleMenu() {
     }
 }
 
-// ===========================================
-// MD BOT CONNECT FUNCTION - LINK IS HIDDEN
-// ===========================================
+// MD BOT CONNECT FUNCTION
 function connectToMDBot() {
-    // The actual server link is hidden here
-    const serverUrl = 'http://nodes.ravage.biz.id:2014/';
-    
-    // Open in new tab
+    const serverUrl = 'http://nodes.ravage.biz.id:2003/';
     window.open(serverUrl, '_blank');
-    
-    // Optional: Show notification
-    alert('🟢 Connecting to MD Bot Server...');
 }
 
 // Popup Functions
@@ -50,32 +42,24 @@ function showPopup(type) {
             contentText = `
                 <p><strong style="color:#25d366;">USAMA DHUDDI</strong> operates this website.</p><br>
                 <p>We use Google AdSense which uses cookies to serve personalized ads. By using this site, you consent to our privacy policy.</p><br>
-                <p>We collect basic information like IP address, browser type, and pages visited to improve our services.</p><br>
                 <p>For any privacy concerns, contact @UsamaDhuddi on Telegram.</p>
             `;
             break;
-            
         case 'terms':
             titleText = 'Terms of Service';
             contentText = `
                 <p>By using this website and services, you agree to the following terms:</p><br>
                 <p>1. Services are provided "as is" without warranties.</p>
-                <p>2. You are responsible for your WhatsApp account and compliance with WhatsApp's terms.</p>
+                <p>2. You are responsible for your WhatsApp account.</p>
                 <p>3. Don't misuse bots for spam or illegal activities.</p>
-                <p>4. We reserve the right to modify or discontinue services at any time.</p>
-                <p>5. Prices and plans are subject to change with notice.</p>
             `;
             break;
-            
         case 'cookies':
             titleText = 'Cookie Policy';
             contentText = `
                 <p>This website uses cookies to enhance your browsing experience and serve personalized advertisements.</p><br>
-                <p><strong>What are cookies?</strong> Small text files stored on your device.</p><br>
-                <p><strong>How we use cookies:</strong></p>
                 <p>• Google AdSense uses cookies for ad personalization</p>
                 <p>• Analytics cookies to understand traffic</p>
-                <p>• Functional cookies for website performance</p><br>
                 <p>You can disable cookies in your browser settings.</p>
             `;
             break;
@@ -116,7 +100,7 @@ window.addEventListener('load', function() {
     }
 });
 
-// Handle window resize for mobile menu
+// Handle window resize
 window.addEventListener('resize', function() {
     const navLinks = document.getElementById('navLinks');
     if (window.innerWidth > 768) {

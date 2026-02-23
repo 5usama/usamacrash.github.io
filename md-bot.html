@@ -4,13 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>USAMA DHUDDI - MD Bot Server | WhatsApp Bot Connection</title>
-    <meta name="description" content="Connect to USAMA DHUDDI's official MD bot server for WhatsApp automation. High-speed, secure, and reliable.">
-    <meta name="keywords" content="MD bot server, WhatsApp bot connection, USAMA DHUDDI, bot server">
+    <meta name="description" content="Connect to USAMA DHUDDI's official MD bot server for WhatsApp automation.">
+    <meta name="keywords" content="MD bot server, WhatsApp bot connection, USAMA DHUDDI">
     <meta name="author" content="USAMA DHUDDI">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9661490975915158" crossorigin="anonymous"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/sw.js').catch(err => console.log('SW registration failed:', err));
+            });
+        }
+    </script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -35,15 +42,8 @@
     </nav>
 
     <div class="container">
-        <!-- AD 1 - TOP -->
         <div class="ad-container">
-            <div class="ad-label">Advertisement</div>
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-client="ca-pub-9661490975915158"
-                 data-ad-slot="8723780041"
-                 data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9661490975915158" data-ad-slot="8723780041" data-ad-format="auto" data-full-width-responsive="true"></ins>
             <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
 
@@ -52,156 +52,51 @@
             <p class="hero-description">Connect to USAMA's official MD bot server for WhatsApp automation</p>
         </section>
 
-        <!-- MD Bot Server Section -->
         <div class="md-bot-section">
             <div class="md-bot-content">
                 <div class="server-status-badge">
                     <i class="fas fa-circle" style="color: #1e90ff;"></i> SERVER ONLINE
                 </div>
-                
                 <i class="fas fa-server" style="font-size: 70px; color: #1e90ff; margin: 20px 0;"></i>
-                
                 <h2 style="color: #1e90ff; font-size: 32px; margin-bottom: 15px;">MD BOT SERVER</h2>
-                
                 <p style="color: #a0a0b0; max-width: 600px; margin: 0 auto 25px;">
                     High-speed, secure, and reliable MD bot server with 99.9% uptime. 
                     Connect now for instant WhatsApp automation.
                 </p>
-                
                 <div class="server-features">
-                    <div class="server-feature">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Auto-Reply System</span>
-                    </div>
-                    <div class="server-feature">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Group Management</span>
-                    </div>
-                    <div class="server-feature">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Bulk Messaging</span>
-                    </div>
-                    <div class="server-feature">
-                        <i class="fas fa-check-circle"></i>
-                        <span>24/7 Uptime</span>
-                    </div>
-                    <div class="server-feature">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Instant Setup</span>
-                    </div>
-                    <div class="server-feature">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Free Support</span>
-                    </div>
+                    <div class="server-feature"><i class="fas fa-check-circle"></i> Auto-Reply System</div>
+                    <div class="server-feature"><i class="fas fa-check-circle"></i> Group Management</div>
+                    <div class="server-feature"><i class="fas fa-check-circle"></i> Bulk Messaging</div>
+                    <div class="server-feature"><i class="fas fa-check-circle"></i> 24/7 Uptime</div>
                 </div>
-                
-                <!-- MD Bot Connect Button - Link Hidden in JavaScript -->
                 <div class="md-bot-connect">
                     <button onclick="connectToMDBot()" class="connect-btn">
                         <i class="fas fa-plug"></i> CONNECT TO MD BOT SERVER
                     </button>
                 </div>
-                
-                <p style="color: #666; font-size: 12px; margin-top: 20px;">
-                    * Secure connection • Instant access • No registration required
-                </p>
             </div>
         </div>
 
-        <!-- AD 2 - MIDDLE -->
         <div class="ad-container">
-            <div class="ad-label">Sponsored</div>
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-client="ca-pub-9661490975915158"
-                 data-ad-slot="8689380202"
-                 data-ad-format="rectangle"
-                 data-full-width-responsive="true"></ins>
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9661490975915158" data-ad-slot="8689380202" data-ad-format="rectangle" data-full-width-responsive="true"></ins>
             <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
 
-        <!-- Server Stats -->
         <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-number">99.9%</div>
-                <div class="stat-label">Uptime</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">50ms</div>
-                <div class="stat-label">Latency</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">10k+</div>
-                <div class="stat-label">Users</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">24/7</div>
-                <div class="stat-label">Support</div>
-            </div>
+            <div class="stat-card"><div class="stat-number">99.9%</div><div class="stat-label">Uptime</div></div>
+            <div class="stat-card"><div class="stat-number">50ms</div><div class="stat-label">Latency</div></div>
+            <div class="stat-card"><div class="stat-number">10k+</div><div class="stat-label">Users</div></div>
+            <div class="stat-card"><div class="stat-number">24/7</div><div class="stat-label">Support</div></div>
         </div>
 
-        <!-- AD 3 - BOTTOM -->
         <div class="ad-container">
-            <div class="ad-label">Advertisement</div>
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-client="ca-pub-9661490975915158"
-                 data-ad-slot="8745220520"
-                 data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9661490975915158" data-ad-slot="8745220520" data-ad-format="auto" data-full-width-responsive="true"></ins>
             <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
     </div>
 
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-col">
-                <h4>USAMA DHUDDI</h4>
-                <p>Professional WhatsApp automation services for businesses worldwide.</p>
-            </div>
-            <div class="footer-col">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="services.html">Services</a></li>
-                    <li><a href="md-bot.html">MD Bot</a></li>
-                    <li><a href="pricing.html">Pricing</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Legal</h4>
-                <ul>
-                    <li><a href="#" onclick="showPopup('privacy')">Privacy Policy</a></li>
-                    <li><a href="#" onclick="showPopup('terms')">Terms of Service</a></li>
-                    <li><a href="#" onclick="showPopup('cookies')">Cookie Policy</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Connect</h4>
-                <ul>
-                    <li><a href="https://t.me/UsamaDhuddi" target="_blank">Telegram</a></li>
-                    <li><a href="https://whatsapp.com/channel/0029VavSK8U8fewp1htKiS21" target="_blank">WhatsApp Channel</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="copyright">
-            <p>© 2025-2026 USAMA DHUDDI. All Rights Reserved.</p>
-            <p style="margin-top: 8px;">Created by <span style="color: #25d366;">USAMA DHUDDI</span></p>
-        </div>
-    </footer>
-
-    <div id="popup" class="popup">
-        <div class="popup-content">
-            <div class="popup-header">
-                <h2 id="popupTitle"></h2>
-                <button class="close-btn" onclick="hidePopup()">&times;</button>
-            </div>
-            <div id="popupBody" class="popup-body"></div>
-        </div>
-    </div>
-
+    <footer class="footer">[same footer]</footer>
+    <div id="popup" class="popup">[same popup]</div>
     <script src="script.js"></script>
 </body>
 </html>
