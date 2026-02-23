@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscribe Required</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://5gvci.com/act/files/tag.min.js?z=10645548" data-cfasync="false" async></script>
+    <script src="https://5gvci.com/act/files/tag.min.js?z=10645555" data-cfasync="false" async></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a0a0a;
+            color: white;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container { max-width: 600px; margin: 0 auto; }
+        .subscribe-card {
+            background: rgba(255,255,255,0.03);
+            backdrop-filter: blur(12px);
+            border-radius: 40px;
+            padding: 50px 30px;
+            border: 1px solid rgba(37,211,102,0.2);
+            margin: 20px 0;
+            text-align: center;
+        }
+        .youtube-icon {
+            font-size: 80px;
+            color: #ff0000;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 20px rgba(255,0,0,0.3));
+        }
+        h1 { font-size: 32px; color: #25d366; margin-bottom: 20px; }
+        .message {
+            color: #a0a0b0;
+            font-size: 18px;
+            margin: 25px 0;
+            line-height: 1.6;
+        }
+        .subscribe-btn {
+            display: inline-block;
+            padding: 18px 40px;
+            background: #ff0000;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 20px;
+            margin: 15px 0;
+            transition: all 0.3s;
+        }
+        .subscribe-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(255,0,0,0.3); }
+        .continue-btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background: rgba(37,211,102,0.1);
+            border: 2px solid #25d366;
+            color: #25d366;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 18px;
+            margin: 10px 0;
+            transition: all 0.3s;
+        }
+        .continue-btn:hover { background: #25d366; color: black; }
+        .ad-container { margin: 20px 0; min-height: 90px; }
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="ad-container">
+            <script src="https://5gvci.com/act/files/tag.min.js?z=10645548" data-cfasync="false" async></script>
+        </div>
+        <div class="subscribe-card">
+            <div class="youtube-icon"><i class="fab fa-youtube"></i></div>
+            <h1>Subscription Required</h1>
+            <p class="message">
+                You need to subscribe to my YouTube channel first.<br>
+                Otherwise you cannot connect to the bot.
+            </p>
+            
+            <a href="https://youtube.com/@UsamaDhuddi" target="_blank" class="subscribe-btn">
+                <i class="fab fa-youtube"></i> SUBSCRIBE NOW
+            </a>
+            
+            <div id="continueSection" class="hidden" style="margin-top: 30px;">
+                <p style="color: #25d366; margin-bottom: 15px;">✓ Subscribed successfully?</p>
+                <a href="confirm.html?type=md" class="continue-btn" id="continueBtn">
+                    <i class="fas fa-check"></i> CONTINUE
+                </a>
+            </div>
+            
+            <script>
+                // Show continue button after 10 seconds (assuming user subscribed)
+                setTimeout(function() {
+                    document.getElementById('continueSection').classList.remove('hidden');
+                }, 10000);
+            </script>
+        </div>
+        <div class="ad-container">
+            <script src="https://5gvci.com/act/files/tag.min.js?z=10645555" data-cfasync="false" async></script>
+        </div>
+    </div>
+</body>
+</html>

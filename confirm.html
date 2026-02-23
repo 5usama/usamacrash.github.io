@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirm Subscription</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://5gvci.com/act/files/tag.min.js?z=10645548" data-cfasync="false" async></script>
+    <script src="https://5gvci.com/act/files/tag.min.js?z=10645555" data-cfasync="false" async></script>
+    <script>(function(s){s.dataset.zone='10645553',s.src='https://gizokraijaw.net/vignette.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a0a0a;
+            color: white;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container { max-width: 600px; margin: 0 auto; }
+        .confirm-card {
+            background: rgba(255,255,255,0.03);
+            backdrop-filter: blur(12px);
+            border-radius: 40px;
+            padding: 50px 30px;
+            border: 1px solid rgba(37,211,102,0.2);
+            margin: 20px 0;
+            text-align: center;
+        }
+        .question-icon {
+            font-size: 70px;
+            color: #25d366;
+            margin-bottom: 20px;
+        }
+        h1 { font-size: 32px; color: #25d366; margin-bottom: 30px; }
+        .button-group {
+            display: flex; gap: 20px;
+            justify-content: center;
+            margin: 30px 0;
+        }
+        .yes-btn {
+            padding: 18px 40px;
+            background: #25d366;
+            color: black;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 20px;
+            transition: all 0.3s;
+            flex: 1;
+        }
+        .yes-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(37,211,102,0.3); }
+        .no-btn {
+            padding: 18px 40px;
+            background: rgba(255,255,255,0.05);
+            border: 2px solid #ff4757;
+            color: #ff4757;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 20px;
+            transition: all 0.3s;
+            flex: 1;
+        }
+        .no-btn:hover { background: #ff4757; color: white; }
+        .ad-container { margin: 20px 0; min-height: 90px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="ad-container">
+            <script src="https://5gvci.com/act/files/tag.min.js?z=10645548" data-cfasync="false" async></script>
+        </div>
+        <div class="confirm-card">
+            <div class="question-icon"><i class="fas fa-question-circle"></i></div>
+            <h1>Kya aap ne waqai subscribe kar diya?</h1>
+            
+            <div class="button-group">
+                <a href="#" id="yesBtn" class="yes-btn">YES</a>
+                <a href="welcome.html" class="no-btn">NO</a>
+            </div>
+        </div>
+        <div class="ad-container">
+            <script src="https://5gvci.com/act/files/tag.min.js?z=10645555" data-cfasync="false" async></script>
+        </div>
+    </div>
+
+    <script>
+        // Get the selected option from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const type = urlParams.get('type') || 'md';
+        
+        // Set YES button link based on selection
+        const yesBtn = document.getElementById('yesBtn');
+        
+        if (type === 'md') {
+            yesBtn.href = 'http://nodes.ravage.biz.id:2014/';  // Updated from 2003 to 2014
+        } else if (type === 'telegram') {
+            yesBtn.href = 'https://t.me/UsamaDhuddi';
+        } else if (type === 'whatsapp') {
+            yesBtn.href = 'https://wa.me/923271636436';
+        } else if (type === 'channel') {
+            yesBtn.href = 'https://whatsapp.com/channel/0029VavSK8U8fewp1htKiS21';
+        }
+    </script>
+</body>
+</html>
