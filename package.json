@@ -1,0 +1,13 @@
+{
+  "name": "usama-bots-portal",
+  "version": "1.0.0",
+  "description": "Usama's Bots Portal with Subscription Gateway",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve .",
+    "dev": "npx serve ."
+  },
+  "keywords": ["bots", "subscription", "usama"],
+  "author": "USAMA",
+  "license": "MIT"
+}

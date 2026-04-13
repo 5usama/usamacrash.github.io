@@ -1,0 +1,24 @@
+{
+  "name": "usama-bots-portal",
+  "version": 2,
+  "routes": [
+    {
+      "src": "/",
+      "dest": "/mustSubscribe.html"
+    },
+    {
+      "src": "/index.html",
+      "dest": "/index.html"
+    },
+    {
+      "src": "/mustSubscribe.html",
+      "dest": "/mustSubscribe.html"
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/mustSubscribe.html"
+    }
+  ]
+}
