@@ -78,21 +78,28 @@
             width: 100%;
             font-weight: bold;
             transition: transform 0.2s;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        .verify-btn.show {
+            opacity: 1;
+            visibility: visible;
         }
         .verify-btn:hover {
             transform: scale(1.02);
             background: #0088cc;
         }
+        .timer-text {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #ffaa66;
+            font-weight: bold;
+        }
         .warning {
             margin-top: 20px;
             font-size: 12px;
-            color: #ffaa66;
-        }
-        .error-msg {
-            color: #ff6666;
-            margin-top: 10px;
-            font-size: 12px;
-            display: none;
+            color: #888;
         }
     </style>
 </head>
@@ -102,50 +109,63 @@
         <h1>⚠️ Subscription Required</h1>
         <div class="sub-text">📺 Must Subscribe to YouTube Channel</div>
         <p>To access Usama's Bot Panel & Community Dashboard,<br>please subscribe to our YouTube channel first.</p>
+        
         <button class="youtube-btn" id="subscribeBtn">▶ SUBSCRIBE NOW</button>
         <button class="verify-btn" id="verifyBtn">✓ I HAVE SUBSCRIBED</button>
-        <div class="warning">⚠️ After subscribing, click the button above to continue</div>
-        <div class="error-msg" id="errorMsg">❌ Please subscribe to the channel first!</div>
+        
+        <div class="timer-text" id="timerText">⏳ Please wait 10 seconds...</div>
+        <div class="warning">⚠️ Subscribe to the channel first, then click "I HAVE SUBSCRIBED"</div>
     </div>
 
     <script>
         const YT_URL = "https://youtube.com/@botswithusama?sub_confirmation=1";
+        let timer = 10;
+        let timerInterval;
         
         document.getElementById('subscribeBtn').onclick = () => {
             window.open(YT_URL, '_blank');
         };
         
-        document.getElementById('verifyBtn').onclick = async () => {
-            // Generate a random token
-            const token = Math.random().toString(36).substring(2) + Date.now();
-            const visitTime = new Date().toISOString();
+        // Hide verify button initially
+        const verifyBtn = document.getElementById('verifyBtn');
+        const timerText = document.getElementById('timerText');
+        
+        // Start countdown
+        timerInterval = setInterval(() => {
+            timer--;
             
-            // Store in sessionStorage (clears when browser closes)
-            sessionStorage.setItem('usama_temp_token', token);
-            sessionStorage.setItem('usama_visit_time', visitTime);
-            
-            // Also store with timestamp in localStorage but with expiry
-            const subscriptionData = {
-                verified: true,
-                token: token,
-                timestamp: Date.now(),
-                expires: Date.now() + (7 * 24 * 60 * 60 * 1000) // 7 days expiry
-            };
-            localStorage.setItem('usama_verified_data', JSON.stringify(subscriptionData));
-            
-            // Redirect to dashboard
-            window.location.href = 'index.html';
+            if (timer <= 0) {
+                // Show verify button after 10 seconds
+                clearInterval(timerInterval);
+                verifyBtn.classList.add('show');
+                timerText.innerHTML = '✅ You can now click "I HAVE SUBSCRIBED"';
+                timerText.style.color = '#66ff66';
+            } else {
+                timerText.innerHTML = `⏳ Please wait ${timer} seconds before verifying...`;
+            }
+        }, 1000);
+        
+        document.getElementById('verifyBtn').onclick = () => {
+            // Check if button is visible (10 seconds passed)
+            if (verifyBtn.classList.contains('show')) {
+                // Store verification with expiry (7 days)
+                const subscriptionData = {
+                    verified: true,
+                    timestamp: Date.now(),
+                    expires: Date.now() + (7 * 24 * 60 * 60 * 1000)
+                };
+                localStorage.setItem('usama_verified_data', JSON.stringify(subscriptionData));
+                window.location.href = 'index.html';
+            }
         };
         
-        // Check if already verified but not expired
+        // Check if already verified
         const savedData = localStorage.getItem('usama_verified_data');
         if (savedData) {
             try {
                 const data = JSON.parse(savedData);
                 if (data.verified && data.expires > Date.now()) {
                     window.location.href = 'index.html';
-                } else if (data.expires <= Date.now()) {
-                    localStorage.removeItem('usama_verified_data');
                 }
             } catch(e) {}
         }
