@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Subscribe - Usama's Bots</title>
+    <title>Subscribe Required - Usama's Bots</title>
     <style>
         * {
             margin: 0;
@@ -22,12 +22,12 @@
         .subscribe-box {
             max-width: 500px;
             width: 100%;
-            background: rgba(15, 25, 45, 0.9);
+            background: rgba(15, 25, 45, 0.95);
             backdrop-filter: blur(10px);
             border-radius: 30px;
             padding: 40px 30px;
             text-align: center;
-            border: 1px solid rgba(255, 0, 0, 0.3);
+            border: 2px solid rgba(255, 0, 0, 0.5);
             box-shadow: 0 20px 40px rgba(0,0,0,0.5);
         }
         .lock-icon {
@@ -88,6 +88,12 @@
             font-size: 12px;
             color: #ffaa66;
         }
+        .error-msg {
+            color: #ff6666;
+            margin-top: 10px;
+            font-size: 12px;
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -99,6 +105,7 @@
         <button class="youtube-btn" id="subscribeBtn">▶ SUBSCRIBE NOW</button>
         <button class="verify-btn" id="verifyBtn">✓ I HAVE SUBSCRIBED</button>
         <div class="warning">⚠️ After subscribing, click the button above to continue</div>
+        <div class="error-msg" id="errorMsg">❌ Please subscribe to the channel first!</div>
     </div>
 
     <script>
@@ -108,10 +115,40 @@
             window.open(YT_URL, '_blank');
         };
         
-        document.getElementById('verifyBtn').onclick = () => {
-            localStorage.setItem('usama_verified', 'true');
+        document.getElementById('verifyBtn').onclick = async () => {
+            // Generate a random token
+            const token = Math.random().toString(36).substring(2) + Date.now();
+            const visitTime = new Date().toISOString();
+            
+            // Store in sessionStorage (clears when browser closes)
+            sessionStorage.setItem('usama_temp_token', token);
+            sessionStorage.setItem('usama_visit_time', visitTime);
+            
+            // Also store with timestamp in localStorage but with expiry
+            const subscriptionData = {
+                verified: true,
+                token: token,
+                timestamp: Date.now(),
+                expires: Date.now() + (7 * 24 * 60 * 60 * 1000) // 7 days expiry
+            };
+            localStorage.setItem('usama_verified_data', JSON.stringify(subscriptionData));
+            
+            // Redirect to dashboard
             window.location.href = 'index.html';
         };
+        
+        // Check if already verified but not expired
+        const savedData = localStorage.getItem('usama_verified_data');
+        if (savedData) {
+            try {
+                const data = JSON.parse(savedData);
+                if (data.verified && data.expires > Date.now()) {
+                    window.location.href = 'index.html';
+                } else if (data.expires <= Date.now()) {
+                    localStorage.removeItem('usama_verified_data');
+                }
+            } catch(e) {}
+        }
     </script>
 </body>
 </html>

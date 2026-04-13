@@ -142,6 +142,20 @@
             color: #4e5b89;
             font-size: 12px;
         }
+        .logout-btn {
+            margin-top: 20px;
+            background: rgba(255,0,0,0.2);
+            border: 1px solid rgba(255,0,0,0.3);
+            padding: 8px 20px;
+            border-radius: 20px;
+            color: #ff8888;
+            cursor: pointer;
+            font-size: 12px;
+            display: inline-block;
+        }
+        .logout-btn:hover {
+            background: rgba(255,0,0,0.3);
+        }
         @media (max-width: 600px) {
             h1 { font-size: 32px; }
             .main-btn { font-size: 16px; padding: 12px 25px; }
@@ -196,12 +210,50 @@
                 <span><span class="green-dot"></span> live community</span>
             </div>
             <footer><i class="fas fa-shield-alt"></i> connect • grow • automate</footer>
+            <div class="logout-btn" id="logoutBtn">🚪 Logout & Clear Access</div>
         </div>
     </div>
 
     <script>
-        // Check if user has subscribed
-        if (localStorage.getItem('usama_verified') !== 'true') {
+        // STRONG VERIFICATION - Multiple checks
+        let isVerified = false;
+        
+        // Check 1: Session token
+        const sessionToken = sessionStorage.getItem('usama_temp_token');
+        
+        // Check 2: Local storage with expiry
+        let storedData = null;
+        try {
+            const rawData = localStorage.getItem('usama_verified_data');
+            if (rawData) {
+                storedData = JSON.parse(rawData);
+            }
+        } catch(e) {}
+        
+        // Check 3: Verify both conditions
+        if (storedData && storedData.verified && storedData.expires > Date.now()) {
+            isVerified = true;
+        } else if (sessionToken) {
+            isVerified = true;
+        } else {
+            // Check for older format
+            const oldVerify = localStorage.getItem('usama_verified');
+            if (oldVerify === 'true') {
+                // Migrate to new format with 7 days expiry
+                const newData = {
+                    verified: true,
+                    token: Math.random().toString(36).substring(2),
+                    timestamp: Date.now(),
+                    expires: Date.now() + (7 * 24 * 60 * 60 * 1000)
+                };
+                localStorage.setItem('usama_verified_data', JSON.stringify(newData));
+                localStorage.removeItem('usama_verified');
+                isVerified = true;
+            }
+        }
+        
+        // If not verified, redirect to subscribe page
+        if (!isVerified) {
             window.location.href = 'mustSubscribe.html';
         }
         
@@ -217,6 +269,20 @@
                 btn.onclick = () => window.open(url, '_blank');
             }
         });
+        
+        // Logout button - clears all access
+        document.getElementById('logoutBtn').onclick = () => {
+            localStorage.removeItem('usama_verified_data');
+            localStorage.removeItem('usama_verified');
+            sessionStorage.clear();
+            window.location.href = 'mustSubscribe.html';
+        };
+        
+        // Prevent back button after logout
+        history.pushState(null, null, location.href);
+        window.onpopstate = function () {
+            history.go(1);
+        };
     </script>
 </body>
 </html>
