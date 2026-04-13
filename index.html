@@ -28,7 +28,6 @@
             padding: 40px;
             text-align: center;
             border: 1px solid rgba(90, 150, 255, 0.3);
-            box-shadow: 0 25px 40px rgba(0,0,0,0.4);
         }
         h1 {
             font-size: 48px;
@@ -41,10 +40,9 @@
         .creator {
             color: #aaa;
             margin-bottom: 20px;
-            font-size: 18px;
         }
         .creator i {
-            color: #ffd700;
+            color: gold;
         }
         hr {
             width: 80px;
@@ -65,7 +63,7 @@
             color: white;
             cursor: pointer;
             margin-bottom: 40px;
-            transition: transform 0.2s;
+            transition: 0.2s;
             display: inline-flex;
             align-items: center;
             gap: 15px;
@@ -76,7 +74,7 @@
         }
         .social-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 15px;
             margin: 30px 0;
         }
@@ -90,6 +88,7 @@
             cursor: pointer;
             transition: 0.2s;
             border: 1px solid rgba(100, 150, 250, 0.2);
+            text-align: left;
         }
         .social-btn:hover {
             background: rgba(35, 45, 75, 0.9);
@@ -106,10 +105,10 @@
             color: #aaa;
             font-size: 11px;
         }
-        .contact-section {
+        .contact-head {
             margin: 30px 0 20px;
         }
-        .contact-section span {
+        .contact-head span {
             color: #b4c8ff;
             background: rgba(0,0,0,0.3);
             padding: 8px 20px;
@@ -137,23 +136,21 @@
             100% { opacity: 1; }
         }
         footer {
-            text-align: center;
             margin-top: 30px;
             color: #4e5b89;
             font-size: 12px;
         }
-        .logout-btn {
+        .logout {
             margin-top: 20px;
             background: rgba(255,0,0,0.2);
-            border: 1px solid rgba(255,0,0,0.3);
+            border: none;
             padding: 8px 20px;
             border-radius: 20px;
             color: #ff8888;
             cursor: pointer;
             font-size: 12px;
-            display: inline-block;
         }
-        .logout-btn:hover {
+        .logout:hover {
             background: rgba(255,0,0,0.3);
         }
         @media (max-width: 600px) {
@@ -176,7 +173,7 @@
             </button>
             
             <div class="social-grid">
-                <div class="social-btn" data-url="https://chat.whatsapp.com/GKdkT18LDXj4aikWCgo4pi?mode=gi_t">
+                <div class="social-btn" data-url="https://chat.whatsapp.com/GKdkT18LDXj4aikWCgo4pi">
                     <i class="fab fa-whatsapp" style="color:#25D366;"></i>
                     <div class="info"><h4>💬 WhatsApp Group</h4><p>Join tech community</p></div>
                 </div>
@@ -194,7 +191,7 @@
                 </div>
             </div>
             
-            <div class="contact-section">
+            <div class="contact-head">
                 <span><i class="fas fa-address-card"></i> CONTACT</span>
             </div>
             
@@ -210,52 +207,36 @@
                 <span><span class="green-dot"></span> live community</span>
             </div>
             <footer><i class="fas fa-shield-alt"></i> connect • grow • automate</footer>
-            <div class="logout-btn" id="logoutBtn">🚪 Logout & Clear Access</div>
+            <button class="logout" id="logoutBtn">🚪 Logout & Clear Access</button>
         </div>
     </div>
 
     <script>
-        // STRONG VERIFICATION - Multiple checks
-        let isVerified = false;
-        
-        // Check 1: Session token
-        const sessionToken = sessionStorage.getItem('usama_temp_token');
-        
-        // Check 2: Local storage with expiry
-        let storedData = null;
-        try {
-            const rawData = localStorage.getItem('usama_verified_data');
-            if (rawData) {
-                storedData = JSON.parse(rawData);
+        // CHECK VERIFICATION - If not verified, go back to subscribe page
+        function checkVerification() {
+            const saved = localStorage.getItem('usama_verified');
+            if (!saved) {
+                window.location.href = 'mustSubscribe.html';
+                return false;
             }
-        } catch(e) {}
-        
-        // Check 3: Verify both conditions
-        if (storedData && storedData.verified && storedData.expires > Date.now()) {
-            isVerified = true;
-        } else if (sessionToken) {
-            isVerified = true;
-        } else {
-            // Check for older format
-            const oldVerify = localStorage.getItem('usama_verified');
-            if (oldVerify === 'true') {
-                // Migrate to new format with 7 days expiry
-                const newData = {
-                    verified: true,
-                    token: Math.random().toString(36).substring(2),
-                    timestamp: Date.now(),
-                    expires: Date.now() + (7 * 24 * 60 * 60 * 1000)
-                };
-                localStorage.setItem('usama_verified_data', JSON.stringify(newData));
-                localStorage.removeItem('usama_verified');
-                isVerified = true;
+            
+            try {
+                const data = JSON.parse(saved);
+                if (data.verified && data.expires > Date.now()) {
+                    return true;
+                } else {
+                    localStorage.removeItem('usama_verified');
+                    window.location.href = 'mustSubscribe.html';
+                    return false;
+                }
+            } catch(e) {
+                window.location.href = 'mustSubscribe.html';
+                return false;
             }
         }
         
-        // If not verified, redirect to subscribe page
-        if (!isVerified) {
-            window.location.href = 'mustSubscribe.html';
-        }
+        // Run verification check
+        checkVerification();
         
         // Bot Panel Button
         document.getElementById('botPanelBtn').onclick = () => {
@@ -270,18 +251,10 @@
             }
         });
         
-        // Logout button - clears all access
+        // Logout button
         document.getElementById('logoutBtn').onclick = () => {
-            localStorage.removeItem('usama_verified_data');
             localStorage.removeItem('usama_verified');
-            sessionStorage.clear();
             window.location.href = 'mustSubscribe.html';
-        };
-        
-        // Prevent back button after logout
-        history.pushState(null, null, location.href);
-        window.onpopstate = function () {
-            history.go(1);
         };
     </script>
 </body>
