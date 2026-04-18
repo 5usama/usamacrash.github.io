@@ -4,11 +4,11 @@
   "routes": [
     {
       "src": "/",
-      "dest": "/mustSubscribe.html"
+      "dest": "/subscribe.html"
     },
     {
-      "src": "/index.html",
-      "dest": "/index.html"
+      "src": "/dashboard.html",
+      "dest": "/dashboard.html"
     }
   ]
 }

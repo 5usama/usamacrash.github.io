@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usama's Bots - Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            min-height: 100vh;
+            background: radial-gradient(circle at 10% 30%, #0a0f1e, #03050b);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        
+        .dashboard-card {
+            background: rgba(12, 18, 34, 0.85);
+            backdrop-filter: blur(12px);
+            border-radius: 40px;
+            padding: 45px 35px;
+            border: 1px solid rgba(90, 150, 255, 0.3);
+            box-shadow: 0 30px 50px rgba(0,0,0,0.4);
+            animation: slideUp 0.5s ease;
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        h1 {
+            font-size: 52px;
+            background: linear-gradient(135deg, #fff, #7B9EFF, #a855f7);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 10px;
+        }
+        
+        .creator {
+            color: #aaa;
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+        
+        .creator i {
+            color: gold;
+        }
+        
+        hr {
+            width: 100px;
+            margin: 20px auto;
+            border: 2px solid #3b82f6;
+            border-radius: 10px;
+        }
+        
+        .tagline {
+            color: #bfcfff;
+            margin-bottom: 40px;
+            font-size: 16px;
+        }
+        
+        /* 2 BOT BUTTONS */
+        .bot-section {
+            margin-bottom: 45px;
+        }
+        
+        .section-title {
+            color: white;
+            font-size: 20px;
+            margin-bottom: 20px;
+            text-align: left;
+            border-left: 4px solid #3b82f6;
+            padding-left: 15px;
+        }
+        
+        .bot-buttons {
+            display: flex;
+            gap: 25px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .bot-btn {
+            flex: 1;
+            min-width: 250px;
+            border: none;
+            padding: 22px 25px;
+            border-radius: 60px;
+            font-size: 20px;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .bot-btn i {
+            font-size: 28px;
+        }
+        
+        .bot-btn:hover {
+            transform: translateY(-5px);
+        }
+        
+        .md-bot {
+            background: linear-gradient(135deg, #1e2a5e, #0f172f);
+            border: 1px solid rgba(59, 130, 246, 0.5);
+            box-shadow: 0 5px 20px rgba(59, 130, 246, 0.2);
+        }
+        
+        .md-bot:hover {
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.4);
+        }
+        
+        .bug-bot {
+            background: linear-gradient(135deg, #5e1e2a, #2f0f17);
+            border: 1px solid rgba(255, 68, 68, 0.5);
+            box-shadow: 0 5px 20px rgba(255, 68, 68, 0.2);
+        }
+        
+        .bug-bot:hover {
+            box-shadow: 0 10px 30px rgba(255, 68, 68, 0.4);
+        }
+        
+        /* SOCIAL SECTION */
+        .social-section {
+            margin-bottom: 35px;
+        }
+        
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        
+        .social-btn {
+            background: rgba(20, 28, 48, 0.8);
+            padding: 18px 20px;
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            cursor: pointer;
+            transition: 0.3s;
+            border: 1px solid rgba(100, 150, 250, 0.2);
+        }
+        
+        .social-btn:hover {
+            background: rgba(35, 45, 75, 0.95);
+            transform: translateX(5px);
+        }
+        
+        .social-btn i {
+            font-size: 38px;
+        }
+        
+        .social-info h4 {
+            color: white;
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+        
+        .social-info p {
+            color: #aaa;
+            font-size: 12px;
+        }
+        
+        /* CONTACT SECTION */
+        .contact-head {
+            margin: 35px 0 20px;
+            text-align: center;
+        }
+        
+        .contact-head span {
+            color: #b4c8ff;
+            background: rgba(0,0,0,0.3);
+            padding: 8px 25px;
+            border-radius: 40px;
+            font-size: 16px;
+        }
+        
+        /* STATUS */
+        .status-bar {
+            margin-top: 35px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            color: #6e84b5;
+            font-size: 13px;
+            flex-wrap: wrap;
+            padding: 15px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 50px;
+        }
+        
+        .green-dot {
+            width: 10px;
+            height: 10px;
+            background: #31c48d;
+            border-radius: 50%;
+            display: inline-block;
+            animation: pulse 1.5s infinite;
+            margin-right: 5px;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+        
+        footer {
+            margin-top: 35px;
+            text-align: center;
+            color: #4e5b89;
+            font-size: 12px;
+        }
+        
+        .logout-btn {
+            margin-top: 25px;
+            background: rgba(255, 68, 68, 0.2);
+            border: 1px solid rgba(255, 68, 68, 0.3);
+            padding: 10px 25px;
+            border-radius: 30px;
+            color: #ff8888;
+            cursor: pointer;
+            font-size: 13px;
+            transition: 0.3s;
+        }
+        
+        .logout-btn:hover {
+            background: rgba(255, 68, 68, 0.3);
+        }
+        
+        @media (max-width: 650px) {
+            .dashboard-card {
+                padding: 30px 20px;
+            }
+            h1 {
+                font-size: 36px;
+            }
+            .bot-btn {
+                padding: 16px 20px;
+                font-size: 16px;
+            }
+            .bot-btn i {
+                font-size: 22px;
+            }
+            .social-btn {
+                padding: 14px 16px;
+            }
+            .social-btn i {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="dashboard-card">
+            <h1>Usama's Bots</h1>
+            <div class="creator">
+                <i class="fas fa-crown"></i> Created by USAMA <i class="fas fa-code"></i>
+            </div>
+            <hr>
+            <div class="tagline">
+                <i class="fas fa-robot"></i> Elite Automation • Community Driven
+            </div>
+            
+            <!-- 2 BOT BUTTONS SECTION -->
+            <div class="bot-section">
+                <div class="section-title">
+                    <i class="fas fa-terminal"></i> Bot Servers
+                </div>
+                <div class="bot-buttons">
+                    <button class="bot-btn md-bot" id="mdBotBtn">
+                        <i class="fas fa-server"></i> MD Bot Server
+                        <i class="fas fa-external-link-alt"></i>
+                    </button>
+                    <button class="bot-btn bug-bot" id="bugBotBtn">
+                        <i class="fas fa-bug"></i> BUG Bot Server
+                        <i class="fas fa-external-link-alt"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- SOCIAL LINKS SECTION -->
+            <div class="social-section">
+                <div class="section-title">
+                    <i class="fas fa-users"></i> Community
+                </div>
+                <div class="social-grid">
+                    <div class="social-btn" data-url="https://chat.whatsapp.com/GKdkT18LDXj4aikWCgo4pi">
+                        <i class="fab fa-whatsapp" style="color:#25D366;"></i>
+                        <div class="social-info">
+                            <h4>💬 WhatsApp Group</h4>
+                            <p>Join our tech community</p>
+                        </div>
+                    </div>
+                    <div class="social-btn" data-url="https://youtube.com/@botswithusama">
+                        <i class="fab fa-youtube" style="color:#FF0000;"></i>
+                        <div class="social-info">
+                            <h4>📺 YouTube Channel</h4>
+                            <p>Tutorials & coding content</p>
+                        </div>
+                    </div>
+                    <div class="social-btn" data-url="https://t.me/UsamaCrash960">
+                        <i class="fab fa-telegram" style="color:#26A5E4;"></i>
+                        <div class="social-info">
+                            <h4>📢 Telegram Group</h4>
+                            <p>Active discussions & support</p>
+                        </div>
+                    </div>
+                    <div class="social-btn" data-url="https://t.me/UsamaCrash">
+                        <i class="fab fa-telegram-plane" style="color:#26A5E4;"></i>
+                        <div class="social-info">
+                            <h4>📢 Telegram Channel</h4>
+                            <p>Updates & announcements</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- CONTACT SECTION -->
+            <div class="contact-head">
+                <span><i class="fas fa-address-card"></i> DIRECT CONTACT</span>
+            </div>
+            <div class="social-grid">
+                <div class="social-btn" data-url="https://t.me/UsamaDhuddi">
+                    <i class="fab fa-telegram" style="color:#34B7F1;"></i>
+                    <div class="social-info">
+                        <h4>📲 Telegram Direct</h4>
+                        <p>@UsamaDhuddi - Personal Contact</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- STATUS BAR -->
+            <div class="status-bar">
+                <span><i class="fas fa-server"></i> MD Bot : Port 2004</span>
+                <span><i class="fas fa-bug"></i> BUG Bot : Port 2006</span>
+                <span><span class="green-dot"></span> Both Servers Active</span>
+                <span><i class="fas fa-check-circle"></i> Subscribed ✓</span>
+            </div>
+            
+            <footer>
+                <i class="fas fa-shield-alt"></i> secure connection • 24/7 active
+            </footer>
+            
+            <div style="text-align: center;">
+                <button class="logout-btn" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i> Logout & Clear Access
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const MD_BOT_URL = "http://nodess.ravagee.tech:2004/";
+        const BUG_BOT_URL = "http://nodess.ravagee.tech:2006/";
+        
+        // CHECK SUBSCRIPTION - If not subscribed, go back
+        function checkSubscription() {
+            const saved = localStorage.getItem('usama_subscribed');
+            if (!saved) {
+                window.location.href = 'subscribe.html';
+                return false;
+            }
+            
+            try {
+                const data = JSON.parse(saved);
+                if (data.verified && data.expires > Date.now()) {
+                    return true;
+                } else {
+                    localStorage.removeItem('usama_subscribed');
+                    window.location.href = 'subscribe.html';
+                    return false;
+                }
+            } catch(e) {
+                window.location.href = 'subscribe.html';
+                return false;
+            }
+        }
+        
+        checkSubscription();
+        
+        // MD Bot Button
+        document.getElementById('mdBotBtn').onclick = () => {
+            window.open(MD_BOT_URL, '_blank');
+        };
+        
+        // BUG Bot Button
+        document.getElementById('bugBotBtn').onclick = () => {
+            window.open(BUG_BOT_URL, '_blank');
+        };
+        
+        // Social buttons
+        document.querySelectorAll('.social-btn').forEach(btn => {
+            const url = btn.getAttribute('data-url');
+            if (url) {
+                btn.onclick = () => window.open(url, '_blank');
+            }
+        });
+        
+        // Logout button
+        document.getElementById('logoutBtn').onclick = () => {
+            localStorage.removeItem('usama_subscribed');
+            window.location.href = 'subscribe.html';
+        };
+        
+        // Prevent back button after logout
+        history.pushState(null, null, location.href);
+        window.onpopstate = function() {
+            history.go(1);
+        };
+    </script>
+</body>
+</html>
