@@ -1,10 +1,14 @@
 {
   "name": "usama-bots",
   "version": 2,
-  "builds": [
-    { "src": "*.html", "use": "@vercel/static" }
-  ],
   "routes": [
-    { "src": "/", "dest": "/mustSubscribe.html" }
+    {
+      "src": "/",
+      "dest": "/mustSubscribe.html"
+    },
+    {
+      "src": "/index.html",
+      "dest": "/index.html"
+    }
   ]
 }

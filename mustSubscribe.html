@@ -127,10 +127,8 @@
     </div>
 
     <script>
-        // YouTube Channel URL
         const YOUTUBE_URL = "https://youtube.com/@botswithusama?sub_confirmation=1";
         
-        // Get elements
         const subscribeBtn = document.getElementById('subscribeBtn');
         const verifyBtn = document.getElementById('verifyBtn');
         const timerDisplay = document.getElementById('timerDisplay');
@@ -138,24 +136,17 @@
         let countdown = 10;
         let timerInterval = null;
         
-        // Subscribe button click - opens YouTube
         subscribeBtn.onclick = function() {
             window.open(YOUTUBE_URL, '_blank');
         };
         
-        // Start countdown immediately when page loads
         function startCountdown() {
             timerInterval = setInterval(function() {
                 countdown--;
                 
                 if (countdown <= 0) {
-                    // Stop timer
                     clearInterval(timerInterval);
-                    
-                    // Show verify button
                     verifyBtn.classList.add('show');
-                    
-                    // Update timer text
                     timerDisplay.innerHTML = '✅ You can now click "I HAVE SUBSCRIBED"';
                     timerDisplay.style.color = '#66ff66';
                 } else {
@@ -164,41 +155,30 @@
             }, 1000);
         }
         
-        // Start countdown
         startCountdown();
         
-        // Verify button click - saves to localStorage and redirects
         verifyBtn.onclick = function() {
-            // Check if button is visible (countdown finished)
             if (verifyBtn.classList.contains('show')) {
-                // Save verification data with 7 days expiry
                 const data = {
                     verified: true,
                     date: Date.now(),
                     expires: Date.now() + (7 * 24 * 60 * 60 * 1000)
                 };
                 localStorage.setItem('usama_verified', JSON.stringify(data));
-                
-                // Redirect to dashboard
                 window.location.href = 'index.html';
             }
         };
         
-        // Check if already verified (on page load)
         const saved = localStorage.getItem('usama_verified');
         if (saved) {
             try {
                 const parsed = JSON.parse(saved);
                 if (parsed.verified && parsed.expires > Date.now()) {
-                    // Already verified, go to dashboard
                     window.location.href = 'index.html';
                 } else if (parsed.expires <= Date.now()) {
-                    // Expired, remove from storage
                     localStorage.removeItem('usama_verified');
                 }
-            } catch(e) {
-                console.log('Error parsing saved data');
-            }
+            } catch(e) {}
         }
     </script>
 </body>
