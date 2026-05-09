@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Usama's Bots - Dashboard</title>
+    <title>Usama's Bot - Dashboard</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
@@ -11,29 +11,29 @@
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             min-height: 100vh;
             background: radial-gradient(circle at 10% 30%, #0a0f1e, #03050b);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', 'Tahoma', 'Geneva', 'Verdana', sans-serif;
             padding: 20px;
         }
-        
+
         .container {
             max-width: 1100px;
             margin: 0 auto;
         }
-        
+
         .dashboard-card {
             background: rgba(12, 18, 34, 0.85);
             backdrop-filter: blur(12px);
             border-radius: 40px;
             padding: 45px 35px;
             border: 1px solid rgba(90, 150, 255, 0.3);
-            box-shadow: 0 30px 50px rgba(0,0,0,0.4);
+            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.4);
             animation: slideUp 0.5s ease;
         }
-        
+
         @keyframes slideUp {
             from {
                 opacity: 0;
@@ -44,7 +44,7 @@
                 transform: translateY(0);
             }
         }
-        
+
         h1 {
             font-size: 52px;
             background: linear-gradient(135deg, #fff, #7B9EFF, #a855f7);
@@ -53,35 +53,35 @@
             color: transparent;
             margin-bottom: 10px;
         }
-        
+
         .creator {
             color: #aaa;
             margin-bottom: 20px;
             font-size: 18px;
         }
-        
+
         .creator i {
             color: gold;
         }
-        
+
         hr {
             width: 100px;
             margin: 20px auto;
             border: 2px solid #3b82f6;
             border-radius: 10px;
         }
-        
+
         .tagline {
             color: #bfcfff;
             margin-bottom: 40px;
             font-size: 16px;
         }
-        
-        /* 2 BOT BUTTONS */
+
+        /* MAIN BOT SECTION - SINGLE BOT */
         .bot-section {
-            margin-bottom: 35px;
+            margin-bottom: 45px;
         }
-        
+
         .section-title {
             color: white;
             font-size: 20px;
@@ -90,21 +90,27 @@
             border-left: 4px solid #3b82f6;
             padding-left: 15px;
         }
-        
+
         .bot-buttons {
             display: flex;
             gap: 25px;
             justify-content: center;
             flex-wrap: wrap;
         }
-        
+
+        /* Single bot button styling - full width elegance */
+        .single-bot-wrapper {
+            max-width: 550px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
         .bot-btn {
-            flex: 1;
-            min-width: 250px;
+            width: 100%;
             border: none;
-            padding: 22px 25px;
-            border-radius: 60px;
-            font-size: 20px;
+            padding: 26px 30px;
+            border-radius: 80px;
+            font-size: 24px;
             font-weight: bold;
             color: white;
             cursor: pointer;
@@ -112,116 +118,33 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 15px;
-        }
-        
-        .bot-btn i {
-            font-size: 28px;
-        }
-        
-        .bot-btn:hover {
-            transform: translateY(-5px);
-        }
-        
-        .md-bot {
-            background: linear-gradient(135deg, #1e2a5e, #0f172f);
-            border: 1px solid rgba(59, 130, 246, 0.5);
-            box-shadow: 0 5px 20px rgba(59, 130, 246, 0.2);
-        }
-        
-        .md-bot:hover {
-            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.4);
-        }
-        
-        .bug-bot {
-            background: linear-gradient(135deg, #5e1e2a, #2f0f17);
-            border: 1px solid rgba(255, 68, 68, 0.5);
-            box-shadow: 0 5px 20px rgba(255, 68, 68, 0.2);
-        }
-        
-        .bug-bot:hover {
-            box-shadow: 0 10px 30px rgba(255, 68, 68, 0.4);
-        }
-        
-        /* ---- NEW UPDATE BUTTON (WhatsApp Channel) ---- */
-        .update-section {
-            margin: 30px 0 20px;
-            display: flex;
-            justify-content: center;
-        }
-        
-        .update-channel-btn {
-            background: linear-gradient(115deg, #075e54, #128C7E, #25D366);
-            border: none;
-            border-radius: 60px;
-            padding: 18px 32px;
-            width: 100%;
-            max-width: 550px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             gap: 18px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 12px 25px rgba(0,0,0,0.3), 0 0 12px rgba(37,211,102,0.3);
-            backdrop-filter: blur(4px);
+            background: linear-gradient(135deg, #1e2a5e, #0f172f);
+            border: 1px solid rgba(59, 130, 246, 0.6);
+            box-shadow: 0 8px 24px rgba(59, 130, 246, 0.3);
         }
-        
-        .update-channel-btn i {
-            font-size: 42px;
-            color: white;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+
+        .bot-btn i {
+            font-size: 32px;
         }
-        
-        .update-text {
-            text-align: left;
+
+        .bot-btn:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 18px 35px rgba(59, 130, 246, 0.5);
+            background: linear-gradient(135deg, #2a3b78, #1a2345);
         }
-        
-        .update-text .up-label {
-            font-size: 14px;
-            letter-spacing: 1px;
-            font-weight: 500;
-            color: #e0ffe6;
-            background: rgba(0,0,0,0.2);
-            padding: 2px 12px;
-            border-radius: 30px;
-            display: inline-block;
-            margin-bottom: 6px;
-        }
-        
-        .update-text h3 {
-            font-size: 26px;
-            font-weight: 800;
-            color: white;
-            margin: 0;
-            line-height: 1.2;
-            text-shadow: 0 1px 2px black;
-        }
-        
-        .update-text p {
-            font-size: 13px;
-            color: #d1fae5;
-            margin-top: 5px;
-            font-weight: 500;
-        }
-        
-        .update-channel-btn:hover {
-            transform: scale(1.02) translateY(-3px);
-            box-shadow: 0 20px 30px rgba(0,0,0,0.4), 0 0 20px #25D366;
-            background: linear-gradient(115deg, #0a6b5c, #1da17b, #2ad66d);
-        }
-        
+
         /* SOCIAL SECTION */
         .social-section {
             margin-bottom: 35px;
         }
-        
+
         .social-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 15px;
         }
-        
+
         .social-btn {
             background: rgba(20, 28, 48, 0.8);
             padding: 18px 20px;
@@ -233,42 +156,42 @@
             transition: 0.3s;
             border: 1px solid rgba(100, 150, 250, 0.2);
         }
-        
+
         .social-btn:hover {
             background: rgba(35, 45, 75, 0.95);
             transform: translateX(5px);
         }
-        
+
         .social-btn i {
             font-size: 38px;
         }
-        
+
         .social-info h4 {
             color: white;
             font-size: 16px;
             margin-bottom: 5px;
         }
-        
+
         .social-info p {
             color: #aaa;
             font-size: 12px;
         }
-        
+
         /* CONTACT SECTION */
         .contact-head {
             margin: 35px 0 20px;
             text-align: center;
         }
-        
+
         .contact-head span {
             color: #b4c8ff;
-            background: rgba(0,0,0,0.3);
+            background: rgba(0, 0, 0, 0.3);
             padding: 8px 25px;
             border-radius: 40px;
             font-size: 16px;
         }
-        
-        /* STATUS */
+
+        /* STATUS BAR - updated */
         .status-bar {
             margin-top: 35px;
             display: flex;
@@ -278,10 +201,10 @@
             font-size: 13px;
             flex-wrap: wrap;
             padding: 15px;
-            background: rgba(0,0,0,0.2);
+            background: rgba(0, 0, 0, 0.2);
             border-radius: 50px;
         }
-        
+
         .green-dot {
             width: 10px;
             height: 10px;
@@ -291,19 +214,28 @@
             animation: pulse 1.5s infinite;
             margin-right: 5px;
         }
-        
+
         @keyframes pulse {
-            0%, 100% { opacity: 0.5; transform: scale(0.8); }
-            50% { opacity: 1; transform: scale(1.2); }
+
+            0%,
+            100% {
+                opacity: 0.5;
+                transform: scale(0.8);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.2);
+            }
         }
-        
+
         footer {
             margin-top: 35px;
             text-align: center;
             color: #4e5b89;
             font-size: 12px;
         }
-        
+
         .logout-btn {
             margin-top: 25px;
             background: rgba(255, 68, 68, 0.2);
@@ -315,52 +247,54 @@
             font-size: 13px;
             transition: 0.3s;
         }
-        
+
         .logout-btn:hover {
             background: rgba(255, 68, 68, 0.3);
         }
-        
+
+        /* Info badge for single bot */
+        .bot-info-note {
+            text-align: center;
+            margin-top: 16px;
+            color: #8d9ee0;
+            font-size: 13px;
+            background: rgba(0, 0, 0, 0.3);
+            display: inline-block;
+            width: auto;
+            padding: 6px 18px;
+            border-radius: 40px;
+            backdrop-filter: blur(4px);
+        }
+
+        .center-note {
+            text-align: center;
+            margin-top: 12px;
+        }
+
         @media (max-width: 650px) {
             .dashboard-card {
                 padding: 30px 20px;
             }
+
             h1 {
                 font-size: 36px;
             }
+
             .bot-btn {
-                padding: 16px 20px;
-                font-size: 16px;
+                padding: 18px 20px;
+                font-size: 18px;
             }
+
             .bot-btn i {
-                font-size: 22px;
+                font-size: 26px;
             }
+
             .social-btn {
                 padding: 14px 16px;
             }
+
             .social-btn i {
                 font-size: 28px;
-            }
-            .update-channel-btn {
-                padding: 14px 22px;
-            }
-            .update-text h3 {
-                font-size: 20px;
-            }
-            .update-text .up-label {
-                font-size: 10px;
-            }
-            .update-channel-btn i {
-                font-size: 32px;
-            }
-        }
-        
-        /* little extra love for mobile */
-        @media (max-width: 480px) {
-            .update-text h3 {
-                font-size: 18px;
-            }
-            .update-channel-btn {
-                gap: 12px;
             }
         }
     </style>
@@ -368,46 +302,32 @@
 <body>
     <div class="container">
         <div class="dashboard-card">
-            <h1>Usama's Bots</h1>
+            <h1>Usama's Bot</h1>
             <div class="creator">
                 <i class="fas fa-crown"></i> Created by USAMA <i class="fas fa-code"></i>
             </div>
             <hr>
             <div class="tagline">
-                <i class="fas fa-robot"></i> Elite Automation • Community Driven
+                <i class="fas fa-robot"></i> Elite Automation • Next Gen MD Bot
             </div>
             
-            <!-- 2 BOT BUTTONS SECTION -->
+            <!-- SINGLE MD BOT SERVER SECTION (REMOVED BUG BOT) -->
             <div class="bot-section">
                 <div class="section-title">
-                    <i class="fas fa-terminal"></i> Bot Servers
+                    <i class="fas fa-terminal"></i> Active Server
                 </div>
-                <div class="bot-buttons">
-                    <button class="bot-btn md-bot" id="mdBotBtn">
+                <div class="single-bot-wrapper">
+                    <button class="bot-btn" id="mdBotBtn">
                         <i class="fas fa-server"></i> MD Bot Server
                         <i class="fas fa-external-link-alt"></i>
                     </button>
-                    <button class="bot-btn bug-bot" id="bugBotBtn">
-                        <i class="fas fa-bug"></i> BUG Bot Server
-                        <i class="fas fa-external-link-alt"></i>
-                    </button>
+                    <div class="center-note">
+                        <span class="bot-info-note"><i class="fas fa-globe"></i>  •  High Availability  •  Instant Access</span>
+                    </div>
                 </div>
             </div>
             
-            <!-- ✅ NEW: JOIN FOR UPDATES BUTTON (WhatsApp Channel) - THODA BARA, BACKGROUND LINK DIYA HAI -->
-            <div class="update-section">
-                <button class="update-channel-btn" id="whatsappUpdateBtn">
-                    <i class="fab fa-whatsapp"></i>
-                    <div class="update-text">
-                        <span class="up-label"><i class="fas fa-bell"></i> STAY CONNECTED</span>
-                        <h3>Join for Updates</h3>
-                        <p>🔔 Get latest news, bot status & exclusive content</p>
-                    </div>
-                    <i class="fas fa-arrow-right"></i>
-                </button>
-            </div>
-            
-            <!-- SOCIAL LINKS SECTION -->
+            <!-- SOCIAL LINKS SECTION (COMMUNITY) -->
             <div class="social-section">
                 <div class="section-title">
                     <i class="fas fa-users"></i> Community
@@ -444,7 +364,7 @@
                 </div>
             </div>
             
-            <!-- CONTACT SECTION -->
+            <!-- DIRECT CONTACT SECTION -->
             <div class="contact-head">
                 <span><i class="fas fa-address-card"></i> DIRECT CONTACT</span>
             </div>
@@ -458,16 +378,16 @@
                 </div>
             </div>
             
-            <!-- STATUS BAR -->
+            <!-- STATUS BAR (Only MD Bot info, healthy) -->
             <div class="status-bar">
                 <span><i class="fas fa-server"></i> MD Bot : Port 2003</span>
-                <span><i class="fas fa-bug"></i> BUG Bot : Port 2006</span>
-                <span><span class="green-dot"></span> Both Servers Active</span>
+                <span><i class="fas fa-plug"></i> Endpoint : nodes.ravage.biz.id</span>
+                <span><span class="green-dot"></span> Server Status : Active</span>
                 <span><i class="fas fa-check-circle"></i> Subscribed ✓</span>
             </div>
             
             <footer>
-                <i class="fas fa-shield-alt"></i> secure connection • 24/7 active
+                <i class="fas fa-shield-alt"></i> secure connection • 24/7 active • MD Bot only
             </footer>
             
             <div style="text-align: center;">
@@ -479,13 +399,10 @@
     </div>
 
     <script>
-        // -------------------- CONFIGURATION --------------------
-        const MD_BOT_URL = "http://nodess.ravagee.tech:2003/";
-        const BUG_BOT_URL = "http://nodess.ravagee.tech:2006/";
-        // WhatsApp Channel update link (exactly as you provided)
-        const WHATSAPP_CHANNEL_URL = "https://whatsapp.com/channel/0029VavSK8U8fewp1htKiS21";
+        // ======================== UPDATED MD BOT URL =========================
+        const MD_BOT_URL = "http://nodes.ravage.biz.id:2003/";
         
-        // -------------------- SUBSCRIPTION CHECK --------------------
+        // ======================== SUBSCRIPTION CHECK =========================
         function checkSubscription() {
             const saved = localStorage.getItem('usama_subscribed');
             if (!saved) {
@@ -508,76 +425,58 @@
             }
         }
         
+        // Run subscription verification on load
         checkSubscription();
         
-        // -------------------- BOT BUTTONS --------------------
+        // ======================== MD BOT BUTTON HANDLER ======================
         const mdBtn = document.getElementById('mdBotBtn');
-        const bugBtn = document.getElementById('bugBotBtn');
-        
         if (mdBtn) {
-            mdBtn.onclick = () => {
+            mdBtn.onclick = (e) => {
+                e.preventDefault();
+                // Open the new MD Bot server link in a new tab
                 window.open(MD_BOT_URL, '_blank');
             };
         }
         
-        if (bugBtn) {
-            bugBtn.onclick = () => {
-                window.open(BUG_BOT_URL, '_blank');
-            };
-        }
-        
-        // -------------------- NEW: WHATSAPP CHANNEL UPDATE BUTTON --------------------
-        const updateBtn = document.getElementById('whatsappUpdateBtn');
-        if (updateBtn) {
-            updateBtn.onclick = () => {
-                window.open(WHATSAPP_CHANNEL_URL, '_blank');
-            };
-        }
-        
-        // -------------------- SOCIAL BUTTONS (existing + any extra) --------------------
+        // ======================== SOCIAL LINKS HANDLER ========================
         document.querySelectorAll('.social-btn').forEach(btn => {
             const url = btn.getAttribute('data-url');
             if (url && url.trim() !== "") {
-                btn.onclick = () => window.open(url, '_blank');
+                btn.onclick = () => {
+                    window.open(url, '_blank');
+                };
             }
         });
         
-        // -------------------- LOGOUT FUNCTIONALITY --------------------
-        const logoutBtn = document.getElementById('logoutBtn');
-        if (logoutBtn) {
-            logoutBtn.onclick = () => {
+        // ======================== LOGOUT FUNCTIONALITY ========================
+        const logoutButton = document.getElementById('logoutBtn');
+        if (logoutButton) {
+            logoutButton.onclick = () => {
                 localStorage.removeItem('usama_subscribed');
+                // Redirect to subscription page
                 window.location.href = 'subscribe.html';
             };
         }
         
-        // -------------------- PREVENT BACK BUTTON AFTER LOGOUT (optional but safe) --------------------
+        // Prevent back button navigation after logout (enhances security)
         history.pushState(null, null, location.href);
         window.onpopstate = function() {
-            // If user tries to go back, force forward to stay on dashboard if still subscribed, but if subscription missing will redirect anyway.
-            // But we also want to avoid weird behaviors. Let's just check subscription again on popstate.
-            const savedSub = localStorage.getItem('usama_subscribed');
-            if (!savedSub) {
+            // If user presses back, check subscription again – redirects if needed
+            const subExists = localStorage.getItem('usama_subscribed');
+            if (!subExists) {
                 window.location.href = 'subscribe.html';
             } else {
-                try {
-                    const dataSub = JSON.parse(savedSub);
-                    if (!dataSub.verified || dataSub.expires <= Date.now()) {
-                        localStorage.removeItem('usama_subscribed');
-                        window.location.href = 'subscribe.html';
-                    } else {
-                        // stay on dashboard but push again
-                        history.pushState(null, null, location.href);
-                    }
-                } catch(e) {
-                    window.location.href = 'subscribe.html';
-                }
+                // Keep them on dashboard, push again to avoid loop
+                history.pushState(null, null, location.href);
             }
-            history.go(1);
         };
         
-        // small extra health: ensure the update button stands out and background link is correct
-        console.log("Dashboard ready — Updates button linked to WhatsApp channel");
+        // Optional: manual extra validation after small delay to prevent tampering
+        window.addEventListener('load', function() {
+            const verified = checkSubscription();   // double-check on load
+            if (!verified) return;
+            // set a small interval to relock? no, but ensure localStorage valid
+        });
     </script>
 </body>
 </html>
