@@ -2,299 +2,342 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Usama's Bot - Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>USAMA'S BUG BOT | DANGER ZONE DASHBOARD</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
             min-height: 100vh;
-            background: radial-gradient(circle at 10% 30%, #0a0f1e, #03050b);
-            font-family: 'Segoe UI', 'Tahoma', 'Geneva', 'Verdana', sans-serif;
-            padding: 20px;
+            background: radial-gradient(circle at 20% 10%, #0a0000, #020005);
+            font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+            padding: 16px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* DANGEROUS BACKGROUND OVERLAYS */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                repeating-linear-gradient(0deg, 
+                    rgba(255, 0, 0, 0.04) 0px, 
+                    rgba(255, 0, 0, 0.04) 2px,
+                    transparent 2px,
+                    transparent 8px),
+                radial-gradient(circle at 30% 20%, rgba(255, 30, 30, 0.12) 0%, transparent 55%),
+                radial-gradient(circle at 85% 70%, rgba(255, 50, 50, 0.08) 0%, transparent 60%);
+            pointer-events: none;
+            z-index: 0;
         }
 
         .container {
-            max-width: 1100px;
+            max-width: 800px;
             margin: 0 auto;
+            position: relative;
+            z-index: 2;
         }
 
+        /* MAIN CARD - DANGEROUS PREMIUM */
         .dashboard-card {
-            background: rgba(12, 18, 34, 0.85);
-            backdrop-filter: blur(12px);
-            border-radius: 40px;
-            padding: 45px 35px;
-            border: 1px solid rgba(90, 150, 255, 0.3);
-            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.4);
-            animation: slideUp 0.5s ease;
+            background: rgba(5, 5, 10, 0.92);
+            backdrop-filter: blur(16px);
+            border-radius: 44px;
+            padding: 32px 24px;
+            border: 1px solid rgba(255, 40, 40, 0.5);
+            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.7), 0 0 20px rgba(255, 0, 0, 0.2);
+            transition: all 0.2s;
         }
 
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
+        /* HEADER WITH SKULL & NAME */
         h1 {
-            font-size: 52px;
-            background: linear-gradient(135deg, #fff, #7B9EFF, #a855f7);
+            font-size: 2.6rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ff2a2a, #ff6a6a, #aa0000);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            margin-bottom: 10px;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+            font-family: 'Orbitron', 'Inter', monospace;
+            text-shadow: 0 0 8px rgba(255, 0, 0, 0.4);
         }
 
         .creator {
-            color: #aaa;
-            margin-bottom: 20px;
-            font-size: 18px;
+            color: #ff7777;
+            margin-bottom: 18px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            background: rgba(255, 0, 0, 0.1);
+            display: inline-block;
+            padding: 5px 16px;
+            border-radius: 60px;
+            backdrop-filter: blur(4px);
         }
 
         .creator i {
-            color: gold;
+            color: #ff4444;
         }
 
         hr {
-            width: 100px;
-            margin: 20px auto;
-            border: 2px solid #3b82f6;
+            width: 80px;
+            margin: 18px auto;
+            border: 2px solid #ff3333;
             border-radius: 10px;
+            background: #ff3333;
         }
 
         .tagline {
-            color: #bfcfff;
-            margin-bottom: 40px;
-            font-size: 16px;
+            color: #ffaaaa;
+            margin-bottom: 32px;
+            font-size: 0.85rem;
+            background: rgba(0,0,0,0.4);
+            display: inline-block;
+            padding: 6px 18px;
+            border-radius: 60px;
+            letter-spacing: 0.5px;
         }
 
-        /* MAIN BOT SECTION - SINGLE BOT */
-        .bot-section {
-            margin-bottom: 45px;
-        }
-
-        .section-title {
-            color: white;
-            font-size: 20px;
-            margin-bottom: 20px;
-            text-align: left;
-            border-left: 4px solid #3b82f6;
-            padding-left: 15px;
-        }
-
-        .bot-buttons {
-            display: flex;
-            gap: 25px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        /* Single bot button styling - full width elegance */
-        .single-bot-wrapper {
-            max-width: 550px;
-            margin: 0 auto;
-            width: 100%;
-        }
-
-        .bot-btn {
-            width: 100%;
-            border: none;
-            padding: 26px 30px;
+        /* TOGGLE MENU - SWITCH BETWEEN TWO SERVERS */
+        .toggle-menu {
+            background: rgba(0, 0, 0, 0.6);
             border-radius: 80px;
-            font-size: 24px;
-            font-weight: bold;
-            color: white;
+            display: flex;
+            padding: 6px;
+            margin-bottom: 28px;
+            border: 1px solid rgba(255, 60, 60, 0.4);
+            backdrop-filter: blur(12px);
+        }
+
+        .toggle-option {
+            flex: 1;
+            text-align: center;
+            padding: 14px 8px;
+            font-weight: 800;
+            font-size: 1.1rem;
+            border-radius: 60px;
             cursor: pointer;
-            transition: 0.3s;
+            transition: 0.2s;
+            color: #ffaaaa;
+            background: transparent;
+            letter-spacing: 1px;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 18px;
-            background: linear-gradient(135deg, #1e2a5e, #0f172f);
-            border: 1px solid rgba(59, 130, 246, 0.6);
-            box-shadow: 0 8px 24px rgba(59, 130, 246, 0.3);
+            gap: 10px;
         }
 
-        .bot-btn i {
-            font-size: 32px;
+        .toggle-option i {
+            font-size: 1.2rem;
         }
 
-        .bot-btn:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 18px 35px rgba(59, 130, 246, 0.5);
-            background: linear-gradient(135deg, #2a3b78, #1a2345);
+        .toggle-option.active {
+            background: linear-gradient(135deg, #cc0000, #660000);
+            color: white;
+            box-shadow: 0 0 12px rgba(255, 0, 0, 0.6);
+            border: 1px solid #ff6666;
         }
 
-        /* SOCIAL SECTION */
-        .social-section {
-            margin-bottom: 35px;
+        /* ACTION BUTTON - DANGEROUS RED */
+        .bot-action-btn {
+            width: 100%;
+            border: none;
+            padding: 28px 20px;
+            border-radius: 70px;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: white;
+            cursor: pointer;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            background: linear-gradient(135deg, #aa1111, #440000);
+            border: 1px solid rgba(255, 80, 80, 0.8);
+            box-shadow: 0 10px 28px rgba(180, 0, 0, 0.5);
+            font-family: 'Orbitron', monospace;
+        }
+
+        .bot-action-btn i {
+            font-size: 2.2rem;
+            filter: drop-shadow(0 0 4px red);
+        }
+
+        .bot-action-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 35px rgba(255, 0, 0, 0.6);
+            background: linear-gradient(135deg, #dd2222, #770000);
+        }
+
+        .bot-action-btn:active {
+            transform: translateY(2px);
+        }
+
+        .server-info {
+            text-align: center;
+            margin-top: 18px;
+            font-size: 0.75rem;
+            background: rgba(0,0,0,0.5);
+            padding: 6px 16px;
+            border-radius: 60px;
+            display: inline-block;
+            width: auto;
+            color: #ff8888;
+            border-left: 2px solid #ff4444;
+        }
+
+        .center-note {
+            text-align: center;
+            margin-top: 14px;
+        }
+
+        /* SOCIAL SECTION - DARK & DANGEROUS */
+        .section-title {
+            color: #ffbbbb;
+            font-size: 1.1rem;
+            margin: 24px 0 16px 0;
+            border-left: 4px solid #ff3333;
+            padding-left: 14px;
+            font-weight: 700;
         }
 
         .social-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 14px;
         }
 
         .social-btn {
-            background: rgba(20, 28, 48, 0.8);
-            padding: 18px 20px;
-            border-radius: 25px;
+            background: rgba(20, 8, 8, 0.85);
+            padding: 14px 18px;
+            border-radius: 28px;
             display: flex;
             align-items: center;
             gap: 18px;
             cursor: pointer;
-            transition: 0.3s;
-            border: 1px solid rgba(100, 150, 250, 0.2);
+            transition: 0.2s;
+            border: 1px solid rgba(255, 70, 70, 0.3);
+            backdrop-filter: blur(4px);
         }
 
         .social-btn:hover {
-            background: rgba(35, 45, 75, 0.95);
-            transform: translateX(5px);
+            background: rgba(80, 20, 20, 0.9);
+            transform: translateX(6px);
+            border-color: #ff5555;
         }
 
         .social-btn i {
-            font-size: 38px;
+            font-size: 2rem;
         }
 
         .social-info h4 {
-            color: white;
-            font-size: 16px;
-            margin-bottom: 5px;
+            color: #fff0f0;
+            font-size: 0.9rem;
+            margin-bottom: 4px;
         }
 
         .social-info p {
-            color: #aaa;
-            font-size: 12px;
-        }
-
-        /* CONTACT SECTION */
-        .contact-head {
-            margin: 35px 0 20px;
-            text-align: center;
+            color: #ffaaaa;
+            font-size: 0.7rem;
         }
 
         .contact-head span {
-            color: #b4c8ff;
-            background: rgba(0, 0, 0, 0.3);
-            padding: 8px 25px;
-            border-radius: 40px;
-            font-size: 16px;
+            color: #ffaaaa;
+            background: rgba(80, 0, 0, 0.6);
+            padding: 6px 20px;
+            border-radius: 60px;
+            font-size: 0.8rem;
+            font-weight: 600;
         }
 
-        /* STATUS BAR - updated */
+        /* STATUS BAR - AGGRESSIVE */
         .status-bar {
-            margin-top: 35px;
+            margin-top: 30px;
             display: flex;
             justify-content: center;
-            gap: 30px;
-            color: #6e84b5;
-            font-size: 13px;
+            gap: 18px;
+            color: #ff9999;
+            font-size: 0.7rem;
             flex-wrap: wrap;
-            padding: 15px;
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 50px;
+            padding: 14px 12px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 60px;
+            border: 1px solid #aa3333;
         }
 
         .green-dot {
             width: 10px;
             height: 10px;
-            background: #31c48d;
+            background: #ff3333;
             border-radius: 50%;
             display: inline-block;
-            animation: pulse 1.5s infinite;
-            margin-right: 5px;
+            animation: pulseRed 1.2s infinite;
+            margin-right: 6px;
+            box-shadow: 0 0 5px red;
         }
 
-        @keyframes pulse {
-
-            0%,
-            100% {
-                opacity: 0.5;
-                transform: scale(0.8);
-            }
-
-            50% {
-                opacity: 1;
-                transform: scale(1.2);
-            }
+        @keyframes pulseRed {
+            0%, 100% { opacity: 0.5; transform: scale(0.8); background: #ff0000; }
+            50% { opacity: 1; transform: scale(1.3); background: #ff6666; box-shadow: 0 0 10px red; }
         }
 
         footer {
-            margin-top: 35px;
+            margin-top: 28px;
             text-align: center;
-            color: #4e5b89;
-            font-size: 12px;
+            color: #aa6a6a;
+            font-size: 0.7rem;
         }
 
         .logout-btn {
-            margin-top: 25px;
-            background: rgba(255, 68, 68, 0.2);
-            border: 1px solid rgba(255, 68, 68, 0.3);
-            padding: 10px 25px;
-            border-radius: 30px;
-            color: #ff8888;
+            margin-top: 28px;
+            background: rgba(160, 20, 20, 0.25);
+            border: 1px solid rgba(255, 80, 80, 0.5);
+            padding: 10px 28px;
+            border-radius: 60px;
+            color: #ff9999;
             cursor: pointer;
-            font-size: 13px;
-            transition: 0.3s;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transition: 0.2s;
         }
 
         .logout-btn:hover {
-            background: rgba(255, 68, 68, 0.3);
+            background: rgba(200, 40, 40, 0.4);
+            color: #ffffff;
         }
 
-        /* Info badge for single bot */
-        .bot-info-note {
-            text-align: center;
-            margin-top: 16px;
-            color: #8d9ee0;
-            font-size: 13px;
-            background: rgba(0, 0, 0, 0.3);
-            display: inline-block;
-            width: auto;
-            padding: 6px 18px;
-            border-radius: 40px;
-            backdrop-filter: blur(4px);
-        }
-
-        .center-note {
-            text-align: center;
-            margin-top: 12px;
-        }
-
-        @media (max-width: 650px) {
+        @media (max-width: 550px) {
             .dashboard-card {
-                padding: 30px 20px;
+                padding: 24px 18px;
             }
-
             h1 {
-                font-size: 36px;
+                font-size: 1.9rem;
             }
-
-            .bot-btn {
-                padding: 18px 20px;
-                font-size: 18px;
+            .bot-action-btn {
+                padding: 20px 16px;
+                font-size: 1.3rem;
             }
-
-            .bot-btn i {
-                font-size: 26px;
+            .bot-action-btn i {
+                font-size: 1.6rem;
             }
-
-            .social-btn {
-                padding: 14px 16px;
+            .toggle-option {
+                font-size: 0.85rem;
+                padding: 10px 6px;
             }
-
-            .social-btn i {
-                font-size: 28px;
+            .toggle-option i {
+                font-size: 0.9rem;
             }
         }
     </style>
@@ -302,63 +345,69 @@
 <body>
     <div class="container">
         <div class="dashboard-card">
-            <h1>Usama's Bot</h1>
+            <h1><i class="fas fa-skull"></i> USAMA'S BUG BOT <i class="fas fa-bolt"></i></h1>
             <div class="creator">
-                <i class="fas fa-crown"></i> Created by USAMA <i class="fas fa-code"></i>
+                <i class="fas fa-crown"></i> Created by USAMA • DANGER ZONE
             </div>
             <hr>
             <div class="tagline">
-                <i class="fas fa-robot"></i> Elite Automation • Next Gen MD Bot
+                <i class="fas fa-radiation"></i> ELITE AUTOMATION • DARK PAIRING SYSTEM
             </div>
             
-            <!-- SINGLE MD BOT SERVER SECTION (REMOVED BUG BOT) -->
-            <div class="bot-section">
-                <div class="section-title">
-                    <i class="fas fa-terminal"></i> Active Server
+            <!-- TOGGLE MENU: MD BOT SERVER + BUG BOT SERVER -->
+            <div class="toggle-menu">
+                <div class="toggle-option" id="toggleMDBot">
+                    <i class="fas fa-terminal"></i> MD BOT
                 </div>
-                <div class="single-bot-wrapper">
-                    <button class="bot-btn" id="mdBotBtn">
-                        <i class="fas fa-server"></i> MD Bot Server
-                        <i class="fas fa-external-link-alt"></i>
-                    </button>
-                    <div class="center-note">
-                        <span class="bot-info-note"><i class="fas fa-globe"></i>  •  High Availability  •  Instant Access</span>
-                    </div>
+                <div class="toggle-option" id="toggleBugBot">
+                    <i class="fas fa-bug"></i> BUG BOT
                 </div>
             </div>
             
-            <!-- SOCIAL LINKS SECTION (COMMUNITY) -->
+            <!-- DYNAMIC BOT BUTTON (changes based on toggle) -->
+            <div class="single-bot-wrapper">
+                <button class="bot-action-btn" id="mainActionBtn">
+                    <i class="fas fa-skull-crossbones" id="actionIcon"></i> 
+                    <span id="actionText">MD Bot Server</span>
+                    <i class="fas fa-external-link-alt"></i>
+                </button>
+                <div class="center-note">
+                    <span class="server-info" id="serverInfoTag"><i class="fas fa-globe"></i> nodes.ravage.biz.id:2003 • Active</span>
+                </div>
+            </div>
+            
+            <!-- SOCIAL SECTION (COMMUNITY) - unchanged functionality -->
             <div class="social-section">
                 <div class="section-title">
-                    <i class="fas fa-users"></i> Community
+                    <i class="fab fa-battle-net"></i> UNDERGROUND COMMUNITY
                 </div>
                 <div class="social-grid">
                     <div class="social-btn" data-url="https://chat.whatsapp.com/GKdkT18LDXj4aikWCgo4pi">
-                        <i class="fab fa-whatsapp" style="color:#25D366;"></i>
+                        <i class="fab fa-whatsapp" style="color:#ff4444;"></i>
                         <div class="social-info">
-                            <h4>💬 WhatsApp Group</h4>
-                            <p>Join our tech community</p>
+                            <h4>💀 WhatsApp Group</h4>
+                            <p>Danger zone discussions</p>
                         </div>
                     </div>
                     <div class="social-btn" data-url="https://youtube.com/@botswithusama">
-                        <i class="fab fa-youtube" style="color:#FF0000;"></i>
+                        <i class="fab fa-youtube" style="color:#ff2a2a;"></i>
                         <div class="social-info">
                             <h4>📺 YouTube Channel</h4>
-                            <p>Tutorials & coding content</p>
+                            <p>Bot tricks & coding</p>
                         </div>
                     </div>
                     <div class="social-btn" data-url="https://t.me/UsamaCrash960">
-                        <i class="fab fa-telegram" style="color:#26A5E4;"></i>
+                        <i class="fab fa-telegram" style="color:#ff5555;"></i>
                         <div class="social-info">
                             <h4>📢 Telegram Group</h4>
-                            <p>Active discussions & support</p>
+                            <p>Active hackers & support</p>
                         </div>
                     </div>
                     <div class="social-btn" data-url="https://t.me/UsamaCrash">
-                        <i class="fab fa-telegram-plane" style="color:#26A5E4;"></i>
+                        <i class="fab fa-telegram-plane" style="color:#ff6666;"></i>
                         <div class="social-info">
-                            <h4>📢 Telegram Channel</h4>
-                            <p>Updates & announcements</p>
+                            <h4>⚡ Telegram Channel</h4>
+                            <p>Updates & leaks</p>
                         </div>
                     </div>
                 </div>
@@ -366,11 +415,11 @@
             
             <!-- DIRECT CONTACT SECTION -->
             <div class="contact-head">
-                <span><i class="fas fa-address-card"></i> DIRECT CONTACT</span>
+                <span><i class="fas fa-skull"></i> DIRECT CONTACT <i class="fas fa-skull"></i></span>
             </div>
             <div class="social-grid">
                 <div class="social-btn" data-url="https://t.me/UsamaDhuddi">
-                    <i class="fab fa-telegram" style="color:#34B7F1;"></i>
+                    <i class="fab fa-telegram" style="color:#ff3a3a;"></i>
                     <div class="social-info">
                         <h4>📲 Telegram Direct</h4>
                         <p>@UsamaDhuddi - Personal Contact</p>
@@ -378,31 +427,35 @@
                 </div>
             </div>
             
-            <!-- STATUS BAR (Only MD Bot info, healthy) -->
-            <div class="status-bar">
-                <span><i class="fas fa-server"></i> MD Bot : Port 2003</span>
-                <span><i class="fas fa-plug"></i> Endpoint : nodes.ravage.biz.id</span>
-                <span><span class="green-dot"></span> Server Status : Active</span>
-                <span><i class="fas fa-check-circle"></i> Subscribed ✓</span>
+            <!-- STATUS BAR - dynamic server status -->
+            <div class="status-bar" id="statusBar">
+                <span><i class="fas fa-server"></i> Active: <span id="activeServerName">MD Bot</span></span>
+                <span><i class="fas fa-plug"></i> Endpoint: <span id="endpointDisplay">nodes.ravage.biz.id:2003</span></span>
+                <span><span class="green-dot"></span> Server Status : DANGER ACTIVE</span>
+                <span><i class="fas fa-check-circle"></i> Premium Access ✓</span>
             </div>
             
             <footer>
-                <i class="fas fa-shield-alt"></i> secure connection • 24/7 active • MD Bot only
+                <i class="fas fa-skull-crossbones"></i> encrypted & dangerous • 24/7 rage mode • dual servers
             </footer>
             
             <div style="text-align: center;">
                 <button class="logout-btn" id="logoutBtn">
-                    <i class="fas fa-sign-out-alt"></i> Logout & Clear Access
+                    <i class="fas fa-sign-out-alt"></i> Logout & Clear Session
                 </button>
             </div>
         </div>
     </div>
 
     <script>
-        // ======================== UPDATED MD BOT URL =========================
-        const MD_BOT_URL = "http://nodes.ravage.biz.id:2003/";
+        // ======================== SERVER LINKS (EXACTLY AS GIVEN) =======================
+        const MD_BOT_URL = "http://nodes.ravage.biz.id:2003";
+        const BUG_BOT_URL = "http://nodes.ravage.biz.id:2004";
         
-        // ======================== SUBSCRIPTION CHECK =========================
+        // Current active server type: 'md' or 'bug'
+        let currentServer = 'md';   // default MD Bot
+        
+        // ======================== SUBSCRIPTION CHECK (SAME FUNCTIONALITY) =======================
         function checkSubscription() {
             const saved = localStorage.getItem('usama_subscribed');
             if (!saved) {
@@ -425,20 +478,87 @@
             }
         }
         
-        // Run subscription verification on load
-        checkSubscription();
+        // Run subscription verification on load (functionality 100% same)
+        if (!checkSubscription()) {
+            // This will redirect, but we break execution here
+            throw new Error("Redirect to subscribe");
+        }
         
-        // ======================== MD BOT BUTTON HANDLER ======================
-        const mdBtn = document.getElementById('mdBotBtn');
-        if (mdBtn) {
-            mdBtn.onclick = (e) => {
+        // ======================== UPDATE UI BASED ON TOGGLE =======================
+        const actionBtn = document.getElementById('mainActionBtn');
+        const actionTextSpan = document.getElementById('actionText');
+        const actionIcon = document.getElementById('actionIcon');
+        const serverInfoTag = document.getElementById('serverInfoTag');
+        const activeServerNameSpan = document.getElementById('activeServerName');
+        const endpointDisplaySpan = document.getElementById('endpointDisplay');
+        
+        function updateUIForServer() {
+            if (currentServer === 'md') {
+                // MD Bot configuration
+                actionTextSpan.innerText = 'MD Bot Server';
+                actionIcon.className = 'fas fa-terminal';
+                serverInfoTag.innerHTML = '<i class="fas fa-globe"></i> nodes.ravage.biz.id:2003 • High Availability';
+                activeServerNameSpan.innerText = 'MD Bot';
+                endpointDisplaySpan.innerText = 'nodes.ravage.biz.id:2003';
+                actionBtn.style.background = "linear-gradient(135deg, #aa1111, #440000)";
+            } else {
+                // Bug Bot configuration
+                actionTextSpan.innerText = 'BUG Bot Server';
+                actionIcon.className = 'fas fa-bug';
+                serverInfoTag.innerHTML = '<i class="fas fa-bug"></i> nodes.ravage.biz.id:2004 • Exploit Ready';
+                activeServerNameSpan.innerText = 'BUG Bot';
+                endpointDisplaySpan.innerText = 'nodes.ravage.biz.id:2004';
+                actionBtn.style.background = "linear-gradient(135deg, #cc2200, #5a0000)";
+            }
+            // add dangerous pulse effect on change (visual)
+            actionBtn.style.transform = 'scale(0.99)';
+            setTimeout(() => { actionBtn.style.transform = ''; }, 120);
+        }
+        
+        // Toggle event handlers
+        const toggleMd = document.getElementById('toggleMDBot');
+        const toggleBug = document.getElementById('toggleBugBot');
+        
+        function setActiveToggle(active) {
+            if (active === 'md') {
+                toggleMd.classList.add('active');
+                toggleBug.classList.remove('active');
+            } else {
+                toggleBug.classList.add('active');
+                toggleMd.classList.remove('active');
+            }
+        }
+        
+        toggleMd.onclick = () => {
+            if (currentServer === 'md') return;
+            currentServer = 'md';
+            setActiveToggle('md');
+            updateUIForServer();
+        };
+        
+        toggleBug.onclick = () => {
+            if (currentServer === 'bug') return;
+            currentServer = 'bug';
+            setActiveToggle('bug');
+            updateUIForServer();
+        };
+        
+        // ======================== MAIN BUTTON: OPEN CORRECT LINK =======================
+        if (actionBtn) {
+            actionBtn.onclick = (e) => {
                 e.preventDefault();
-                // Open the new MD Bot server link in a new tab
-                window.open(MD_BOT_URL, '_blank');
+                let targetUrl = '';
+                if (currentServer === 'md') {
+                    targetUrl = MD_BOT_URL;
+                } else {
+                    targetUrl = BUG_BOT_URL;
+                }
+                // Open the selected server link in a new tab (same behavior as original)
+                window.open(targetUrl, '_blank');
             };
         }
         
-        // ======================== SOCIAL LINKS HANDLER ========================
+        // ======================== SOCIAL LINKS HANDLER (exactly same logic) ========================
         document.querySelectorAll('.social-btn').forEach(btn => {
             const url = btn.getAttribute('data-url');
             if (url && url.trim() !== "") {
@@ -448,7 +568,7 @@
             }
         });
         
-        // ======================== LOGOUT FUNCTIONALITY ========================
+        // ======================== LOGOUT FUNCTIONALITY (SAME AS ORIGINAL) ========================
         const logoutButton = document.getElementById('logoutBtn');
         if (logoutButton) {
             logoutButton.onclick = () => {
@@ -458,25 +578,47 @@
             };
         }
         
-        // Prevent back button navigation after logout (enhances security)
+        // Prevent back button navigation after logout (enhances security - same as before)
         history.pushState(null, null, location.href);
         window.onpopstate = function() {
-            // If user presses back, check subscription again – redirects if needed
             const subExists = localStorage.getItem('usama_subscribed');
             if (!subExists) {
                 window.location.href = 'subscribe.html';
             } else {
-                // Keep them on dashboard, push again to avoid loop
                 history.pushState(null, null, location.href);
             }
         };
         
-        // Optional: manual extra validation after small delay to prevent tampering
+        // Additional validation on load (preserve original behavior)
         window.addEventListener('load', function() {
-            const verified = checkSubscription();   // double-check on load
-            if (!verified) return;
-            // set a small interval to relock? no, but ensure localStorage valid
+            // double-check subscription
+            if (!localStorage.getItem('usama_subscribed')) {
+                window.location.href = 'subscribe.html';
+                return;
+            }
+            // initialize toggle active state: default MD
+            setActiveToggle('md');
+            updateUIForServer();
         });
+        
+        // ensure that subscription check remains intact after any internal storage event
+        setInterval(() => {
+            const savedSub = localStorage.getItem('usama_subscribed');
+            if (!savedSub) {
+                window.location.href = 'subscribe.html';
+            } else {
+                try {
+                    const parsed = JSON.parse(savedSub);
+                    if (!parsed.verified || parsed.expires <= Date.now()) {
+                        localStorage.removeItem('usama_subscribed');
+                        window.location.href = 'subscribe.html';
+                    }
+                } catch(e) {
+                    localStorage.removeItem('usama_subscribed');
+                    window.location.href = 'subscribe.html';
+                }
+            }
+        }, 30000);
     </script>
 </body>
 </html>
