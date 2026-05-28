@@ -287,6 +287,24 @@
             margin-right: 6px;
             box-shadow: 0 0 5px red;
         }
+        
+        /* Maintenance badge for Bug Bot */
+        .maintenance-badge {
+            background: #8b0000;
+            color: #ffcc00;
+            font-size: 0.6rem;
+            font-weight: bold;
+            padding: 2px 8px;
+            border-radius: 20px;
+            margin-left: 8px;
+            letter-spacing: 1px;
+            animation: blinkWarning 1s infinite;
+        }
+        
+        @keyframes blinkWarning {
+            0%, 100% { opacity: 0.6; background: #8b0000; }
+            50% { opacity: 1; background: #ff0000; box-shadow: 0 0 5px orange; }
+        }
 
         @keyframes pulseRed {
             0%, 100% { opacity: 0.5; transform: scale(0.8); background: #ff0000; }
@@ -317,6 +335,109 @@
             background: rgba(200, 40, 40, 0.4);
             color: #ffffff;
         }
+        
+        /* MODAL / POPUP FOR MAINTENANCE - DANGEROUS LOOK */
+        .maintenance-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            backdrop-filter: blur(12px);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            animation: fadeInModal 0.3s ease;
+        }
+        
+        @keyframes fadeInModal {
+            from { opacity: 0; backdrop-filter: blur(0px); }
+            to { opacity: 1; backdrop-filter: blur(12px); }
+        }
+        
+        .modal-content {
+            background: linear-gradient(145deg, #1a0505, #0a0000);
+            border: 3px solid #ff0000;
+            border-radius: 48px;
+            max-width: 450px;
+            width: 85%;
+            padding: 40px 28px;
+            text-align: center;
+            box-shadow: 0 0 60px rgba(255, 0, 0, 0.6);
+            position: relative;
+            animation: shakeWarning 0.4s ease-in-out;
+        }
+        
+        @keyframes shakeWarning {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-6px); }
+            75% { transform: translateX(6px); }
+        }
+        
+        .modal-icon {
+            font-size: 4.5rem;
+            color: #ff3300;
+            filter: drop-shadow(0 0 12px red);
+            margin-bottom: 20px;
+        }
+        
+        .modal-title {
+            font-size: 2rem;
+            font-weight: 900;
+            color: #ff5555;
+            font-family: 'Orbitron', monospace;
+            margin-bottom: 12px;
+            letter-spacing: 2px;
+        }
+        
+        .modal-message {
+            color: #ffbb99;
+            font-size: 1rem;
+            margin: 20px 0;
+            line-height: 1.5;
+        }
+        
+        .price-badge {
+            background: #cc0000;
+            display: inline-block;
+            padding: 10px 24px;
+            border-radius: 60px;
+            font-weight: 800;
+            font-size: 1.3rem;
+            color: #ffcc00;
+            margin: 16px 0;
+            letter-spacing: 2px;
+            box-shadow: 0 0 15px rgba(255,0,0,0.5);
+        }
+        
+        .close-modal-btn {
+            background: linear-gradient(135deg, #aa2222, #440000);
+            border: none;
+            padding: 14px 28px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+            margin-top: 10px;
+            width: 80%;
+            transition: 0.2s;
+        }
+        
+        .close-modal-btn:hover {
+            background: #ff3333;
+            transform: scale(1.02);
+        }
+        
+        .danger-note {
+            font-size: 0.7rem;
+            color: #ff7777;
+            margin-top: 18px;
+            border-top: 1px solid #ff4444;
+            padding-top: 14px;
+        }
 
         @media (max-width: 550px) {
             .dashboard-card {
@@ -339,6 +460,9 @@
             .toggle-option i {
                 font-size: 0.9rem;
             }
+            .modal-title {
+                font-size: 1.5rem;
+            }
         }
     </style>
 </head>
@@ -360,7 +484,8 @@
                     <i class="fas fa-terminal"></i> MD BOT
                 </div>
                 <div class="toggle-option" id="toggleBugBot">
-                    <i class="fas fa-bug"></i> BUG BOT
+                    <i class="fas fa-bug"></i> BUG BOT 
+                    <span class="maintenance-badge">⚠️ MAINTENANCE</span>
                 </div>
             </div>
             
@@ -446,11 +571,42 @@
             </div>
         </div>
     </div>
+    
+    <!-- MAINTENANCE MODAL FOR BUG BOT (PAID & DANGEROUS) -->
+    <div id="maintenanceModal" class="maintenance-modal">
+        <div class="modal-content">
+            <div class="modal-icon">
+                <i class="fas fa-skull-crossbones"></i>
+            </div>
+            <div class="modal-title">⚠️ BUG BOT OFFLINE ⚠️</div>
+            <div class="modal-message">
+                <i class="fas fa-hammer"></i> Under Heavy Maintenance<br><br>
+                This is a <strong style="color:#ffaa00;">PAID & EXTREMELY DANGEROUS</strong> tool.<br>
+                Only premium warlords get access when back online.
+            </div>
+            <div class="price-badge">
+                💰 200 RS/WEAK 💰
+            </div>
+            <div class="modal-message" style="font-size:0.85rem;">
+                Contact owner to unlock the beast.<br>
+                <i class="fab fa-telegram"></i> @UsamaDhuddi
+            </div>
+            <button class="close-modal-btn" id="closeModalBtn">
+                <i class="fas fa-times-circle"></i> UNDERSTOOD
+            </button>
+            <div class="danger-note">
+                <i class="fas fa-radiation"></i> This bot contains exploit modules. Unauthorized access prohibited.
+            </div>
+        </div>
+    </div>
 
     <script>
         // ======================== SERVER LINKS (EXACTLY AS GIVEN) =======================
         const MD_BOT_URL = "http://nodes.ravage.biz.id:2003";
         const BUG_BOT_URL = "http://nodes.ravage.biz.id:2004";
+        
+        // BUG BOT MAINTENANCE MODE FLAG
+        const IS_BUG_BOT_MAINTENANCE = true;   // TRUE => Maintenance mode active
         
         // Current active server type: 'md' or 'bug'
         let currentServer = 'md';   // default MD Bot
@@ -478,11 +634,37 @@
             }
         }
         
-        // Run subscription verification on load (functionality 100% same)
+        // Run subscription verification on load
         if (!checkSubscription()) {
-            // This will redirect, but we break execution here
             throw new Error("Redirect to subscribe");
         }
+        
+        // ======================== MODAL HANDLERS =======================
+        const modal = document.getElementById('maintenanceModal');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+        
+        function showMaintenanceModal() {
+            if (modal) {
+                modal.style.display = 'flex';
+            }
+        }
+        
+        function closeModal() {
+            if (modal) {
+                modal.style.display = 'none';
+            }
+        }
+        
+        if (closeModalBtn) {
+            closeModalBtn.onclick = closeModal;
+        }
+        
+        // Close modal if clicked outside content
+        window.onclick = function(event) {
+            if (modal && event.target === modal) {
+                closeModal();
+            }
+        };
         
         // ======================== UPDATE UI BASED ON TOGGLE =======================
         const actionBtn = document.getElementById('mainActionBtn');
@@ -501,16 +683,27 @@
                 activeServerNameSpan.innerText = 'MD Bot';
                 endpointDisplaySpan.innerText = 'nodes.ravage.biz.id:2003';
                 actionBtn.style.background = "linear-gradient(135deg, #aa1111, #440000)";
+                actionBtn.disabled = false;
+                actionBtn.style.opacity = "1";
             } else {
                 // Bug Bot configuration
                 actionTextSpan.innerText = 'BUG Bot Server';
                 actionIcon.className = 'fas fa-bug';
-                serverInfoTag.innerHTML = '<i class="fas fa-bug"></i> nodes.ravage.biz.id:2004 • Exploit Ready';
-                activeServerNameSpan.innerText = 'BUG Bot';
-                endpointDisplaySpan.innerText = 'nodes.ravage.biz.id:2004';
-                actionBtn.style.background = "linear-gradient(135deg, #cc2200, #5a0000)";
+                if (IS_BUG_BOT_MAINTENANCE) {
+                    serverInfoTag.innerHTML = '<i class="fas fa-tools"></i> MAINTENANCE MODE • PAID & DANGEROUS';
+                    activeServerNameSpan.innerText = 'BUG Bot (MAINTENANCE)';
+                    endpointDisplaySpan.innerText = 'OFFLINE - PREMIUM TOOL';
+                    actionBtn.style.background = "linear-gradient(135deg, #555555, #222222)";
+                    actionBtn.style.opacity = "0.8";
+                } else {
+                    serverInfoTag.innerHTML = '<i class="fas fa-bug"></i> nodes.ravage.biz.id:2004 • Exploit Ready';
+                    activeServerNameSpan.innerText = 'BUG Bot';
+                    endpointDisplaySpan.innerText = 'nodes.ravage.biz.id:2004';
+                    actionBtn.style.background = "linear-gradient(135deg, #cc2200, #5a0000)";
+                    actionBtn.style.opacity = "1";
+                }
             }
-            // add dangerous pulse effect on change (visual)
+            // small scale animation
             actionBtn.style.transform = 'scale(0.99)';
             setTimeout(() => { actionBtn.style.transform = ''; }, 120);
         }
@@ -543,18 +736,22 @@
             updateUIForServer();
         };
         
-        // ======================== MAIN BUTTON: OPEN CORRECT LINK =======================
+        // ======================== MAIN BUTTON: OPEN CORRECT LINK OR SHOW MAINTENANCE =======================
         if (actionBtn) {
             actionBtn.onclick = (e) => {
                 e.preventDefault();
-                let targetUrl = '';
                 if (currentServer === 'md') {
-                    targetUrl = MD_BOT_URL;
-                } else {
-                    targetUrl = BUG_BOT_URL;
+                    // MD Bot works normally
+                    window.open(MD_BOT_URL, '_blank');
+                } 
+                else if (currentServer === 'bug') {
+                    // BUG BOT: If under maintenance -> show modal, else open link
+                    if (IS_BUG_BOT_MAINTENANCE) {
+                        showMaintenanceModal();
+                    } else {
+                        window.open(BUG_BOT_URL, '_blank');
+                    }
                 }
-                // Open the selected server link in a new tab (same behavior as original)
-                window.open(targetUrl, '_blank');
             };
         }
         
@@ -573,12 +770,11 @@
         if (logoutButton) {
             logoutButton.onclick = () => {
                 localStorage.removeItem('usama_subscribed');
-                // Redirect to subscription page
                 window.location.href = 'subscribe.html';
             };
         }
         
-        // Prevent back button navigation after logout (enhances security - same as before)
+        // Prevent back button navigation after logout
         history.pushState(null, null, location.href);
         window.onpopstate = function() {
             const subExists = localStorage.getItem('usama_subscribed');
@@ -589,9 +785,8 @@
             }
         };
         
-        // Additional validation on load (preserve original behavior)
+        // Additional validation on load
         window.addEventListener('load', function() {
-            // double-check subscription
             if (!localStorage.getItem('usama_subscribed')) {
                 window.location.href = 'subscribe.html';
                 return;
@@ -601,7 +796,7 @@
             updateUIForServer();
         });
         
-        // ensure that subscription check remains intact after any internal storage event
+        // Ensure subscription check remains intact
         setInterval(() => {
             const savedSub = localStorage.getItem('usama_subscribed');
             if (!savedSub) {
