@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
-    <title>USAMA'S BUG BOT | DANGER ZONE DASHBOARD</title>
+    <title>USAMA's BOTS | Dual Server Dashboard</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
@@ -13,33 +13,14 @@
             -webkit-tap-highlight-color: transparent;
         }
 
+        /* ===== GLOBAL ===== */
         body {
             min-height: 100vh;
-            background: radial-gradient(circle at 20% 10%, #0a0000, #020005);
+            background: radial-gradient(circle at 20% 10%, #0a0a0f, #000000);
             font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
             padding: 16px;
             position: relative;
             overflow-x: hidden;
-        }
-
-        /* DANGEROUS BACKGROUND OVERLAYS */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                repeating-linear-gradient(0deg, 
-                    rgba(255, 0, 0, 0.04) 0px, 
-                    rgba(255, 0, 0, 0.04) 2px,
-                    transparent 2px,
-                    transparent 8px),
-                radial-gradient(circle at 30% 20%, rgba(255, 30, 30, 0.12) 0%, transparent 55%),
-                radial-gradient(circle at 85% 70%, rgba(255, 50, 50, 0.08) 0%, transparent 60%);
-            pointer-events: none;
-            z-index: 0;
         }
 
         .container {
@@ -49,46 +30,46 @@
             z-index: 2;
         }
 
-        /* MAIN CARD - DANGEROUS PREMIUM */
+        /* ===== DASHBOARD CARD ===== */
         .dashboard-card {
-            background: rgba(5, 5, 10, 0.92);
+            background: rgba(10, 10, 15, 0.92);
             backdrop-filter: blur(16px);
             border-radius: 44px;
             padding: 32px 24px;
-            border: 1px solid rgba(255, 40, 40, 0.5);
-            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.7), 0 0 20px rgba(255, 0, 0, 0.2);
-            transition: all 0.2s;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.7);
+            transition: all 0.3s ease;
         }
 
-        /* HEADER WITH SKULL & NAME */
+        /* ===== HEADER ===== */
         h1 {
             font-size: 2.6rem;
             font-weight: 900;
-            background: linear-gradient(135deg, #ff2a2a, #ff6a6a, #aa0000);
+            background: linear-gradient(135deg, #ffffff, #aaaaaa);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
             letter-spacing: -0.5px;
             margin-bottom: 8px;
-            font-family: 'Orbitron', 'Inter', monospace;
-            text-shadow: 0 0 8px rgba(255, 0, 0, 0.4);
+            font-family: 'Inter', sans-serif;
+        }
+        h1 i {
+            color: #ff4444;
+            -webkit-text-fill-color: #ff4444;
         }
 
         .creator {
-            color: #ff7777;
+            color: #8888aa;
             margin-bottom: 18px;
             font-size: 0.9rem;
             font-weight: 600;
-            background: rgba(255, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.05);
             display: inline-block;
             padding: 5px 16px;
             border-radius: 60px;
             backdrop-filter: blur(4px);
         }
-
-        .creator i {
-            color: #ff4444;
-        }
+        .creator i { color: #ff6666; }
 
         hr {
             width: 80px;
@@ -99,7 +80,7 @@
         }
 
         .tagline {
-            color: #ffaaaa;
+            color: #99aabb;
             margin-bottom: 32px;
             font-size: 0.85rem;
             background: rgba(0,0,0,0.4);
@@ -109,14 +90,14 @@
             letter-spacing: 0.5px;
         }
 
-        /* TOGGLE MENU - SWITCH BETWEEN TWO SERVERS */
+        /* ===== TOGGLE MENU ===== */
         .toggle-menu {
-            background: rgba(0, 0, 0, 0.6);
+            background: rgba(20, 20, 30, 0.8);
             border-radius: 80px;
             display: flex;
             padding: 6px;
             margin-bottom: 28px;
-            border: 1px solid rgba(255, 60, 60, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(12px);
         }
 
@@ -128,8 +109,8 @@
             font-size: 1.1rem;
             border-radius: 60px;
             cursor: pointer;
-            transition: 0.2s;
-            color: #ffaaaa;
+            transition: all 0.2s ease;
+            color: #8899aa;
             background: transparent;
             letter-spacing: 1px;
             display: flex;
@@ -137,19 +118,25 @@
             justify-content: center;
             gap: 10px;
         }
+        .toggle-option i { font-size: 1.2rem; }
 
-        .toggle-option i {
-            font-size: 1.2rem;
+        /* MD Active (Professional White/Blue) */
+        .toggle-option.md-active {
+            background: linear-gradient(135deg, #f0f2f5, #ffffff);
+            color: #1a1a1e;
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
-        .toggle-option.active {
-            background: linear-gradient(135deg, #cc0000, #660000);
-            color: white;
-            box-shadow: 0 0 12px rgba(255, 0, 0, 0.6);
-            border: 1px solid #ff6666;
+        /* Bug Active (Dangerous Red) */
+        .toggle-option.bug-active {
+            background: linear-gradient(135deg, #8B0000, #CC0000);
+            color: #ffffff;
+            box-shadow: 0 0 25px rgba(255, 0, 0, 0.4);
+            border: 1px solid #ff4444;
         }
 
-        /* ACTION BUTTON - DANGEROUS RED */
+        /* ===== ACTION BUTTON (Dynamic) ===== */
         .bot-action-btn {
             width: 100%;
             border: none;
@@ -159,30 +146,54 @@
             font-weight: 800;
             color: white;
             cursor: pointer;
-            transition: 0.2s;
+            transition: all 0.25s ease;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 20px;
-            background: linear-gradient(135deg, #aa1111, #440000);
-            border: 1px solid rgba(255, 80, 80, 0.8);
-            box-shadow: 0 10px 28px rgba(180, 0, 0, 0.5);
-            font-family: 'Orbitron', monospace;
+            font-family: 'Inter', sans-serif;
+            position: relative;
+            overflow: hidden;
         }
 
-        .bot-action-btn i {
-            font-size: 2.2rem;
-            filter: drop-shadow(0 0 4px red);
+        /* MD Button Style (Professional) */
+        .bot-action-btn.md-style {
+            background: linear-gradient(135deg, #3a3a3e, #1c1c1e);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            color: #f0f0f0;
+        }
+        .bot-action-btn.md-style:hover {
+            transform: translateY(-4px) scale(1.01);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+        .bot-action-btn.md-style:active {
+            transform: scale(0.98);
+        }
+        .bot-action-btn.md-style i {
+            color: #66aaff;
+            filter: drop-shadow(0 0 6px rgba(100, 170, 255, 0.3));
         }
 
-        .bot-action-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 35px rgba(255, 0, 0, 0.6);
-            background: linear-gradient(135deg, #dd2222, #770000);
+        /* Bug Button Style (Dangerous - No animations) */
+        .bot-action-btn.bug-style {
+            background: linear-gradient(135deg, #8B0000, #FF0000);
+            border: 2px solid #ff4444;
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.3);
+            color: #ffffff;
+            text-shadow: 0 0 8px rgba(0,0,0,0.5);
         }
-
-        .bot-action-btn:active {
-            transform: translateY(2px);
+        .bot-action-btn.bug-style i {
+            color: #ffffff;
+            filter: drop-shadow(0 0 8px #ff0000);
+        }
+        /* NO hover effects for bug, NO animations */
+        .bot-action-btn.bug-style:hover {
+            /* intentionally empty - static */
+        }
+        .bot-action-btn.bug-style:active {
+            transform: scale(0.97);
         }
 
         .server-info {
@@ -194,18 +205,19 @@
             border-radius: 60px;
             display: inline-block;
             width: auto;
+            color: #99aabb;
+        }
+        .server-info.danger {
             color: #ff8888;
             border-left: 2px solid #ff4444;
+            background: rgba(40, 0, 0, 0.6);
         }
 
-        .center-note {
-            text-align: center;
-            margin-top: 14px;
-        }
+        .center-note { text-align: center; margin-top: 14px; }
 
-        /* SOCIAL SECTION - DARK & DANGEROUS */
+        /* ===== SOCIAL SECTION ===== */
         .section-title {
-            color: #ffbbbb;
+            color: #ccddee;
             font-size: 1.1rem;
             margin: 24px 0 16px 0;
             border-left: 4px solid #ff3333;
@@ -220,291 +232,143 @@
         }
 
         .social-btn {
-            background: rgba(20, 8, 8, 0.85);
+            background: rgba(20, 20, 30, 0.85);
             padding: 14px 18px;
             border-radius: 28px;
             display: flex;
             align-items: center;
             gap: 18px;
             cursor: pointer;
-            transition: 0.2s;
-            border: 1px solid rgba(255, 70, 70, 0.3);
+            transition: all 0.2s ease;
+            border: 1px solid rgba(255, 255, 255, 0.06);
             backdrop-filter: blur(4px);
         }
-
         .social-btn:hover {
-            background: rgba(80, 20, 20, 0.9);
+            background: rgba(40, 40, 55, 0.9);
             transform: translateX(6px);
             border-color: #ff5555;
         }
-
-        .social-btn i {
-            font-size: 2rem;
-        }
-
-        .social-info h4 {
-            color: #fff0f0;
-            font-size: 0.9rem;
-            margin-bottom: 4px;
-        }
-
-        .social-info p {
-            color: #ffaaaa;
-            font-size: 0.7rem;
-        }
+        .social-btn i { font-size: 2rem; }
+        .social-info h4 { color: #f0f0f5; font-size: 0.9rem; margin-bottom: 4px; }
+        .social-info p { color: #99aabb; font-size: 0.7rem; }
 
         .contact-head span {
-            color: #ffaaaa;
-            background: rgba(80, 0, 0, 0.6);
+            color: #ccddee;
+            background: rgba(40, 0, 0, 0.4);
             padding: 6px 20px;
             border-radius: 60px;
             font-size: 0.8rem;
             font-weight: 600;
         }
 
-        /* STATUS BAR - AGGRESSIVE */
+        /* ===== STATUS BAR ===== */
         .status-bar {
             margin-top: 30px;
             display: flex;
             justify-content: center;
             gap: 18px;
-            color: #ff9999;
+            color: #99aabb;
             font-size: 0.7rem;
             flex-wrap: wrap;
             padding: 14px 12px;
             background: rgba(0, 0, 0, 0.5);
             border-radius: 60px;
-            border: 1px solid #aa3333;
+            border: 1px solid #2a2a3a;
+            transition: all 0.3s ease;
         }
-
-        .green-dot {
+        .status-bar.danger-status {
+            border-color: #8B0000;
+            background: rgba(20, 0, 0, 0.7);
+            color: #ffaaaa;
+        }
+        .status-dot {
             width: 10px;
             height: 10px;
-            background: #ff3333;
             border-radius: 50%;
             display: inline-block;
-            animation: pulseRed 1.2s infinite;
             margin-right: 6px;
-            box-shadow: 0 0 5px red;
         }
-        
-        /* Maintenance badge for Bug Bot */
-        .maintenance-badge {
-            background: #8b0000;
-            color: #ffcc00;
-            font-size: 0.6rem;
-            font-weight: bold;
-            padding: 2px 8px;
-            border-radius: 20px;
-            margin-left: 8px;
-            letter-spacing: 1px;
-            animation: blinkWarning 1s infinite;
-        }
-        
-        @keyframes blinkWarning {
-            0%, 100% { opacity: 0.6; background: #8b0000; }
-            50% { opacity: 1; background: #ff0000; box-shadow: 0 0 5px orange; }
-        }
+        .dot-md { background: #44cc88; box-shadow: 0 0 8px rgba(68, 204, 136, 0.5); animation: pulseGreen 1.5s infinite; }
+        .dot-bug { background: #ff0000; box-shadow: 0 0 10px #ff0000; /* Static */ }
 
-        @keyframes pulseRed {
-            0%, 100% { opacity: 0.5; transform: scale(0.8); background: #ff0000; }
-            50% { opacity: 1; transform: scale(1.3); background: #ff6666; box-shadow: 0 0 10px red; }
+        @keyframes pulseGreen {
+            0%, 100% { opacity: 0.6; transform: scale(0.9); }
+            50% { opacity: 1; transform: scale(1.2); box-shadow: 0 0 12px #44cc88; }
         }
 
         footer {
             margin-top: 28px;
             text-align: center;
-            color: #aa6a6a;
+            color: #556677;
             font-size: 0.7rem;
         }
 
         .logout-btn {
             margin-top: 28px;
-            background: rgba(160, 20, 20, 0.25);
-            border: 1px solid rgba(255, 80, 80, 0.5);
+            background: rgba(60, 60, 80, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             padding: 10px 28px;
             border-radius: 60px;
-            color: #ff9999;
+            color: #99aabb;
             cursor: pointer;
             font-size: 0.8rem;
             font-weight: 600;
             transition: 0.2s;
         }
-
         .logout-btn:hover {
-            background: rgba(200, 40, 40, 0.4);
+            background: rgba(200, 40, 40, 0.3);
             color: #ffffff;
-        }
-        
-        /* MODAL / POPUP FOR MAINTENANCE - DANGEROUS LOOK */
-        .maintenance-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.95);
-            backdrop-filter: blur(12px);
-            z-index: 9999;
-            justify-content: center;
-            align-items: center;
-            animation: fadeInModal 0.3s ease;
-        }
-        
-        @keyframes fadeInModal {
-            from { opacity: 0; backdrop-filter: blur(0px); }
-            to { opacity: 1; backdrop-filter: blur(12px); }
-        }
-        
-        .modal-content {
-            background: linear-gradient(145deg, #1a0505, #0a0000);
-            border: 3px solid #ff0000;
-            border-radius: 48px;
-            max-width: 450px;
-            width: 85%;
-            padding: 40px 28px;
-            text-align: center;
-            box-shadow: 0 0 60px rgba(255, 0, 0, 0.6);
-            position: relative;
-            animation: shakeWarning 0.4s ease-in-out;
-        }
-        
-        @keyframes shakeWarning {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-6px); }
-            75% { transform: translateX(6px); }
-        }
-        
-        .modal-icon {
-            font-size: 4.5rem;
-            color: #ff3300;
-            filter: drop-shadow(0 0 12px red);
-            margin-bottom: 20px;
-        }
-        
-        .modal-title {
-            font-size: 2rem;
-            font-weight: 900;
-            color: #ff5555;
-            font-family: 'Orbitron', monospace;
-            margin-bottom: 12px;
-            letter-spacing: 2px;
-        }
-        
-        .modal-message {
-            color: #ffbb99;
-            font-size: 1rem;
-            margin: 20px 0;
-            line-height: 1.5;
-        }
-        
-        .price-badge {
-            background: #cc0000;
-            display: inline-block;
-            padding: 10px 24px;
-            border-radius: 60px;
-            font-weight: 800;
-            font-size: 1.3rem;
-            color: #ffcc00;
-            margin: 16px 0;
-            letter-spacing: 2px;
-            box-shadow: 0 0 15px rgba(255,0,0,0.5);
-        }
-        
-        .close-modal-btn {
-            background: linear-gradient(135deg, #aa2222, #440000);
-            border: none;
-            padding: 14px 28px;
-            border-radius: 50px;
-            font-size: 1rem;
-            font-weight: bold;
-            color: white;
-            cursor: pointer;
-            margin-top: 10px;
-            width: 80%;
-            transition: 0.2s;
-        }
-        
-        .close-modal-btn:hover {
-            background: #ff3333;
-            transform: scale(1.02);
-        }
-        
-        .danger-note {
-            font-size: 0.7rem;
-            color: #ff7777;
-            margin-top: 18px;
-            border-top: 1px solid #ff4444;
-            padding-top: 14px;
         }
 
         @media (max-width: 550px) {
-            .dashboard-card {
-                padding: 24px 18px;
-            }
-            h1 {
-                font-size: 1.9rem;
-            }
-            .bot-action-btn {
-                padding: 20px 16px;
-                font-size: 1.3rem;
-            }
-            .bot-action-btn i {
-                font-size: 1.6rem;
-            }
-            .toggle-option {
-                font-size: 0.85rem;
-                padding: 10px 6px;
-            }
-            .toggle-option i {
-                font-size: 0.9rem;
-            }
-            .modal-title {
-                font-size: 1.5rem;
-            }
+            .dashboard-card { padding: 24px 18px; }
+            h1 { font-size: 1.9rem; }
+            .bot-action-btn { padding: 20px 16px; font-size: 1.3rem; }
+            .bot-action-btn i { font-size: 1.6rem; }
+            .toggle-option { font-size: 0.85rem; padding: 10px 6px; }
+            .toggle-option i { font-size: 0.9rem; }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="dashboard-card">
-            <h1><i class="fas fa-skull"></i> USAMA'S BUG BOT <i class="fas fa-bolt"></i></h1>
+            <!-- HEADER -->
+            <h1><i class="fas fa-skull"></i> USAMA'S BOTS <i class="fas fa-bolt"></i></h1>
             <div class="creator">
-                <i class="fas fa-crown"></i> Created by USAMA • DANGER ZONE
+                <i class="fas fa-crown"></i> Created by USAMA • Dual Server System
             </div>
             <hr>
             <div class="tagline">
-                <i class="fas fa-radiation"></i> ELITE AUTOMATION • DARK PAIRING SYSTEM
+                <i class="fas fa-robot"></i> ELITE AUTOMATION • PROFESSIONAL & DANGEROUS
             </div>
             
-            <!-- TOGGLE MENU: MD BOT SERVER + BUG BOT SERVER -->
+            <!-- TOGGLE MENU -->
             <div class="toggle-menu">
-                <div class="toggle-option" id="toggleMDBot">
+                <div class="toggle-option md-active" id="toggleMDBot">
                     <i class="fas fa-terminal"></i> MD BOT
                 </div>
                 <div class="toggle-option" id="toggleBugBot">
-                    <i class="fas fa-bug"></i> BUG BOT 
-                    <span class="maintenance-badge">⚠️ MAINTENANCE</span>
+                    <i class="fas fa-skull-crossbones"></i> BUG BOT
                 </div>
             </div>
             
-            <!-- DYNAMIC BOT BUTTON (changes based on toggle) -->
+            <!-- DYNAMIC BOT BUTTON -->
             <div class="single-bot-wrapper">
-                <button class="bot-action-btn" id="mainActionBtn">
-                    <i class="fas fa-skull-crossbones" id="actionIcon"></i> 
+                <button class="bot-action-btn md-style" id="mainActionBtn">
+                    <i class="fas fa-server" id="actionIcon"></i> 
                     <span id="actionText">MD Bot Server</span>
                     <i class="fas fa-external-link-alt"></i>
                 </button>
                 <div class="center-note">
-                    <span class="server-info" id="serverInfoTag"><i class="fas fa-globe"></i> nodes.ravage.biz.id:2005 • Active</span>
+                    <span class="server-info" id="serverInfoTag"><i class="fas fa-globe"></i> nodee.ravagee.tech:2005 • Active</span>
                 </div>
             </div>
             
-            <!-- SOCIAL SECTION (COMMUNITY) - unchanged functionality -->
+            <!-- SOCIAL SECTION -->
             <div class="social-section">
                 <div class="section-title">
-                    <i class="fab fa-battle-net"></i> UNDERGROUND COMMUNITY
+                    <i class="fab fa-battle-net"></i> COMMUNITY
                 </div>
                 <div class="social-grid">
                     <div class="social-btn" data-url="https://chat.whatsapp.com/GKdkT18LDXj4aikWCgo4pi">
@@ -538,7 +402,7 @@
                 </div>
             </div>
             
-            <!-- DIRECT CONTACT SECTION -->
+            <!-- DIRECT CONTACT -->
             <div class="contact-head">
                 <span><i class="fas fa-skull"></i> DIRECT CONTACT <i class="fas fa-skull"></i></span>
             </div>
@@ -552,16 +416,16 @@
                 </div>
             </div>
             
-            <!-- STATUS BAR - dynamic server status -->
+            <!-- STATUS BAR -->
             <div class="status-bar" id="statusBar">
                 <span><i class="fas fa-server"></i> Active: <span id="activeServerName">MD Bot</span></span>
-                <span><i class="fas fa-plug"></i> Endpoint: <span id="endpointDisplay">nodes.ravage.biz.id:2003</span></span>
-                <span><span class="green-dot"></span> Server Status : DANGER ACTIVE</span>
+                <span><i class="fas fa-plug"></i> Endpoint: <span id="endpointDisplay">nodee.ravagee.tech:2005</span></span>
+                <span><span class="status-dot dot-md" id="statusDot"></span> Server Status : <span id="statusLabel">Active</span></span>
                 <span><i class="fas fa-check-circle"></i> Premium Access ✓</span>
             </div>
             
             <footer>
-                <i class="fas fa-skull-crossbones"></i> encrypted & dangerous • 24/7 rage mode • dual servers
+                <i class="fas fa-shield-alt"></i> secured & premium • 24/7 • dual servers
             </footer>
             
             <div style="text-align: center;">
@@ -571,54 +435,25 @@
             </div>
         </div>
     </div>
-    
-    <!-- MAINTENANCE MODAL FOR BUG BOT (PAID & DANGEROUS) -->
-    <div id="maintenanceModal" class="maintenance-modal">
-        <div class="modal-content">
-            <div class="modal-icon">
-                <i class="fas fa-skull-crossbones"></i>
-            </div>
-            <div class="modal-title">⚠️ BUG BOT OFFLINE ⚠️</div>
-            <div class="modal-message">
-                <i class="fas fa-hammer"></i> Under Heavy Maintenance<br><br>
-                This is a <strong style="color:#ffaa00;">PAID & EXTREMELY DANGEROUS</strong> tool.<br>
-                Only premium warlords get access when back online.
-            </div>
-            <div class="price-badge">
-                💰 200 RS/WEAK 💰
-            </div>
-            <div class="modal-message" style="font-size:0.85rem;">
-                Contact owner to unlock the beast.<br>
-                <i class="fab fa-telegram"></i> @UsamaDhuddi
-            </div>
-            <button class="close-modal-btn" id="closeModalBtn">
-                <i class="fas fa-times-circle"></i> UNDERSTOOD
-            </button>
-            <div class="danger-note">
-                <i class="fas fa-radiation"></i> This bot contains exploit modules. Unauthorized access prohibited.
-            </div>
-        </div>
-    </div>
 
     <script>
-        // ======================== SERVER LINKS (EXACTLY AS GIVEN) =======================
-        const MD_BOT_URL = "http://nodes.ravage.biz.id:2005";
-        const BUG_BOT_URL = "http://nodes.ravage.biz.id:2004";
-        
-        // BUG BOT MAINTENANCE MODE FLAG
-        const IS_BUG_BOT_MAINTENANCE = true;   // TRUE => Maintenance mode active
-        
-        // Current active server type: 'md' or 'bug'
-        let currentServer = 'md';   // default MD Bot
-        
-        // ======================== SUBSCRIPTION CHECK (SAME FUNCTIONALITY) =======================
+        // ============================================================
+        //  🔥 SET YOUR URLS HERE (EASY TO CHANGE) 🔥
+        // ============================================================
+        const MD_BOT_URL = "http://nodee.ravagee.tech:2005/";
+        const BUG_BOT_URL = "http://nodee.ravagee.tech:2003/";
+        // ============================================================
+
+        // Current active server: 'md' or 'bug'
+        let currentServer = 'md';
+
+        // ======================== SUBSCRIPTION CHECK ========================
         function checkSubscription() {
             const saved = localStorage.getItem('usama_subscribed');
             if (!saved) {
                 window.location.href = 'subscribe.html';
                 return false;
             }
-            
             try {
                 const data = JSON.parse(saved);
                 if (data.verified && data.expires > Date.now()) {
@@ -633,139 +468,102 @@
                 return false;
             }
         }
-        
-        // Run subscription verification on load
-        if (!checkSubscription()) {
-            throw new Error("Redirect to subscribe");
-        }
-        
-        // ======================== MODAL HANDLERS =======================
-        const modal = document.getElementById('maintenanceModal');
-        const closeModalBtn = document.getElementById('closeModalBtn');
-        
-        function showMaintenanceModal() {
-            if (modal) {
-                modal.style.display = 'flex';
-            }
-        }
-        
-        function closeModal() {
-            if (modal) {
-                modal.style.display = 'none';
-            }
-        }
-        
-        if (closeModalBtn) {
-            closeModalBtn.onclick = closeModal;
-        }
-        
-        // Close modal if clicked outside content
-        window.onclick = function(event) {
-            if (modal && event.target === modal) {
-                closeModal();
-            }
-        };
-        
-        // ======================== UPDATE UI BASED ON TOGGLE =======================
+        if (!checkSubscription()) throw new Error("Redirect");
+
+        // ======================== DOM REFS ========================
         const actionBtn = document.getElementById('mainActionBtn');
         const actionTextSpan = document.getElementById('actionText');
         const actionIcon = document.getElementById('actionIcon');
         const serverInfoTag = document.getElementById('serverInfoTag');
         const activeServerNameSpan = document.getElementById('activeServerName');
         const endpointDisplaySpan = document.getElementById('endpointDisplay');
-        
-        function updateUIForServer() {
-            if (currentServer === 'md') {
-                // MD Bot configuration
-                actionTextSpan.innerText = 'MD Bot Server';
-                actionIcon.className = 'fas fa-terminal';
-                serverInfoTag.innerHTML = '<i class="fas fa-globe"></i> nodes.ravage.biz.id:2003 • High Availability';
-                activeServerNameSpan.innerText = 'MD Bot';
-                endpointDisplaySpan.innerText = 'nodes.ravage.biz.id:2003';
-                actionBtn.style.background = "linear-gradient(135deg, #aa1111, #440000)";
-                actionBtn.disabled = false;
-                actionBtn.style.opacity = "1";
-            } else {
-                // Bug Bot configuration
-                actionTextSpan.innerText = 'BUG Bot Server';
-                actionIcon.className = 'fas fa-bug';
-                if (IS_BUG_BOT_MAINTENANCE) {
-                    serverInfoTag.innerHTML = '<i class="fas fa-tools"></i> MAINTENANCE MODE • PAID & DANGEROUS';
-                    activeServerNameSpan.innerText = 'BUG Bot (MAINTENANCE)';
-                    endpointDisplaySpan.innerText = 'OFFLINE - PREMIUM TOOL';
-                    actionBtn.style.background = "linear-gradient(135deg, #555555, #222222)";
-                    actionBtn.style.opacity = "0.8";
-                } else {
-                    serverInfoTag.innerHTML = '<i class="fas fa-bug"></i> nodes.ravage.biz.id:2004 • Exploit Ready';
-                    activeServerNameSpan.innerText = 'BUG Bot';
-                    endpointDisplaySpan.innerText = 'nodes.ravage.biz.id:2004';
-                    actionBtn.style.background = "linear-gradient(135deg, #cc2200, #5a0000)";
-                    actionBtn.style.opacity = "1";
-                }
-            }
-            // small scale animation
-            actionBtn.style.transform = 'scale(0.99)';
-            setTimeout(() => { actionBtn.style.transform = ''; }, 120);
-        }
-        
-        // Toggle event handlers
+        const statusBar = document.getElementById('statusBar');
+        const statusDot = document.getElementById('statusDot');
+        const statusLabel = document.getElementById('statusLabel');
+
         const toggleMd = document.getElementById('toggleMDBot');
         const toggleBug = document.getElementById('toggleBugBot');
-        
-        function setActiveToggle(active) {
-            if (active === 'md') {
-                toggleMd.classList.add('active');
-                toggleBug.classList.remove('active');
+
+        // ======================== UPDATE UI ========================
+        function updateUIForServer() {
+            // Reset classes
+            actionBtn.classList.remove('md-style', 'bug-style');
+            statusBar.classList.remove('danger-status');
+            statusDot.className = 'status-dot';
+
+            if (currentServer === 'md') {
+                // --- MD BOT: PROFESSIONAL, SMOOTH, LIGHT ---
+                actionBtn.classList.add('md-style');
+                actionTextSpan.innerText = 'MD Bot Server';
+                actionIcon.className = 'fas fa-server';
+                serverInfoTag.className = 'server-info';
+                serverInfoTag.innerHTML = '<i class="fas fa-globe"></i> nodee.ravagee.tech:2005 • High Availability';
+                activeServerNameSpan.innerText = 'MD Bot';
+                endpointDisplaySpan.innerText = 'nodee.ravagee.tech:2005';
+                statusLabel.innerText = 'Active';
+
+                // Toggle active states
+                toggleMd.className = 'toggle-option md-active';
+                toggleBug.className = 'toggle-option';
+
+                // Status bar
+                statusDot.className = 'status-dot dot-md';
+                statusBar.classList.remove('danger-status');
+
             } else {
-                toggleBug.classList.add('active');
-                toggleMd.classList.remove('active');
+                // --- BUG BOT: DANGEROUS, RED, STATIC ---
+                actionBtn.classList.add('bug-style');
+                actionTextSpan.innerText = 'BUG Bot Server';
+                actionIcon.className = 'fas fa-skull-crossbones';
+                serverInfoTag.className = 'server-info danger';
+                serverInfoTag.innerHTML = '<i class="fas fa-bolt"></i> nodee.ravagee.tech:2003 • Exploit Ready';
+                activeServerNameSpan.innerText = 'BUG Bot';
+                endpointDisplaySpan.innerText = 'nodee.ravagee.tech:2003';
+                statusLabel.innerText = 'DANGER ACTIVE';
+
+                // Toggle active states
+                toggleMd.className = 'toggle-option';
+                toggleBug.className = 'toggle-option bug-active';
+
+                // Status bar
+                statusDot.className = 'status-dot dot-bug';
+                statusBar.classList.add('danger-status');
             }
         }
-        
+
+        // ======================== TOGGLE EVENTS ========================
         toggleMd.onclick = () => {
             if (currentServer === 'md') return;
             currentServer = 'md';
-            setActiveToggle('md');
             updateUIForServer();
         };
-        
         toggleBug.onclick = () => {
             if (currentServer === 'bug') return;
             currentServer = 'bug';
-            setActiveToggle('bug');
             updateUIForServer();
         };
-        
-        // ======================== MAIN BUTTON: OPEN CORRECT LINK OR SHOW MAINTENANCE =======================
+
+        // ======================== MAIN BUTTON ACTION ========================
         if (actionBtn) {
             actionBtn.onclick = (e) => {
                 e.preventDefault();
                 if (currentServer === 'md') {
-                    // MD Bot works normally
                     window.open(MD_BOT_URL, '_blank');
-                } 
-                else if (currentServer === 'bug') {
-                    // BUG BOT: If under maintenance -> show modal, else open link
-                    if (IS_BUG_BOT_MAINTENANCE) {
-                        showMaintenanceModal();
-                    } else {
-                        window.open(BUG_BOT_URL, '_blank');
-                    }
+                } else {
+                    window.open(BUG_BOT_URL, '_blank');
                 }
             };
         }
-        
-        // ======================== SOCIAL LINKS HANDLER (exactly same logic) ========================
+
+        // ======================== SOCIAL LINKS ========================
         document.querySelectorAll('.social-btn').forEach(btn => {
             const url = btn.getAttribute('data-url');
             if (url && url.trim() !== "") {
-                btn.onclick = () => {
-                    window.open(url, '_blank');
-                };
+                btn.onclick = () => { window.open(url, '_blank'); };
             }
         });
-        
-        // ======================== LOGOUT FUNCTIONALITY (SAME AS ORIGINAL) ========================
+
+        // ======================== LOGOUT ========================
         const logoutButton = document.getElementById('logoutBtn');
         if (logoutButton) {
             logoutButton.onclick = () => {
@@ -773,30 +571,29 @@
                 window.location.href = 'subscribe.html';
             };
         }
-        
-        // Prevent back button navigation after logout
+
+        // ======================== BACK BUTTON PREVENTION ========================
         history.pushState(null, null, location.href);
         window.onpopstate = function() {
-            const subExists = localStorage.getItem('usama_subscribed');
-            if (!subExists) {
+            if (!localStorage.getItem('usama_subscribed')) {
                 window.location.href = 'subscribe.html';
             } else {
                 history.pushState(null, null, location.href);
             }
         };
-        
-        // Additional validation on load
+
+        // ======================== INITIALIZE ========================
         window.addEventListener('load', function() {
             if (!localStorage.getItem('usama_subscribed')) {
                 window.location.href = 'subscribe.html';
                 return;
             }
-            // initialize toggle active state: default MD
-            setActiveToggle('md');
+            // Default MD
+            currentServer = 'md';
             updateUIForServer();
         });
-        
-        // Ensure subscription check remains intact
+
+        // ======================== SUBSCRIPTION VALIDITY CHECK ========================
         setInterval(() => {
             const savedSub = localStorage.getItem('usama_subscribed');
             if (!savedSub) {
