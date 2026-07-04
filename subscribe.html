@@ -83,6 +83,47 @@
             font-size: 16px;
         }
         
+        .channel-list {
+            text-align: left;
+            margin-bottom: 30px;
+            padding: 0 10px;
+        }
+        
+        .channel-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 12px 16px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-left: 3px solid #ff0000;
+        }
+        
+        .channel-item .ch-icon {
+            font-size: 24px;
+        }
+        
+        .channel-item .ch-name {
+            color: #ddd;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .channel-item .ch-status {
+            margin-left: auto;
+            font-size: 12px;
+            color: #ff6666;
+        }
+        
+        .channel-item.subscribed {
+            border-left-color: #44ff88;
+        }
+        
+        .channel-item.subscribed .ch-status {
+            color: #44ff88;
+        }
+        
         .main-btn {
             background: #ff0000;
             color: white;
@@ -100,6 +141,12 @@
         .main-btn:hover {
             background: #cc0000;
             transform: scale(1.02);
+        }
+        
+        .main-btn:disabled {
+            background: #555;
+            cursor: not-allowed;
+            transform: none;
         }
         
         .continue-btn {
@@ -164,6 +211,9 @@
             .youtube-icon {
                 font-size: 60px;
             }
+            .channel-item .ch-name {
+                font-size: 12px;
+            }
         }
     </style>
 </head>
@@ -172,10 +222,24 @@
         <div class="subscribe-card">
             <div class="youtube-icon">📺</div>
             <h1>Subscribe Required!</h1>
-            <div class="required-text">⚠️ Must Subscribe to YouTube</div>
+            <div class="required-text">⚠️ Must Subscribe to Both Channels</div>
             <div class="info-text">
                 To access Usama's Bot Panel and Community Dashboard<br>
-                Please subscribe to our YouTube channel first
+                Please subscribe to both YouTube channels first
+            </div>
+            
+            <!-- Channel List -->
+            <div class="channel-list" id="channelList">
+                <div class="channel-item" data-index="0">
+                    <span class="ch-icon">🔴</span>
+                    <span class="ch-name">@botswithusama</span>
+                    <span class="ch-status">⏳ Pending</span>
+                </div>
+                <div class="channel-item" data-index="1">
+                    <span class="ch-icon">🔴</span>
+                    <span class="ch-name">@rafiainfoworld</span>
+                    <span class="ch-status">⏳ Pending</span>
+                </div>
             </div>
             
             <button class="main-btn" id="subscribeBtn">
@@ -187,34 +251,101 @@
             </button>
             
             <div class="timer-text" id="timerText">
-                ⏳ Subscribe then wait 5 seconds...
+                ⏳ Subscribe both channels then wait 5 seconds...
             </div>
             <div class="small-note">
-                After subscribing, wait 5 seconds then click continue
+                After subscribing to both, wait 5 seconds then click continue
             </div>
         </div>
     </div>
 
     <script>
-        const YOUTUBE_URL = "https://youtube.com/@botswithusama?sub_confirmation=1";
-        
+        // ============================================================
+        //  🔥 YOUTUBE CHANNELS (Add/Remove here) 🔥
+        // ============================================================
+        const YOUTUBE_CHANNELS = [
+            "https://youtube.com/@botswithusama?sub_confirmation=1",
+            "https://youtube.com/@rafiainfoworld?si=VuhUZi7qmxRntRrA"
+        ];
+        // ============================================================
+
+        const CHANNEL_NAMES = [
+            "@botswithusama",
+            "@rafiainfoworld"
+        ];
+
         const subscribeBtn = document.getElementById('subscribeBtn');
         const continueBtn = document.getElementById('continueBtn');
         const timerText = document.getElementById('timerText');
-        
+        const channelItems = document.querySelectorAll('.channel-item');
+
+        let currentChannelIndex = 0;
+        let subscribedChannels = new Set();
         let countdown = 5;
         let timerInterval = null;
-        let isSubscribedClicked = false;
-        
-        // Subscribe button click
+
+        // Update channel status UI
+        function updateChannelStatus() {
+            channelItems.forEach((item, index) => {
+                const statusSpan = item.querySelector('.ch-status');
+                if (subscribedChannels.has(index)) {
+                    item.classList.add('subscribed');
+                    statusSpan.textContent = '✅ Subscribed';
+                } else {
+                    item.classList.remove('subscribed');
+                    statusSpan.textContent = '⏳ Pending';
+                }
+            });
+        }
+
+        // Check if all channels are subscribed
+        function allSubscribed() {
+            return subscribedChannels.size === YOUTUBE_CHANNELS.length;
+        }
+
+        // Subscribe button click - opens next unsubscribed channel
         subscribeBtn.onclick = function() {
-            window.open(YOUTUBE_URL, '_blank');
-            isSubscribedClicked = true;
+            // Find first unsubscribed channel
+            let nextIndex = -1;
+            for (let i = 0; i < YOUTUBE_CHANNELS.length; i++) {
+                if (!subscribedChannels.has(i)) {
+                    nextIndex = i;
+                    break;
+                }
+            }
+
+            if (nextIndex === -1) {
+                // All channels already subscribed
+                timerText.innerHTML = '✅ All channels subscribed! Waiting 5 seconds...';
+                startCountdown();
+                return;
+            }
+
+            // Open the channel
+            window.open(YOUTUBE_CHANNELS[nextIndex], '_blank');
             
-            // Start countdown
+            // Mark as subscribed (user will click again for next channel)
+            subscribedChannels.add(nextIndex);
+            updateChannelStatus();
+
+            // Check if all done
+            if (allSubscribed()) {
+                timerText.innerHTML = '✅ All channels subscribed! Waiting 5 seconds...';
+                startCountdown();
+            } else {
+                const remaining = YOUTUBE_CHANNELS.length - subscribedChannels.size;
+                timerText.innerHTML = `📺 Please subscribe to ${remaining} more channel(s)`;
+                subscribeBtn.textContent = `▶ SUBSCRIBE NEXT CHANNEL (${remaining} left)`;
+            }
+        };
+
+        // Start countdown timer
+        function startCountdown() {
             if (timerInterval) clearInterval(timerInterval);
             countdown = 5;
-            
+            subscribeBtn.disabled = true;
+            subscribeBtn.textContent = '⏳ Please wait...';
+
             timerInterval = setInterval(function() {
                 countdown--;
                 
@@ -223,28 +354,27 @@
                     continueBtn.classList.add('show');
                     timerText.innerHTML = '✅ You can now click CONTINUE';
                     timerText.style.color = '#66ff66';
+                    subscribeBtn.disabled = false;
+                    subscribeBtn.textContent = '✅ ALL SUBSCRIBED';
                 } else {
                     timerText.innerHTML = '⏳ Please wait ' + countdown + ' seconds before continuing...';
                 }
             }, 1000);
-        };
-        
+        }
+
         // Continue button click
         continueBtn.onclick = function() {
             if (continueBtn.classList.contains('show')) {
-                // Save subscription data (7 days expiry)
                 const data = {
                     verified: true,
                     timestamp: Date.now(),
                     expires: Date.now() + (7 * 24 * 60 * 60 * 1000)
                 };
                 localStorage.setItem('usama_subscribed', JSON.stringify(data));
-                
-                // Redirect to dashboard
                 window.location.href = 'dashboard.html';
             }
         };
-        
+
         // Check if already subscribed
         const saved = localStorage.getItem('usama_subscribed');
         if (saved) {
@@ -257,6 +387,10 @@
                 }
             } catch(e) {}
         }
+
+        // Initial setup
+        updateChannelStatus();
+        subscribeBtn.textContent = `▶ SUBSCRIBE CHANNEL 1 (${YOUTUBE_CHANNELS.length} total)`;
     </script>
 </body>
 </html>
