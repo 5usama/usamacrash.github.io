@@ -259,4 +259,179 @@
         @media (max-width: 480px) {
             .card { padding: 28px 20px; }
             .step-item { padding: 12px 14px; }
-            .step-item .content .
+            .step-item .content .title { font-size: 0.85rem; }
+            .theme-toggle-mini { top: 12px; right: 12px; padding: 4px 10px; font-size: 0.8rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <!-- Mini Theme Toggle -->
+            <div class="theme-toggle-mini" id="themeToggleMini">
+                <i class="fas fa-sun" id="themeIcon"></i>
+                <span id="themeLabel">Light</span>
+            </div>
+
+            <span class="icon-main">▶️</span>
+            <h1>Access Required</h1>
+            <p class="subhead">
+                To unlock the full dashboard and bot panels,<br>
+                please complete the steps below.
+            </p>
+
+            <!-- Steps -->
+            <div class="steps">
+                <!-- Step 1: YouTube Channel -->
+                <div class="step-item" id="step1">
+                    <div class="num">1</div>
+                    <div class="content">
+                        <div class="title">Subscribe to <strong>@botswithusama</strong></div>
+                        <div class="desc">YouTube Channel</div>
+                    </div>
+                    <div class="status-icon"><i class="fas fa-circle"></i></div>
+                </div>
+
+                <!-- Step 2: Watch Video -->
+                <div class="step-item" id="step2">
+                    <div class="num">2</div>
+                    <div class="content">
+                        <div class="title">Watch this video</div>
+                        <div class="desc">Required tutorial</div>
+                    </div>
+                    <div class="status-icon"><i class="fas fa-circle"></i></div>
+                </div>
+            </div>
+
+            <!-- Action Button -->
+            <button class="btn-block btn-primary" id="subscribeBtn">
+                <i class="fab fa-youtube"></i> Complete Steps
+            </button>
+
+            <!-- Timer & Continue -->
+            <div class="timer-text" id="timerText">⏳ Complete both steps to continue.</div>
+            <button class="btn-block btn-success" id="continueBtn">
+                <i class="fas fa-arrow-right"></i> Continue to Dashboard
+            </button>
+
+            <div class="footer-note">
+                <i class="fas fa-lock"></i> Secure & verified access only.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ===== THEME TOGGLE =====
+        const htmlEl = document.documentElement;
+        const themeToggleMini = document.getElementById('themeToggleMini');
+        const themeIcon = document.getElementById('themeIcon');
+        const themeLabel = document.getElementById('themeLabel');
+
+        function setTheme(theme) {
+            htmlEl.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+            if (theme === 'dark') {
+                themeIcon.className = 'fas fa-moon';
+                themeLabel.textContent = 'Dark';
+            } else {
+                themeIcon.className = 'fas fa-sun';
+                themeLabel.textContent = 'Light';
+            }
+        }
+
+        function getPreferredTheme() {
+            const stored = localStorage.getItem('theme');
+            if (stored) return stored;
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) return 'dark';
+            return 'light';
+        }
+
+        setTheme(getPreferredTheme());
+
+        themeToggleMini.addEventListener('click', () => {
+            const current = htmlEl.getAttribute('data-theme');
+            setTheme(current === 'dark' ? 'light' : 'dark');
+        });
+
+        // ===== SUBSCRIPTION LOGIC =====
+        const step1 = document.getElementById('step1');
+        const step2 = document.getElementById('step2');
+        const subscribeBtn = document.getElementById('subscribeBtn');
+        const continueBtn = document.getElementById('continueBtn');
+        const timerText = document.getElementById('timerText');
+
+        let sub1 = false;
+        let sub2 = false;
+        let timerInterval = null;
+        let countdown = 5;
+
+        function updateUI() {
+            if (sub1) {
+                step1.classList.add('completed');
+                step1.querySelector('.status-icon').innerHTML = '<i class="fas fa-check-circle"></i>';
+            }
+            if (sub2) {
+                step2.classList.add('completed');
+                step2.querySelector('.status-icon').innerHTML = '<i class="fas fa-check-circle"></i>';
+            }
+
+            if (sub1 && sub2) {
+                subscribeBtn.disabled = true;
+                subscribeBtn.innerHTML = '<i class="fas fa-check"></i> Steps Completed';
+                startTimer();
+            } else {
+                subscribeBtn.disabled = false;
+                subscribeBtn.innerHTML = '<i class="fab fa-youtube"></i> Complete Steps';
+                continueBtn.classList.remove('show');
+                if (timerInterval) {
+                    clearInterval(timerInterval);
+                    timerInterval = null;
+                }
+                timerText.textContent = '⏳ Complete both steps to continue.';
+                timerText.classList.remove('active');
+            }
+        }
+
+        function startTimer() {
+            countdown = 5;
+            timerText.textContent = `⏳ Waiting ${countdown} seconds...`;
+            timerText.classList.add('active');
+            continueBtn.classList.remove('show');
+
+            if (timerInterval) clearInterval(timerInterval);
+
+            timerInterval = setInterval(() => {
+                countdown--;
+                if (countdown > 0) {
+                    timerText.textContent = `⏳ Waiting ${countdown} seconds...`;
+                } else {
+                    clearInterval(timerInterval);
+                    timerInterval = null;
+                    timerText.textContent = '✅ Ready! Click Continue.';
+                    timerText.classList.remove('active');
+                    continueBtn.classList.add('show');
+                }
+            }, 1000);
+        }
+
+        subscribeBtn.addEventListener('click', function() {
+            // Open both links
+            window.open('https://youtube.com/@botswithusama', '_blank');
+            window.open('https://youtu.be/SRdtdNBciuo?si=k5QBM6AwH7DDymde', '_blank');
+            
+            // Mark as completed (assuming user does it)
+            // In a real scenario, you'd use API checks, but for UX we mark them.
+            sub1 = true;
+            sub2 = true;
+            updateUI();
+        });
+
+        continueBtn.addEventListener('click', function() {
+            window.location.href = 'dashboard.html';
+        });
+
+        // Init
+        updateUI();
+    </script>
+</body>
+</html>
