@@ -56,7 +56,7 @@
         }
 
         .container {
-            max-width: 480px;
+            max-width: 520px;
             width: 100%;
         }
 
@@ -69,10 +69,11 @@
             box-shadow: var(--shadow-lg);
             transition: all var(--transition);
             text-align: center;
+            position: relative;
         }
 
         .card .icon-main {
-            font-size: 3.5rem;
+            font-size: 3rem;
             color: var(--danger);
             margin-bottom: 12px;
             display: block;
@@ -82,85 +83,129 @@
             font-size: 1.8rem;
             font-weight: 800;
             letter-spacing: -0.5px;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
 
         .card .subhead {
             color: var(--text-secondary);
             font-size: 0.95rem;
-            margin-bottom: 24px;
+            margin-bottom: 28px;
             line-height: 1.5;
         }
 
         /* ===== STEPS ===== */
-        .steps {
-            text-align: left;
-            margin: 24px 0;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .step-item {
+        .step {
             display: flex;
             align-items: center;
             gap: 16px;
-            padding: 14px 18px;
+            padding: 16px 18px;
             background: var(--bg-primary);
-            border-radius: 10px;
+            border-radius: 12px;
             border: 1px solid var(--border-color);
+            margin-bottom: 14px;
             transition: all var(--transition);
         }
-        .step-item.completed {
+        .step.completed {
             border-color: var(--success);
             background: rgba(22, 163, 74, 0.05);
         }
-        [data-theme="dark"] .step-item.completed {
+        [data-theme="dark"] .step.completed {
             background: rgba(22, 163, 74, 0.1);
         }
 
-        .step-item .num {
-            width: 32px;
-            height: 32px;
-            background: var(--border-color);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 0.85rem;
-            color: var(--text-secondary);
+        .step .icon {
+            font-size: 1.4rem;
+            width: 40px;
+            text-align: center;
             flex-shrink: 0;
-            transition: all var(--transition);
         }
-        .step-item.completed .num {
-            background: var(--success);
-            color: white;
-        }
-
-        .step-item .content {
+        .step .info {
             flex: 1;
+            text-align: left;
         }
-        .step-item .content .title {
+        .step .info .title {
             font-weight: 600;
             font-size: 0.95rem;
         }
-        .step-item .content .desc {
+        .step .info .desc {
             font-size: 0.8rem;
             color: var(--text-muted);
         }
-
-        .step-item .status-icon {
+        .step .status {
             font-size: 1.2rem;
             color: var(--text-muted);
             transition: all var(--transition);
         }
-        .step-item.completed .status-icon {
+        .step.completed .status {
             color: var(--success);
         }
 
-        /* ===== BUTTONS ===== */
-        .btn-block {
+        .step .btn-action {
+            padding: 8px 20px;
+            border: none;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all var(--transition);
+            background: var(--primary);
+            color: white;
+            white-space: nowrap;
+            font-family: 'Inter', sans-serif;
+        }
+        .step .btn-action:hover:not(:disabled) {
+            background: var(--primary-hover, #1d4ed8);
+            transform: scale(1.03);
+        }
+        .step .btn-action:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+            transform: none;
+        }
+        .step .btn-action.danger {
+            background: var(--danger);
+        }
+        .step .btn-action.danger:hover:not(:disabled) {
+            background: var(--danger-hover, #b91c1c);
+        }
+
+        /* ===== PROGRESS BAR ===== */
+        .progress-section {
+            margin: 24px 0 10px 0;
+            display: none;
+        }
+        .progress-section.active {
+            display: block;
+            animation: fadeUp 0.4s ease;
+        }
+
+        .progress-bar-bg {
+            width: 100%;
+            height: 6px;
+            background: var(--border-color);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 8px;
+        }
+        .progress-bar-fill {
+            height: 100%;
+            width: 0%;
+            background: var(--primary);
+            border-radius: 10px;
+            transition: width 0.2s linear;
+        }
+        .timer-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+        .timer-label span {
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        /* ===== CONTINUE BUTTON ===== */
+        .btn-continue {
             width: 100%;
             padding: 14px;
             border: none;
@@ -170,82 +215,41 @@
             cursor: pointer;
             transition: all var(--transition);
             font-family: 'Inter', sans-serif;
-            display: inline-flex;
+            background: var(--success);
+            color: white;
+            box-shadow: 0 4px 12px rgba(22, 163, 74, 0.3);
+            margin-top: 16px;
+            display: none;
             align-items: center;
             justify-content: center;
             gap: 10px;
         }
-
-        .btn-primary {
-            background: var(--primary);
-            color: white;
-            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
-            margin-top: 8px;
-        }
-        .btn-primary:hover:not(:disabled) {
-            background: #1d4ed8;
-            transform: scale(1.02);
-        }
-        .btn-primary:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            transform: none;
-            box-shadow: none;
-        }
-
-        .btn-success {
-            background: var(--success);
-            color: white;
-            box-shadow: 0 4px 12px rgba(22, 163, 74, 0.3);
-            margin-top: 12px;
-            display: none;
-        }
-        .btn-success.show {
+        .btn-continue.show {
             display: inline-flex;
             animation: fadeUp 0.4s ease;
         }
-        .btn-success:hover {
+        .btn-continue:hover {
             background: #15803d;
             transform: scale(1.02);
         }
 
         @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(10px); }
+            from { opacity: 0; transform: translateY(12px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .timer-text {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-top: 16px;
-            min-height: 24px;
-            transition: all var(--transition);
-        }
-        .timer-text.active {
-            color: var(--primary);
-            font-weight: 600;
-        }
-
-        .footer-note {
-            margin-top: 20px;
-            font-size: 0.7rem;
-            color: var(--text-muted);
-            border-top: 1px solid var(--border-color);
-            padding-top: 20px;
-        }
-
-        /* Theme Toggle inside card */
+        /* ===== THEME TOGGLE ===== */
         .theme-toggle-mini {
             position: absolute;
-            top: 20px;
-            right: 20px;
+            top: 16px;
+            right: 16px;
             background: var(--bg-primary);
             border: 1px solid var(--border-color);
             border-radius: 40px;
             padding: 6px 12px;
             cursor: pointer;
             color: var(--text-secondary);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             transition: all var(--transition);
             display: flex;
             gap: 6px;
@@ -254,12 +258,20 @@
         .theme-toggle-mini:hover {
             border-color: var(--text-muted);
         }
-        .card { position: relative; }
 
+        .footer-note {
+            margin-top: 24px;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border-color);
+            padding-top: 18px;
+        }
+
+        /* ===== RESPONSIVE ===== */
         @media (max-width: 480px) {
-            .card { padding: 28px 20px; }
-            .step-item { padding: 12px 14px; }
-            .step-item .content .title { font-size: 0.85rem; }
+            .card { padding: 28px 16px; }
+            .step { flex-wrap: wrap; gap: 10px; }
+            .step .btn-action { width: 100%; justify-content: center; }
             .theme-toggle-mini { top: 12px; right: 12px; padding: 4px 10px; font-size: 0.8rem; }
         }
     </style>
@@ -276,46 +288,46 @@
             <span class="icon-main">▶️</span>
             <h1>Access Required</h1>
             <p class="subhead">
-                To unlock the full dashboard and bot panels,<br>
-                please complete the steps below.
+                Please complete both steps below to unlock the dashboard.
             </p>
 
-            <!-- Steps -->
-            <div class="steps">
-                <!-- Step 1: YouTube Channel -->
-                <div class="step-item" id="step1">
-                    <div class="num">1</div>
-                    <div class="content">
-                        <div class="title">Subscribe to <strong>@botswithusama</strong></div>
-                        <div class="desc">YouTube Channel</div>
-                    </div>
-                    <div class="status-icon"><i class="fas fa-circle"></i></div>
+            <!-- Step 1: Subscribe -->
+            <div class="step" id="step1">
+                <div class="icon">🔴</div>
+                <div class="info">
+                    <div class="title">Subscribe to @botswithusama</div>
+                    <div class="desc">YouTube Channel</div>
                 </div>
+                <button class="btn-action" id="subBtn">Subscribe</button>
+                <div class="status"><i class="fas fa-circle"></i></div>
+            </div>
 
-                <!-- Step 2: Watch Video -->
-                <div class="step-item" id="step2">
-                    <div class="num">2</div>
-                    <div class="content">
-                        <div class="title">Watch this video</div>
-                        <div class="desc">Required tutorial</div>
-                    </div>
-                    <div class="status-icon"><i class="fas fa-circle"></i></div>
+            <!-- Step 2: Watch Video -->
+            <div class="step" id="step2">
+                <div class="icon">📹</div>
+                <div class="info">
+                    <div class="title">Watch this video</div>
+                    <div class="desc">Required tutorial</div>
+                </div>
+                <button class="btn-action danger" id="videoBtn">Watch Video</button>
+                <div class="status"><i class="fas fa-circle"></i></div>
+            </div>
+
+            <!-- Progress Section -->
+            <div class="progress-section" id="progressSection">
+                <div class="timer-label">⏳ Unlocking in <span id="countdownDisplay">10</span>s</div>
+                <div class="progress-bar-bg">
+                    <div class="progress-bar-fill" id="progressFill"></div>
                 </div>
             </div>
 
-            <!-- Action Button -->
-            <button class="btn-block btn-primary" id="subscribeBtn">
-                <i class="fab fa-youtube"></i> Complete Steps
-            </button>
-
-            <!-- Timer & Continue -->
-            <div class="timer-text" id="timerText">⏳ Complete both steps to continue.</div>
-            <button class="btn-block btn-success" id="continueBtn">
+            <!-- Continue Button -->
+            <button class="btn-continue" id="continueBtn">
                 <i class="fas fa-arrow-right"></i> Continue to Dashboard
             </button>
 
             <div class="footer-note">
-                <i class="fas fa-lock"></i> Secure & verified access only.
+                <i class="fas fa-shield-alt"></i> Verified access only.
             </div>
         </div>
     </div>
@@ -356,82 +368,115 @@
         // ===== SUBSCRIPTION LOGIC =====
         const step1 = document.getElementById('step1');
         const step2 = document.getElementById('step2');
-        const subscribeBtn = document.getElementById('subscribeBtn');
+        const subBtn = document.getElementById('subBtn');
+        const videoBtn = document.getElementById('videoBtn');
+        const progressSection = document.getElementById('progressSection');
+        const progressFill = document.getElementById('progressFill');
+        const countdownDisplay = document.getElementById('countdownDisplay');
         const continueBtn = document.getElementById('continueBtn');
-        const timerText = document.getElementById('timerText');
 
-        let sub1 = false;
-        let sub2 = false;
-        let timerInterval = null;
-        let countdown = 5;
+        let subDone = false;
+        let videoDone = false;
+        let countdownInterval = null;
+        let progressInterval = null;
+        let countdown = 10;
 
-        function updateUI() {
-            if (sub1) {
-                step1.classList.add('completed');
-                step1.querySelector('.status-icon').innerHTML = '<i class="fas fa-check-circle"></i>';
-            }
-            if (sub2) {
-                step2.classList.add('completed');
-                step2.querySelector('.status-icon').innerHTML = '<i class="fas fa-check-circle"></i>';
-            }
-
-            if (sub1 && sub2) {
-                subscribeBtn.disabled = true;
-                subscribeBtn.innerHTML = '<i class="fas fa-check"></i> Steps Completed';
-                startTimer();
+        // Helper: update step UI
+        function updateStepUI(stepElement, done) {
+            if (done) {
+                stepElement.classList.add('completed');
+                stepElement.querySelector('.status').innerHTML = '<i class="fas fa-check-circle"></i>';
             } else {
-                subscribeBtn.disabled = false;
-                subscribeBtn.innerHTML = '<i class="fab fa-youtube"></i> Complete Steps';
-                continueBtn.classList.remove('show');
-                if (timerInterval) {
-                    clearInterval(timerInterval);
-                    timerInterval = null;
-                }
-                timerText.textContent = '⏳ Complete both steps to continue.';
-                timerText.classList.remove('active');
+                stepElement.classList.remove('completed');
+                stepElement.querySelector('.status').innerHTML = '<i class="fas fa-circle"></i>';
             }
         }
 
-        function startTimer() {
-            countdown = 5;
-            timerText.textContent = `⏳ Waiting ${countdown} seconds...`;
-            timerText.classList.add('active');
+        // Check if both are done, then start countdown
+        function checkBothDone() {
+            if (subDone && videoDone) {
+                // Disable both buttons (already disabled on click, but just in case)
+                subBtn.disabled = true;
+                videoBtn.disabled = true;
+                startCountdown();
+            }
+        }
+
+        // Handle Subscribe button click
+        subBtn.addEventListener('click', function() {
+            if (subDone) return;
+            // Open channel
+            window.open('https://youtube.com/@botswithusama', '_blank');
+            subDone = true;
+            subBtn.disabled = true;
+            subBtn.textContent = '✓ Done';
+            updateStepUI(step1, true);
+            checkBothDone();
+        });
+
+        // Handle Watch Video button click
+        videoBtn.addEventListener('click', function() {
+            if (videoDone) return;
+            // Open video
+            window.open('https://youtu.be/SRdtdNBciuo?si=k5QBM6AwH7DDymde', '_blank');
+            videoDone = true;
+            videoBtn.disabled = true;
+            videoBtn.textContent = '✓ Done';
+            updateStepUI(step2, true);
+            checkBothDone();
+        });
+
+        // Countdown with progress bar
+        function startCountdown() {
+            // Show progress section
+            progressSection.classList.add('active');
             continueBtn.classList.remove('show');
+            countdown = 10;
+            countdownDisplay.textContent = countdown;
+            progressFill.style.width = '0%';
 
-            if (timerInterval) clearInterval(timerInterval);
+            // Clear any existing intervals
+            if (countdownInterval) clearInterval(countdownInterval);
+            if (progressInterval) clearInterval(progressInterval);
 
-            timerInterval = setInterval(() => {
+            // Progress interval (updates every 100ms for smooth bar)
+            let elapsed = 0;
+            const totalDuration = 10; // seconds
+            const stepTime = 100; // ms
+            const totalSteps = (totalDuration * 1000) / stepTime;
+
+            progressInterval = setInterval(() => {
+                elapsed += stepTime;
+                const progress = Math.min((elapsed / (totalDuration * 1000)) * 100, 100);
+                progressFill.style.width = progress + '%';
+            }, stepTime);
+
+            // Countdown text update (every second)
+            countdownInterval = setInterval(() => {
                 countdown--;
-                if (countdown > 0) {
-                    timerText.textContent = `⏳ Waiting ${countdown} seconds...`;
-                } else {
-                    clearInterval(timerInterval);
-                    timerInterval = null;
-                    timerText.textContent = '✅ Ready! Click Continue.';
-                    timerText.classList.remove('active');
+                countdownDisplay.textContent = countdown;
+                if (countdown <= 0) {
+                    clearInterval(countdownInterval);
+                    clearInterval(progressInterval);
+                    progressFill.style.width = '100%';
+                    countdownDisplay.textContent = '0';
+                    // Show continue button
                     continueBtn.classList.add('show');
+                    // Optionally update timer text
+                    document.querySelector('.timer-label').innerHTML = '✅ Ready! Click below to continue.';
                 }
             }, 1000);
         }
 
-        subscribeBtn.addEventListener('click', function() {
-            // Open both links
-            window.open('https://youtube.com/@botswithusama', '_blank');
-            window.open('https://youtu.be/SRdtdNBciuo?si=k5QBM6AwH7DDymde', '_blank');
-            
-            // Mark as completed (assuming user does it)
-            // In a real scenario, you'd use API checks, but for UX we mark them.
-            sub1 = true;
-            sub2 = true;
-            updateUI();
-        });
-
+        // Continue button -> go to dashboard
         continueBtn.addEventListener('click', function() {
             window.location.href = 'dashboard.html';
         });
 
-        // Init
-        updateUI();
+        // ===== RESTORE STATE FROM localStorage? (optional) =====
+        // For simplicity, we start fresh each time. But you could store subDone/videoDone.
+        // If you want to remember that user already completed steps, you can add localStorage checks.
+        // For now, we keep it as is.
     </script>
 </body>
 </html>
