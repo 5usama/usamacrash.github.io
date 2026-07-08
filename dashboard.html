@@ -1,11 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
-    <title>USAMA's BOTS | Dual Server Dashboard</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usama's Bots</title>
+    <meta name="description" content="Open this Web and use Free 🆓 WhatsApp bots : both MD and Bug Bot." />
+    <meta property="og:title" content="Usama's Bots" />
+    <meta property="og:description" content="Open this Web and use Free 🆓 WhatsApp bots : both MD and Bug Bot." />
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
     <style>
+        /* ===== CSS VARIABLES (THEMES) ===== */
+        :root {
+            --bg-primary: #f8fafc;
+            --bg-secondary: #ffffff;
+            --bg-card: #ffffff;
+            --bg-input: #f1f5f9;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --text-muted: #94a3b8;
+            --border-color: #e2e8f0;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --primary-light: #dbeafe;
+            --danger: #dc2626;
+            --danger-hover: #b91c1c;
+            --success: #16a34a;
+            --radius: 12px;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-card: #1e293b;
+            --bg-input: #334155;
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --text-muted: #64748b;
+            --border-color: #334155;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.5);
+            --primary: #3b82f6;
+            --primary-hover: #60a5fa;
+            --primary-light: #1e3a5f;
+            --danger: #ef4444;
+            --danger-hover: #f87171;
+        }
+
+        /* ===== RESET & BASE ===== */
         * {
             margin: 0;
             padding: 0;
@@ -13,604 +64,602 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        /* ===== GLOBAL ===== */
         body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
             min-height: 100vh;
-            background: radial-gradient(circle at 20% 10%, #0a0a0f, #000000);
-            font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
-            padding: 16px;
-            position: relative;
-            overflow-x: hidden;
+            transition: background var(--transition), color var(--transition);
+            padding: 20px;
         }
 
         .container {
-            max-width: 800px;
+            max-width: 1024px;
             margin: 0 auto;
-            position: relative;
-            z-index: 2;
         }
 
-        /* ===== DASHBOARD CARD ===== */
-        .dashboard-card {
-            background: rgba(10, 10, 15, 0.92);
-            backdrop-filter: blur(16px);
-            border-radius: 44px;
-            padding: 32px 24px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.7);
-            transition: all 0.3s ease;
-        }
-
-        /* ===== HEADER ===== */
-        h1 {
-            font-size: 2.6rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, #ffffff, #aaaaaa);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            letter-spacing: -0.5px;
-            margin-bottom: 8px;
-            font-family: 'Inter', sans-serif;
-        }
-        h1 i {
-            color: #ff4444;
-            -webkit-text-fill-color: #ff4444;
-        }
-
-        .creator {
-            color: #8888aa;
-            margin-bottom: 18px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            background: rgba(255, 255, 255, 0.05);
-            display: inline-block;
-            padding: 5px 16px;
-            border-radius: 60px;
-            backdrop-filter: blur(4px);
-        }
-        .creator i { color: #ff6666; }
-
-        hr {
-            width: 80px;
-            margin: 18px auto;
-            border: 2px solid #ff3333;
-            border-radius: 10px;
-            background: #ff3333;
-        }
-
-        .tagline {
-            color: #99aabb;
+        /* ===== NAVBAR ===== */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 24px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
             margin-bottom: 32px;
-            font-size: 0.85rem;
-            background: rgba(0,0,0,0.4);
-            display: inline-block;
-            padding: 6px 18px;
-            border-radius: 60px;
+            transition: background var(--transition), border var(--transition);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.25rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+        .logo i {
+            color: var(--primary);
+            font-size: 1.4rem;
+        }
+        .logo span {
+            background: var(--primary);
+            color: white;
+            font-size: 0.6rem;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 20px;
             letter-spacing: 0.5px;
         }
 
-        /* ===== TOGGLE MENU ===== */
-        .toggle-menu {
-            background: rgba(20, 20, 30, 0.8);
-            border-radius: 80px;
-            display: flex;
-            padding: 6px;
-            margin-bottom: 28px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(12px);
-        }
-
-        .toggle-option {
-            flex: 1;
-            text-align: center;
-            padding: 14px 8px;
-            font-weight: 800;
-            font-size: 1.1rem;
-            border-radius: 60px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            color: #8899aa;
-            background: transparent;
-            letter-spacing: 1px;
+        .nav-actions {
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-        .toggle-option i { font-size: 1.2rem; }
-
-        /* MD Active (Professional White/Blue) */
-        .toggle-option.md-active {
-            background: linear-gradient(135deg, #f0f2f5, #ffffff);
-            color: #1a1a1e;
-            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.15);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            gap: 16px;
         }
 
-        /* Bug Active (Dangerous Red) */
-        .toggle-option.bug-active {
-            background: linear-gradient(135deg, #8B0000, #CC0000);
-            color: #ffffff;
-            box-shadow: 0 0 25px rgba(255, 0, 0, 0.4);
-            border: 1px solid #ff4444;
+        /* ===== THEME TOGGLE ===== */
+        .theme-toggle {
+            background: var(--bg-input);
+            border: 1px solid var(--border-color);
+            border-radius: 40px;
+            padding: 6px;
+            display: flex;
+            gap: 4px;
+            cursor: pointer;
+            transition: background var(--transition);
+            position: relative;
+            width: 64px;
+            height: 34px;
+            align-items: center;
         }
-
-        /* ===== ACTION BUTTON (Dynamic) ===== */
-        .bot-action-btn {
+        .theme-toggle .thumb {
+            position: absolute;
+            width: 26px;
+            height: 26px;
+            background: var(--bg-card);
+            border-radius: 50%;
+            box-shadow: var(--shadow-md);
+            transition: transform var(--transition), background var(--transition);
+            left: 4px;
+        }
+        [data-theme="dark"] .theme-toggle .thumb {
+            transform: translateX(30px);
+            background: var(--primary);
+        }
+        .theme-toggle .icons {
+            display: flex;
+            justify-content: space-between;
             width: 100%;
-            border: none;
-            padding: 28px 20px;
-            border-radius: 70px;
+            padding: 0 6px;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            z-index: 1;
+            pointer-events: none;
+        }
+        [data-theme="dark"] .theme-toggle .icons .fa-sun { color: #fbbf24; }
+        [data-theme="light"] .theme-toggle .icons .fa-moon { color: #6366f1; }
+
+        /* ===== HEADER SECTION ===== */
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+        .page-header h1 {
             font-size: 1.8rem;
             font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+        .page-header p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-top: 4px;
+        }
+        .badge-status {
+            background: var(--success);
             color: white;
-            cursor: pointer;
-            transition: all 0.25s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 20px;
-            font-family: 'Inter', sans-serif;
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* MD Button Style (Professional) */
-        .bot-action-btn.md-style {
-            background: linear-gradient(135deg, #3a3a3e, #1c1c1e);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
-            color: #f0f0f0;
-        }
-        .bot-action-btn.md-style:hover {
-            transform: translateY(-4px) scale(1.01);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
-            border-color: rgba(255, 255, 255, 0.3);
-        }
-        .bot-action-btn.md-style:active {
-            transform: scale(0.98);
-        }
-        .bot-action-btn.md-style i {
-            color: #66aaff;
-            filter: drop-shadow(0 0 6px rgba(100, 170, 255, 0.3));
-        }
-
-        /* Bug Button Style (Dangerous - No animations) */
-        .bot-action-btn.bug-style {
-            background: linear-gradient(135deg, #8B0000, #FF0000);
-            border: 2px solid #ff4444;
-            box-shadow: 0 0 30px rgba(255, 0, 0, 0.3);
-            color: #ffffff;
-            text-shadow: 0 0 8px rgba(0,0,0,0.5);
-        }
-        .bot-action-btn.bug-style i {
-            color: #ffffff;
-            filter: drop-shadow(0 0 8px #ff0000);
-        }
-        /* NO hover effects for bug, NO animations */
-        .bot-action-btn.bug-style:hover {
-            /* intentionally empty - static */
-        }
-        .bot-action-btn.bug-style:active {
-            transform: scale(0.97);
-        }
-
-        .server-info {
-            text-align: center;
-            margin-top: 18px;
+            padding: 6px 14px;
+            border-radius: 40px;
             font-size: 0.75rem;
-            background: rgba(0,0,0,0.5);
-            padding: 6px 16px;
-            border-radius: 60px;
-            display: inline-block;
-            width: auto;
-            color: #99aabb;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
         }
-        .server-info.danger {
-            color: #ff8888;
-            border-left: 2px solid #ff4444;
-            background: rgba(40, 0, 0, 0.6);
+        .badge-status i {
+            font-size: 0.5rem;
         }
 
-        .center-note { text-align: center; margin-top: 14px; }
-
-        /* ===== SOCIAL SECTION ===== */
-        .section-title {
-            color: #ccddee;
-            font-size: 1.1rem;
-            margin: 24px 0 16px 0;
-            border-left: 4px solid #ff3333;
-            padding-left: 14px;
-            font-weight: 700;
-        }
-
-        .social-grid {
+        /* ===== STATS GRID ===== */
+        .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-            gap: 14px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 32px;
         }
-
-        .social-btn {
-            background: rgba(20, 20, 30, 0.85);
-            padding: 14px 18px;
-            border-radius: 28px;
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 20px 24px;
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition);
+        }
+        .stat-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+        .stat-card .label {
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
             display: flex;
             align-items: center;
-            gap: 18px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            backdrop-filter: blur(4px);
+            gap: 6px;
         }
-        .social-btn:hover {
-            background: rgba(40, 40, 55, 0.9);
-            transform: translateX(6px);
-            border-color: #ff5555;
+        .stat-card .value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-top: 8px;
+            color: var(--text-primary);
         }
-        .social-btn i { font-size: 2rem; }
-        .social-info h4 { color: #f0f0f5; font-size: 0.9rem; margin-bottom: 4px; }
-        .social-info p { color: #99aabb; font-size: 0.7rem; }
-
-        .contact-head span {
-            color: #ccddee;
-            background: rgba(40, 0, 0, 0.4);
-            padding: 6px 20px;
-            border-radius: 60px;
+        .stat-card .sub {
             font-size: 0.8rem;
-            font-weight: 600;
+            color: var(--text-secondary);
+            margin-top: 4px;
         }
-
-        /* ===== STATUS BAR ===== */
-        .status-bar {
-            margin-top: 30px;
-            display: flex;
-            justify-content: center;
-            gap: 18px;
-            color: #99aabb;
-            font-size: 0.7rem;
-            flex-wrap: wrap;
-            padding: 14px 12px;
-            background: rgba(0, 0, 0, 0.5);
-            border-radius: 60px;
-            border: 1px solid #2a2a3a;
-            transition: all 0.3s ease;
-        }
-        .status-bar.danger-status {
-            border-color: #8B0000;
-            background: rgba(20, 0, 0, 0.7);
-            color: #ffaaaa;
-        }
-        .status-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
+        .stat-card .dot {
             display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
             margin-right: 6px;
         }
-        .dot-md { background: #44cc88; box-shadow: 0 0 8px rgba(68, 204, 136, 0.5); animation: pulseGreen 1.5s infinite; }
-        .dot-bug { background: #ff0000; box-shadow: 0 0 10px #ff0000; /* Static */ }
+        .dot.green { background: var(--success); }
+        .dot.red { background: var(--danger); }
+        .dot.blue { background: var(--primary); }
 
-        @keyframes pulseGreen {
-            0%, 100% { opacity: 0.6; transform: scale(0.9); }
-            50% { opacity: 1; transform: scale(1.2); box-shadow: 0 0 12px #44cc88; }
+        /* ===== SEGMENTED CONTROL (MD / BUG) ===== */
+        .segmented-control {
+            display: flex;
+            background: var(--bg-input);
+            border-radius: 10px;
+            padding: 4px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 24px;
+            transition: background var(--transition);
+            width: fit-content;
+        }
+        .seg-option {
+            padding: 10px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all var(--transition);
+            color: var(--text-secondary);
+            background: transparent;
+            border: none;
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .seg-option i { font-size: 1rem; }
+        .seg-option.active {
+            background: var(--bg-card);
+            color: var(--text-primary);
+            box-shadow: var(--shadow-sm);
+        }
+        .seg-option.danger.active {
+            background: var(--danger);
+            color: white;
+            box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+        }
+        .seg-option:hover:not(.active) {
+            color: var(--text-primary);
         }
 
-        footer {
-            margin-top: 28px;
+        /* ===== MAIN CTA CARD ===== */
+        .cta-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 32px;
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 32px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             text-align: center;
-            color: #556677;
+            transition: all var(--transition);
+        }
+        .cta-card .icon-big {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 12px;
+        }
+        .cta-card h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+        .cta-card p {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 14px 48px;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-family: 'Inter', sans-serif;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+        .btn-primary:hover {
+            background: var(--primary-hover);
+            transform: scale(1.02);
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+        }
+        .btn-primary.danger {
+            background: var(--danger);
+            box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+        }
+        .btn-primary.danger:hover {
+            background: var(--danger-hover);
+            box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4);
+        }
+        .btn-primary:active { transform: scale(0.98); }
+        .btn-primary:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* ===== SOCIAL SECTION ===== */
+        .social-section {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 24px;
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 32px;
+            transition: background var(--transition);
+        }
+        .social-section .title {
+            font-weight: 700;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-primary);
+        }
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+        }
+        .social-link {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 12px 16px;
+            background: var(--bg-input);
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: all var(--transition);
+            border: 1px solid transparent;
+        }
+        .social-link:hover {
+            border-color: var(--border-color);
+            background: var(--bg-card);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
+        }
+        .social-link i {
+            font-size: 1.5rem;
+            width: 24px;
+            text-align: center;
+        }
+        .social-link .info {
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        .social-link .info small {
+            display: block;
+            font-weight: 400;
+            color: var(--text-muted);
             font-size: 0.7rem;
         }
 
-        .logout-btn {
-            margin-top: 28px;
-            background: rgba(60, 60, 80, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 10px 28px;
-            border-radius: 60px;
-            color: #99aabb;
-            cursor: pointer;
+        /* ===== FOOTER ===== */
+        .footer-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            padding: 16px 0;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
             font-size: 0.8rem;
-            font-weight: 600;
-            transition: 0.2s;
+            margin-top: 16px;
         }
-        .logout-btn:hover {
-            background: rgba(200, 40, 40, 0.3);
-            color: #ffffff;
+        .footer-bar a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color var(--transition);
+        }
+        .footer-bar a:hover {
+            color: var(--primary);
         }
 
-        @media (max-width: 550px) {
-            .dashboard-card { padding: 24px 18px; }
-            h1 { font-size: 1.9rem; }
-            .bot-action-btn { padding: 20px 16px; font-size: 1.3rem; }
-            .bot-action-btn i { font-size: 1.6rem; }
-            .toggle-option { font-size: 0.85rem; padding: 10px 6px; }
-            .toggle-option i { font-size: 0.9rem; }
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 640px) {
+            body { padding: 12px; }
+            .navbar { padding: 12px 16px; flex-wrap: wrap; gap: 12px; }
+            .page-header h1 { font-size: 1.4rem; }
+            .stats-grid { grid-template-columns: 1fr 1fr; }
+            .segmented-control { width: 100%; }
+            .seg-option { flex: 1; justify-content: center; padding: 10px 12px; font-size: 0.8rem; }
+            .cta-card { padding: 24px 16px; }
+            .social-grid { grid-template-columns: 1fr; }
+            .theme-toggle { width: 56px; height: 30px; }
+            [data-theme="dark"] .theme-toggle .thumb { transform: translateX(26px); }
+            .theme-toggle .thumb { width: 22px; height: 22px; left: 4px; }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="dashboard-card">
-            <!-- HEADER -->
-            <h1><i class="fas fa-skull"></i> USAMA'S BOTS <i class="fas fa-bolt"></i></h1>
-            <div class="creator">
-                <i class="fas fa-crown"></i> Created by USAMA • Dual Server System
-            </div>
-            <hr>
-            <div class="tagline">
-                <i class="fas fa-robot"></i> ELITE AUTOMATION • PROFESSIONAL & DANGEROUS
-            </div>
-            
-            <!-- TOGGLE MENU -->
-            <div class="toggle-menu">
-                <div class="toggle-option md-active" id="toggleMDBot">
-                    <i class="fas fa-terminal"></i> MD BOT
-                </div>
-                <div class="toggle-option" id="toggleBugBot">
-                    <i class="fas fa-skull-crossbones"></i> BUG BOT
-                </div>
-            </div>
-            
-            <!-- DYNAMIC BOT BUTTON -->
-            <div class="single-bot-wrapper">
-                <button class="bot-action-btn md-style" id="mainActionBtn">
-                    <i class="fas fa-server" id="actionIcon"></i> 
-                    <span id="actionText">MD Bot Server</span>
-                    <i class="fas fa-external-link-alt"></i>
-                </button>
-                <div class="center-note">
-                    <span class="server-info" id="serverInfoTag"><i class="fas fa-globe"></i> nodee.ravagee.tech:2005 • Active</span>
-                </div>
-            </div>
-            
-            <!-- SOCIAL SECTION -->
-            <div class="social-section">
-                <div class="section-title">
-                    <i class="fab fa-battle-net"></i> COMMUNITY
-                </div>
-                <div class="social-grid">
-                    <div class="social-btn" data-url="https://chat.whatsapp.com/GKdkT18LDXj4aikWCgo4pi">
-                        <i class="fab fa-whatsapp" style="color:#ff4444;"></i>
-                        <div class="social-info">
-                            <h4>💀 WhatsApp Group</h4>
-                            <p>Danger zone discussions</p>
-                        </div>
-                    </div>
-                    <div class="social-btn" data-url="https://youtube.com/@botswithusama">
-                        <i class="fab fa-youtube" style="color:#ff2a2a;"></i>
-                        <div class="social-info">
-                            <h4>📺 YouTube Channel</h4>
-                            <p>Bot tricks & coding</p>
-                        </div>
-                    </div>
-                    <div class="social-btn" data-url="https://t.me/UsamaCrash960">
-                        <i class="fab fa-telegram" style="color:#ff5555;"></i>
-                        <div class="social-info">
-                            <h4>📢 Telegram Group</h4>
-                            <p>Active hackers & support</p>
-                        </div>
-                    </div>
-                    <div class="social-btn" data-url="https://t.me/UsamaCrash">
-                        <i class="fab fa-telegram-plane" style="color:#ff6666;"></i>
-                        <div class="social-info">
-                            <h4>⚡ Telegram Channel</h4>
-                            <p>Updates & leaks</p>
-                        </div>
+        <!-- ===== NAVBAR ===== -->
+        <nav class="navbar">
+            <a href="#" class="logo">
+                <i class="fas fa-robot"></i>
+                Usama's Bots
+                <span>v2.0</span>
+            </a>
+            <div class="nav-actions">
+                <div class="theme-toggle" id="themeToggle" role="button" aria-label="Toggle theme">
+                    <div class="thumb"></div>
+                    <div class="icons">
+                        <i class="fas fa-sun"></i>
+                        <i class="fas fa-moon"></i>
                     </div>
                 </div>
             </div>
-            
-            <!-- DIRECT CONTACT -->
-            <div class="contact-head">
-                <span><i class="fas fa-skull"></i> DIRECT CONTACT <i class="fas fa-skull"></i></span>
+        </nav>
+
+        <!-- ===== PAGE HEADER ===== -->
+        <div class="page-header">
+            <div>
+                <h1>Dashboard</h1>
+                <p>Manage your WhatsApp bot servers efficiently.</p>
             </div>
+            <div class="badge-status">
+                <i class="fas fa-circle"></i> All Systems Operational
+            </div>
+        </div>
+
+        <!-- ===== STATS GRID ===== -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="label"><span class="dot green"></span> MD Bot</div>
+                <div class="value" id="mdStatusText">Online</div>
+                <div class="sub">Endpoint: nodee.ravagee.tech:2005</div>
+            </div>
+            <div class="stat-card">
+                <div class="label"><span class="dot red"></span> Bug Bot</div>
+                <div class="value" id="bugStatusText">Standby</div>
+                <div class="sub">⚠️ Restricted Access</div>
+            </div>
+            <div class="stat-card">
+                <div class="label"><i class="fas fa-clock" style="color: var(--text-muted);"></i> Uptime</div>
+                <div class="value">99.9%</div>
+                <div class="sub">Last 30 days</div>
+            </div>
+        </div>
+
+        <!-- ===== SEGMENTED CONTROL ===== -->
+        <div class="segmented-control" id="botToggle">
+            <button class="seg-option active" data-bot="md" id="mdSeg">
+                <i class="fas fa-terminal"></i> MD Bot
+            </button>
+            <button class="seg-option danger" data-bot="bug" id="bugSeg">
+                <i class="fas fa-skull"></i> Bug Bot
+            </button>
+        </div>
+
+        <!-- ===== CTA CARD ===== -->
+        <div class="cta-card" id="ctaCard">
+            <div class="icon-big" id="ctaIcon"><i class="fas fa-play-circle"></i></div>
+            <h3 id="ctaTitle">Launch MD Bot Server</h3>
+            <p id="ctaDesc">Connect to the main MD bot server. Reliable and fast.</p>
+            <button class="btn-primary" id="actionBtn">
+                <i class="fas fa-arrow-right"></i> <span id="btnText">Open Server</span>
+            </button>
+        </div>
+
+        <!-- ===== SOCIAL SECTION ===== -->
+        <div class="social-section">
+            <div class="title"><i class="fas fa-users"></i> Community & Support</div>
             <div class="social-grid">
-                <div class="social-btn" data-url="https://t.me/UsamaDhuddi">
-                    <i class="fab fa-telegram" style="color:#ff3a3a;"></i>
-                    <div class="social-info">
-                        <h4>📲 Telegram Direct</h4>
-                        <p>@UsamaDhuddi - Personal Contact</p>
-                    </div>
-                </div>
+                <a href="https://youtube.com/@botswithusama" target="_blank" class="social-link">
+                    <i class="fab fa-youtube" style="color:#FF0000;"></i>
+                    <div class="info">YouTube <small>@botswithusama</small></div>
+                </a>
+                <a href="#" class="social-link" id="whatsappLink">
+                    <i class="fab fa-whatsapp" style="color:#25D366;"></i>
+                    <div class="info">WhatsApp <small>Group Chat</small></div>
+                </a>
+                <a href="#" class="social-link" id="telegramLink">
+                    <i class="fab fa-telegram" style="color:#0088cc;"></i>
+                    <div class="info">Telegram <small>Support Group</small></div>
+                </a>
+                <a href="#" class="social-link" id="telegramDirectLink">
+                    <i class="fab fa-telegram" style="color:#0088cc;"></i>
+                    <div class="info">Direct Contact <small>@UsamaDhuddi</small></div>
+                </a>
             </div>
-            
-            <!-- STATUS BAR -->
-            <div class="status-bar" id="statusBar">
-                <span><i class="fas fa-server"></i> Active: <span id="activeServerName">MD Bot</span></span>
-                <span><i class="fas fa-plug"></i> Endpoint: <span id="endpointDisplay">nodee.ravagee.tech:2005</span></span>
-                <span><span class="status-dot dot-md" id="statusDot"></span> Server Status : <span id="statusLabel">Active</span></span>
-                <span><i class="fas fa-check-circle"></i> Premium Access ✓</span>
-            </div>
-            
-            <footer>
-                <i class="fas fa-shield-alt"></i> secured & premium • 24/7 • dual servers
-            </footer>
-            
-            <div style="text-align: center;">
-                <button class="logout-btn" id="logoutBtn">
-                    <i class="fas fa-sign-out-alt"></i> Logout & Clear Session
-                </button>
+        </div>
+
+        <!-- ===== FOOTER ===== -->
+        <div class="footer-bar">
+            <span>© 2026 Usama's Bots. All rights reserved.</span>
+            <div>
+                <a href="#" onclick="logoutUser(event)">Logout</a> · 
+                <a href="subscribe.html">Subscribe</a>
             </div>
         </div>
     </div>
 
     <script>
-        // ============================================================
-        //  🔥 SET YOUR URLS HERE (EASY TO CHANGE) 🔥
-        // ============================================================
-        const MD_BOT_URL = "http://nodes.ravagee.tech:2005/";
-        const BUG_BOT_URL = "http://nodes.ravagee.tech:2007/";
-        // ============================================================
+        // ===== THEME TOGGLE =====
+        const themeToggle = document.getElementById('themeToggle');
+        const htmlElement = document.documentElement;
 
-        // Current active server: 'md' or 'bug'
-        let currentServer = 'md';
-
-        // ======================== SUBSCRIPTION CHECK ========================
-        function checkSubscription() {
-            const saved = localStorage.getItem('usama_subscribed');
-            if (!saved) {
-                window.location.href = 'subscribe.html';
-                return false;
-            }
-            try {
-                const data = JSON.parse(saved);
-                if (data.verified && data.expires > Date.now()) {
-                    return true;
-                } else {
-                    localStorage.removeItem('usama_subscribed');
-                    window.location.href = 'subscribe.html';
-                    return false;
-                }
-            } catch(e) {
-                window.location.href = 'subscribe.html';
-                return false;
-            }
-        }
-        if (!checkSubscription()) throw new Error("Redirect");
-
-        // ======================== DOM REFS ========================
-        const actionBtn = document.getElementById('mainActionBtn');
-        const actionTextSpan = document.getElementById('actionText');
-        const actionIcon = document.getElementById('actionIcon');
-        const serverInfoTag = document.getElementById('serverInfoTag');
-        const activeServerNameSpan = document.getElementById('activeServerName');
-        const endpointDisplaySpan = document.getElementById('endpointDisplay');
-        const statusBar = document.getElementById('statusBar');
-        const statusDot = document.getElementById('statusDot');
-        const statusLabel = document.getElementById('statusLabel');
-
-        const toggleMd = document.getElementById('toggleMDBot');
-        const toggleBug = document.getElementById('toggleBugBot');
-
-        // ======================== UPDATE UI ========================
-        function updateUIForServer() {
-            // Reset classes
-            actionBtn.classList.remove('md-style', 'bug-style');
-            statusBar.classList.remove('danger-status');
-            statusDot.className = 'status-dot';
-
-            if (currentServer === 'md') {
-                // --- MD BOT: PROFESSIONAL, SMOOTH, LIGHT ---
-                actionBtn.classList.add('md-style');
-                actionTextSpan.innerText = 'MD Bot Server';
-                actionIcon.className = 'fas fa-server';
-                serverInfoTag.className = 'server-info';
-                serverInfoTag.innerHTML = '<i class="fas fa-globe"></i> nodee.ravagee.tech:2005 • High Availability';
-                activeServerNameSpan.innerText = 'MD Bot';
-                endpointDisplaySpan.innerText = 'nodee.ravagee.tech:2005';
-                statusLabel.innerText = 'Active';
-
-                // Toggle active states
-                toggleMd.className = 'toggle-option md-active';
-                toggleBug.className = 'toggle-option';
-
-                // Status bar
-                statusDot.className = 'status-dot dot-md';
-                statusBar.classList.remove('danger-status');
-
-            } else {
-                // --- BUG BOT: DANGEROUS, RED, STATIC ---
-                actionBtn.classList.add('bug-style');
-                actionTextSpan.innerText = 'BUG Bot Server';
-                actionIcon.className = 'fas fa-skull-crossbones';
-                serverInfoTag.className = 'server-info danger';
-                serverInfoTag.innerHTML = '<i class="fas fa-bolt"></i> nodee.ravagee.tech:2003 • Exploit Ready';
-                activeServerNameSpan.innerText = 'BUG Bot';
-                endpointDisplaySpan.innerText = 'nodee.ravagee.tech:2003';
-                statusLabel.innerText = 'DANGER ACTIVE';
-
-                // Toggle active states
-                toggleMd.className = 'toggle-option';
-                toggleBug.className = 'toggle-option bug-active';
-
-                // Status bar
-                statusDot.className = 'status-dot dot-bug';
-                statusBar.classList.add('danger-status');
-            }
+        function setTheme(theme) {
+            htmlElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
         }
 
-        // ======================== TOGGLE EVENTS ========================
-        toggleMd.onclick = () => {
-            if (currentServer === 'md') return;
-            currentServer = 'md';
-            updateUIForServer();
-        };
-        toggleBug.onclick = () => {
-            if (currentServer === 'bug') return;
-            currentServer = 'bug';
-            updateUIForServer();
-        };
-
-        // ======================== MAIN BUTTON ACTION ========================
-        if (actionBtn) {
-            actionBtn.onclick = (e) => {
-                e.preventDefault();
-                if (currentServer === 'md') {
-                    window.open(MD_BOT_URL, '_blank');
-                } else {
-                    window.open(BUG_BOT_URL, '_blank');
-                }
-            };
+        function getPreferredTheme() {
+            const stored = localStorage.getItem('theme');
+            if (stored) return stored;
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                return 'dark';
+            }
+            return 'light';
         }
 
-        // ======================== SOCIAL LINKS ========================
-        document.querySelectorAll('.social-btn').forEach(btn => {
-            const url = btn.getAttribute('data-url');
-            if (url && url.trim() !== "") {
-                btn.onclick = () => { window.open(url, '_blank'); };
-            }
+        // Apply initial theme
+        setTheme(getPreferredTheme());
+
+        themeToggle.addEventListener('click', () => {
+            const current = htmlElement.getAttribute('data-theme');
+            const next = current === 'dark' ? 'light' : 'dark';
+            setTheme(next);
         });
 
-        // ======================== LOGOUT ========================
-        const logoutButton = document.getElementById('logoutBtn');
-        if (logoutButton) {
-            logoutButton.onclick = () => {
-                localStorage.removeItem('usama_subscribed');
-                window.location.href = 'subscribe.html';
-            };
-        }
+        // ===== BOT TOGGLE LOGIC =====
+        const mdSeg = document.getElementById('mdSeg');
+        const bugSeg = document.getElementById('bugSeg');
+        const actionBtn = document.getElementById('actionBtn');
+        const btnText = document.getElementById('btnText');
+        const ctaIcon = document.getElementById('ctaIcon');
+        const ctaTitle = document.getElementById('ctaTitle');
+        const ctaDesc = document.getElementById('ctaDesc');
+        const mdStatusText = document.getElementById('mdStatusText');
+        const bugStatusText = document.getElementById('bugStatusText');
 
-        // ======================== BACK BUTTON PREVENTION ========================
-        history.pushState(null, null, location.href);
-        window.onpopstate = function() {
-            if (!localStorage.getItem('usama_subscribed')) {
-                window.location.href = 'subscribe.html';
+        let currentBot = 'md';
+
+        function setBotUI(bot) {
+            currentBot = bot;
+            mdSeg.classList.remove('active');
+            bugSeg.classList.remove('active');
+            actionBtn.classList.remove('danger');
+
+            if (bot === 'md') {
+                mdSeg.classList.add('active');
+                ctaIcon.innerHTML = '<i class="fas fa-play-circle"></i>';
+                ctaTitle.textContent = 'Launch MD Bot Server';
+                ctaDesc.textContent = 'Connect to the main MD bot server. Reliable and fast.';
+                btnText.textContent = 'Open Server';
+                actionBtn.onclick = () => window.open('https://nodee.ravagee.tech:2005', '_blank');
+                mdStatusText.textContent = 'Online';
+                mdStatusText.style.color = 'var(--success)';
+                bugStatusText.textContent = 'Standby';
+                bugStatusText.style.color = 'var(--text-muted)';
             } else {
-                history.pushState(null, null, location.href);
-            }
-        };
-
-        // ======================== INITIALIZE ========================
-        window.addEventListener('load', function() {
-            if (!localStorage.getItem('usama_subscribed')) {
-                window.location.href = 'subscribe.html';
-                return;
-            }
-            // Default MD
-            currentServer = 'md';
-            updateUIForServer();
-        });
-
-        // ======================== SUBSCRIPTION VALIDITY CHECK ========================
-        setInterval(() => {
-            const savedSub = localStorage.getItem('usama_subscribed');
-            if (!savedSub) {
-                window.location.href = 'subscribe.html';
-            } else {
-                try {
-                    const parsed = JSON.parse(savedSub);
-                    if (!parsed.verified || parsed.expires <= Date.now()) {
-                        localStorage.removeItem('usama_subscribed');
-                        window.location.href = 'subscribe.html';
+                bugSeg.classList.add('active');
+                ctaIcon.innerHTML = '<i class="fas fa-triangle-exclamation" style="color: var(--danger);"></i>';
+                ctaTitle.textContent = '⚠️ Bug Bot — Dangerous Zone';
+                ctaDesc.textContent = 'Use with extreme caution. This bot executes advanced/unstable commands.';
+                btnText.textContent = 'Activate Bug Bot';
+                actionBtn.classList.add('danger');
+                actionBtn.onclick = () => {
+                    if (confirm('⚠️ Are you sure you want to activate the Bug Bot? Use at your own risk!')) {
+                        alert('Bug Bot activated (simulated). Add your custom logic here.');
+                        // Add actual bug bot logic here if needed
                     }
-                } catch(e) {
-                    localStorage.removeItem('usama_subscribed');
-                    window.location.href = 'subscribe.html';
-                }
+                };
+                mdStatusText.textContent = 'Active';
+                mdStatusText.style.color = 'var(--text-muted)';
+                bugStatusText.textContent = '⚠️ Danger';
+                bugStatusText.style.color = 'var(--danger)';
             }
-        }, 30000);
+        }
+
+        mdSeg.addEventListener('click', () => setBotUI('md'));
+        bugSeg.addEventListener('click', () => setBotUI('bug'));
+
+        // Init
+        setBotUI('md');
+
+        // ===== SOCIAL PLACEHOLDERS =====
+        document.getElementById('whatsappLink').addEventListener('click', (e) => {
+            e.preventDefault();
+            alert('Add your WhatsApp group invite link here.');
+        });
+        document.getElementById('telegramLink').addEventListener('click', (e) => {
+            e.preventDefault();
+            alert('Add your Telegram group invite link here.');
+        });
+        document.getElementById('telegramDirectLink').addEventListener('click', (e) => {
+            e.preventDefault();
+            alert('Add your Telegram direct profile link here.');
+        });
+
+        // ===== LOGOUT =====
+        function logoutUser(e) {
+            e.preventDefault();
+            if (confirm('Are you sure you want to logout?')) {
+                localStorage.clear();
+                sessionStorage.clear();
+                window.location.href = 'subscribe.html';
+            }
+        }
     </script>
 </body>
 </html>
