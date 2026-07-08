@@ -1,396 +1,262 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Subscribe - Usama's Bots</title>
+    <title>Usama's Bots</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
     <style>
+        /* ===== CSS VARIABLES (THEMES) ===== */
+        :root {
+            --bg-primary: #f8fafc;
+            --bg-card: #ffffff;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --text-muted: #94a3b8;
+            --border-color: #e2e8f0;
+            --shadow-lg: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+            --primary: #2563eb;
+            --success: #16a34a;
+            --danger: #dc2626;
+            --radius: 16px;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #0f172a;
+            --bg-card: #1e293b;
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --text-muted: #64748b;
+            --border-color: #334155;
+            --shadow-lg: 0 20px 25px -5px rgb(0 0 0 / 0.5);
+            --primary: #3b82f6;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
             min-height: 100vh;
-            background: radial-gradient(circle at 30% 10%, #0a0f1e, #02040c);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 20px;
+            transition: background var(--transition), color var(--transition);
         }
-        
-        .full-page {
-            position: fixed;
-            top: 0;
-            left: 0;
+
+        .container {
+            max-width: 480px;
             width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 30% 10%, #0a0f1e, #02040c);
+        }
+
+        /* ===== CARD ===== */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 40px 32px;
+            box-shadow: var(--shadow-lg);
+            transition: all var(--transition);
+            text-align: center;
+        }
+
+        .card .icon-main {
+            font-size: 3.5rem;
+            color: var(--danger);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .card h1 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+        }
+
+        .card .subhead {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 24px;
+            line-height: 1.5;
+        }
+
+        /* ===== STEPS ===== */
+        .steps {
+            text-align: left;
+            margin: 24px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .step-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 14px 18px;
+            background: var(--bg-primary);
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            transition: all var(--transition);
+        }
+        .step-item.completed {
+            border-color: var(--success);
+            background: rgba(22, 163, 74, 0.05);
+        }
+        [data-theme="dark"] .step-item.completed {
+            background: rgba(22, 163, 74, 0.1);
+        }
+
+        .step-item .num {
+            width: 32px;
+            height: 32px;
+            background: var(--border-color);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            z-index: 100;
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            flex-shrink: 0;
+            transition: all var(--transition);
         }
-        
-        .subscribe-card {
-            max-width: 500px;
-            width: 90%;
-            background: rgba(15, 25, 45, 0.95);
-            backdrop-filter: blur(15px);
-            border-radius: 50px;
-            padding: 60px 40px;
-            text-align: center;
-            border: 2px solid rgba(255, 0, 0, 0.5);
-            box-shadow: 0 30px 60px rgba(0,0,0,0.6);
-            animation: fadeIn 0.5s ease;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.9); }
-            to { opacity: 1; transform: scale(1); }
-        }
-        
-        .youtube-icon {
-            font-size: 80px;
-            margin-bottom: 30px;
-            animation: bounce 1s ease infinite;
-        }
-        
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-        
-        h1 {
+        .step-item.completed .num {
+            background: var(--success);
             color: white;
-            font-size: 36px;
-            margin-bottom: 15px;
         }
-        
-        .required-text {
-            color: #ff4444;
-            font-size: 20px;
-            margin-bottom: 25px;
-            font-weight: bold;
+
+        .step-item .content {
+            flex: 1;
         }
-        
-        .info-text {
-            color: #aaa;
-            margin-bottom: 40px;
-            line-height: 1.6;
-            font-size: 16px;
+        .step-item .content .title {
+            font-weight: 600;
+            font-size: 0.95rem;
         }
-        
-        .channel-list {
-            text-align: left;
-            margin-bottom: 30px;
-            padding: 0 10px;
+        .step-item .content .desc {
+            font-size: 0.8rem;
+            color: var(--text-muted);
         }
-        
-        .channel-item {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
-            padding: 12px 16px;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            border-left: 3px solid #ff0000;
+
+        .step-item .status-icon {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            transition: all var(--transition);
         }
-        
-        .channel-item .ch-icon {
-            font-size: 24px;
+        .step-item.completed .status-icon {
+            color: var(--success);
         }
-        
-        .channel-item .ch-name {
-            color: #ddd;
-            font-size: 14px;
-            font-weight: 500;
-        }
-        
-        .channel-item .ch-status {
-            margin-left: auto;
-            font-size: 12px;
-            color: #ff6666;
-        }
-        
-        .channel-item.subscribed {
-            border-left-color: #44ff88;
-        }
-        
-        .channel-item.subscribed .ch-status {
-            color: #44ff88;
-        }
-        
-        .main-btn {
-            background: #ff0000;
-            color: white;
-            border: none;
-            padding: 18px 40px;
-            font-size: 22px;
-            font-weight: bold;
-            border-radius: 60px;
-            cursor: pointer;
+
+        /* ===== BUTTONS ===== */
+        .btn-block {
             width: 100%;
-            transition: 0.3s;
-            margin-bottom: 30px;
+            padding: 14px;
+            border: none;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all var(--transition);
+            font-family: 'Inter', sans-serif;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
         }
-        
-        .main-btn:hover {
-            background: #cc0000;
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+            margin-top: 8px;
+        }
+        .btn-primary:hover:not(:disabled) {
+            background: #1d4ed8;
             transform: scale(1.02);
         }
-        
-        .main-btn:disabled {
-            background: #555;
+        .btn-primary:disabled {
+            opacity: 0.5;
             cursor: not-allowed;
             transform: none;
+            box-shadow: none;
         }
-        
-        .continue-btn {
-            background: #00aaff;
+
+        .btn-success {
+            background: var(--success);
             color: white;
-            border: none;
-            padding: 15px 30px;
-            font-size: 18px;
-            font-weight: bold;
-            border-radius: 60px;
-            cursor: pointer;
-            width: 100%;
-            transition: 0.3s;
+            box-shadow: 0 4px 12px rgba(22, 163, 74, 0.3);
+            margin-top: 12px;
             display: none;
         }
-        
-        .continue-btn.show {
-            display: block;
-            animation: fadeInUp 0.5s ease;
+        .btn-success.show {
+            display: inline-flex;
+            animation: fadeUp 0.4s ease;
         }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .continue-btn:hover {
-            background: #0088cc;
+        .btn-success:hover {
+            background: #15803d;
             transform: scale(1.02);
         }
-        
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         .timer-text {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 16px;
+            min-height: 24px;
+            transition: all var(--transition);
+        }
+        .timer-text.active {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .footer-note {
             margin-top: 20px;
-            font-size: 16px;
-            color: #ffaa66;
-            font-weight: bold;
-        }
-        
-        .small-note {
-            margin-top: 20px;
-            font-size: 12px;
-            color: #666;
-        }
-        
-        @media (max-width: 550px) {
-            .subscribe-card {
-                padding: 40px 25px;
-            }
-            h1 {
-                font-size: 28px;
-            }
-            .main-btn {
-                font-size: 18px;
-                padding: 14px 30px;
-            }
-            .youtube-icon {
-                font-size: 60px;
-            }
-            .channel-item .ch-name {
-                font-size: 12px;
-            }
-        }
-    </style>
-</head>
-<body>
-    <div class="full-page">
-        <div class="subscribe-card">
-            <div class="youtube-icon">📺</div>
-            <h1>Subscribe Required!</h1>
-            <div class="required-text">⚠️ Must Subscribe to Both Channels</div>
-            <div class="info-text">
-                To access Usama's Bot Panel and Community Dashboard<br>
-                Please subscribe to both YouTube channels first
-            </div>
-            
-            <!-- Channel List -->
-            <div class="channel-list" id="channelList">
-                <div class="channel-item" data-index="0">
-                    <span class="ch-icon">🔴</span>
-                    <span class="ch-name">@botswithusama</span>
-                    <span class="ch-status">⏳ Pending</span>
-                </div>
-                <div class="channel-item" data-index="1">
-                    <span class="ch-icon">🔴</span>
-                    <span class="ch-name">@rafiainfoworld</span>
-                    <span class="ch-status">⏳ Pending</span>
-                </div>
-            </div>
-            
-            <button class="main-btn" id="subscribeBtn">
-                ▶ SUBSCRIBE NOW
-            </button>
-            
-            <button class="continue-btn" id="continueBtn">
-                ✓ CONTINUE TO DASHBOARD →
-            </button>
-            
-            <div class="timer-text" id="timerText">
-                ⏳ Subscribe both channels then wait 5 seconds...
-            </div>
-            <div class="small-note">
-                After subscribing to both, wait 5 seconds then click continue
-            </div>
-        </div>
-    </div>
-
-    <script>
-        // ============================================================
-        //  🔥 YOUTUBE CHANNELS (Add/Remove here) 🔥
-        // ============================================================
-        const YOUTUBE_CHANNELS = [
-            "https://youtube.com/@botswithusama?sub_confirmation=1",
-            "https://youtube.com/@rafiainfoworld?si=VuhUZi7qmxRntRrA"
-        ];
-        // ============================================================
-
-        const CHANNEL_NAMES = [
-            "@botswithusama",
-            "@rafiainfoworld"
-        ];
-
-        const subscribeBtn = document.getElementById('subscribeBtn');
-        const continueBtn = document.getElementById('continueBtn');
-        const timerText = document.getElementById('timerText');
-        const channelItems = document.querySelectorAll('.channel-item');
-
-        let currentChannelIndex = 0;
-        let subscribedChannels = new Set();
-        let countdown = 5;
-        let timerInterval = null;
-
-        // Update channel status UI
-        function updateChannelStatus() {
-            channelItems.forEach((item, index) => {
-                const statusSpan = item.querySelector('.ch-status');
-                if (subscribedChannels.has(index)) {
-                    item.classList.add('subscribed');
-                    statusSpan.textContent = '✅ Subscribed';
-                } else {
-                    item.classList.remove('subscribed');
-                    statusSpan.textContent = '⏳ Pending';
-                }
-            });
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border-color);
+            padding-top: 20px;
         }
 
-        // Check if all channels are subscribed
-        function allSubscribed() {
-            return subscribedChannels.size === YOUTUBE_CHANNELS.length;
+        /* Theme Toggle inside card */
+        .theme-toggle-mini {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 40px;
+            padding: 6px 12px;
+            cursor: pointer;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            transition: all var(--transition);
+            display: flex;
+            gap: 6px;
+            align-items: center;
         }
-
-        // Subscribe button click - opens next unsubscribed channel
-        subscribeBtn.onclick = function() {
-            // Find first unsubscribed channel
-            let nextIndex = -1;
-            for (let i = 0; i < YOUTUBE_CHANNELS.length; i++) {
-                if (!subscribedChannels.has(i)) {
-                    nextIndex = i;
-                    break;
-                }
-            }
-
-            if (nextIndex === -1) {
-                // All channels already subscribed
-                timerText.innerHTML = '✅ All channels subscribed! Waiting 5 seconds...';
-                startCountdown();
-                return;
-            }
-
-            // Open the channel
-            window.open(YOUTUBE_CHANNELS[nextIndex], '_blank');
-            
-            // Mark as subscribed (user will click again for next channel)
-            subscribedChannels.add(nextIndex);
-            updateChannelStatus();
-
-            // Check if all done
-            if (allSubscribed()) {
-                timerText.innerHTML = '✅ All channels subscribed! Waiting 5 seconds...';
-                startCountdown();
-            } else {
-                const remaining = YOUTUBE_CHANNELS.length - subscribedChannels.size;
-                timerText.innerHTML = `📺 Please subscribe to ${remaining} more channel(s)`;
-                subscribeBtn.textContent = `▶ SUBSCRIBE NEXT CHANNEL (${remaining} left)`;
-            }
-        };
-
-        // Start countdown timer
-        function startCountdown() {
-            if (timerInterval) clearInterval(timerInterval);
-            countdown = 5;
-            subscribeBtn.disabled = true;
-            subscribeBtn.textContent = '⏳ Please wait...';
-
-            timerInterval = setInterval(function() {
-                countdown--;
-                
-                if (countdown <= 0) {
-                    clearInterval(timerInterval);
-                    continueBtn.classList.add('show');
-                    timerText.innerHTML = '✅ You can now click CONTINUE';
-                    timerText.style.color = '#66ff66';
-                    subscribeBtn.disabled = false;
-                    subscribeBtn.textContent = '✅ ALL SUBSCRIBED';
-                } else {
-                    timerText.innerHTML = '⏳ Please wait ' + countdown + ' seconds before continuing...';
-                }
-            }, 1000);
+        .theme-toggle-mini:hover {
+            border-color: var(--text-muted);
         }
+        .card { position: relative; }
 
-        // Continue button click
-        continueBtn.onclick = function() {
-            if (continueBtn.classList.contains('show')) {
-                const data = {
-                    verified: true,
-                    timestamp: Date.now(),
-                    expires: Date.now() + (7 * 24 * 60 * 60 * 1000)
-                };
-                localStorage.setItem('usama_subscribed', JSON.stringify(data));
-                window.location.href = 'dashboard.html';
-            }
-        };
-
-        // Check if already subscribed
-        const saved = localStorage.getItem('usama_subscribed');
-        if (saved) {
-            try {
-                const parsed = JSON.parse(saved);
-                if (parsed.verified && parsed.expires > Date.now()) {
-                    window.location.href = 'dashboard.html';
-                } else if (parsed.expires <= Date.now()) {
-                    localStorage.removeItem('usama_subscribed');
-                }
-            } catch(e) {}
-        }
-
-        // Initial setup
-        updateChannelStatus();
-        subscribeBtn.textContent = `▶ SUBSCRIBE CHANNEL 1 (${YOUTUBE_CHANNELS.length} total)`;
-    </script>
-</body>
-</html>
+        @media (max-width: 480px) {
+            .card { padding: 28px 20px; }
+            .step-item { padding: 12px 14px; }
+            .step-item .content .
