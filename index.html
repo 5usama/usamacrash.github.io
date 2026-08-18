@@ -187,7 +187,7 @@
             margin-bottom: 0.2rem;
         }
 
-        /* ===== SERVER SELECTOR ===== */
+        /* ===== SERVER BUTTONS (2) ===== */
         .selector-label {
             display: flex;
             align-items: center;
@@ -197,7 +197,7 @@
             letter-spacing: 0.05em;
             text-transform: uppercase;
             color: rgba(255, 255, 255, 0.3);
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem;
         }
         .selector-label::after {
             content: '';
@@ -206,83 +206,76 @@
             background: linear-gradient(90deg, rgba(255, 255, 255, 0.06), transparent);
         }
 
-        .server-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+        .server-buttons {
+            display: flex;
+            flex-direction: column;
             gap: 1rem;
-            margin-bottom: 0.5rem;
         }
 
-        .server-card {
+        .server-btn {
             position: relative;
             background: rgba(255, 255, 255, 0.03);
-            border-radius: 1.4rem;
-            padding: 1.4rem 1.2rem 1.2rem;
             border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 1.4rem;
+            padding: 1.2rem 1.8rem;
             cursor: pointer;
             transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
             backdrop-filter: blur(4px);
             -webkit-tap-highlight-color: transparent;
-            user-select: none;
+            text-align: left;
+            font-family: 'Inter', sans-serif;
+            color: #fff;
+            width: 100%;
         }
-        .server-card:hover {
+        .server-btn:hover {
             background: rgba(255, 255, 255, 0.07);
             border-color: rgba(123, 92, 240, 0.25);
-            transform: translateY(-3px);
+            transform: translateY(-2px);
             box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
         }
-        .server-card:active {
-            transform: scale(0.97);
+        .server-btn:active {
+            transform: scale(0.98);
         }
-        .server-card .icon {
-            font-size: 1.8rem;
-            margin-bottom: 0.5rem;
-            display: block;
+        .server-btn .left {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        .server-btn .icon {
+            font-size: 1.6rem;
             filter: drop-shadow(0 4px 12px rgba(123, 92, 240, 0.2));
         }
-        .server-card .name {
-            font-size: 1rem;
+        .server-btn .info .name {
+            font-size: 1.1rem;
             font-weight: 700;
-            color: #fff;
             letter-spacing: -0.01em;
         }
-        .server-card .addr {
+        .server-btn .info .status {
             font-size: 0.7rem;
-            font-weight: 400;
-            color: rgba(255, 255, 255, 0.25);
-            margin-top: 0.2rem;
-            font-family: 'Inter', monospace;
-            letter-spacing: 0.02em;
-        }
-        .server-card .status {
-            display: inline-block;
-            margin-top: 0.6rem;
-            font-size: 0.6rem;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.06em;
-            padding: 0.15rem 0.8rem;
-            border-radius: 100px;
-            background: rgba(34, 197, 94, 0.12);
             color: #4ade80;
+            background: rgba(34, 197, 94, 0.12);
+            padding: 0.1rem 0.8rem;
+            border-radius: 100px;
             border: 1px solid rgba(34, 197, 94, 0.10);
+            display: inline-block;
+            margin-top: 0.15rem;
         }
-        .server-card .click-hint {
-            position: absolute;
-            bottom: 0.6rem;
-            right: 0.8rem;
-            font-size: 0.5rem;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: rgba(255, 255, 255, 0.08);
-            font-weight: 600;
-            transition: color 0.3s;
+        .server-btn .arrow {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.15);
+            transition: color 0.3s, transform 0.3s;
         }
-        .server-card:hover .click-hint {
-            color: rgba(255, 255, 255, 0.2);
+        .server-btn:hover .arrow {
+            color: rgba(255, 255, 255, 0.4);
+            transform: translateX(4px);
         }
-        .server-card .glow {
+        .server-btn .glow {
             position: absolute;
             inset: -1px;
             border-radius: 1.4rem;
@@ -295,16 +288,8 @@
             pointer-events: none;
             transition: background 0.5s;
         }
-        .server-card:hover .glow {
+        .server-btn:hover .glow {
             background: linear-gradient(135deg, rgba(123, 92, 240, 0.3), rgba(0, 180, 216, 0.15));
-        }
-        .server-card.selected {
-            border-color: rgba(123, 92, 240, 0.4);
-            background: rgba(123, 92, 240, 0.08);
-            box-shadow: 0 0 40px rgba(123, 92, 240, 0.05);
-        }
-        .server-card.selected .glow {
-            background: linear-gradient(135deg, rgba(123, 92, 240, 0.5), rgba(0, 180, 216, 0.25));
         }
 
         /* ===== FOOTER ===== */
@@ -573,21 +558,14 @@
             .header h1 {
                 font-size: 2rem;
             }
-            .server-grid {
-                gap: 0.7rem;
+            .server-btn {
+                padding: 1rem 1.2rem;
             }
-            .server-card {
-                padding: 1rem 0.8rem 0.9rem;
-                border-radius: 1.2rem;
+            .server-btn .icon {
+                font-size: 1.3rem;
             }
-            .server-card .icon {
-                font-size: 1.4rem;
-            }
-            .server-card .name {
-                font-size: 0.85rem;
-            }
-            .server-card .addr {
-                font-size: 0.6rem;
+            .server-btn .info .name {
+                font-size: 1rem;
             }
             .popup-card {
                 padding: 2rem 1.5rem 1.8rem;
@@ -610,9 +588,6 @@
         }
 
         @media (max-width: 400px) {
-            .server-grid {
-                grid-template-columns: 1fr;
-            }
             .header h1 {
                 font-size: 1.7rem;
             }
@@ -679,27 +654,35 @@
             <script src="https://movementssubscriptionobjection.com/7f/41/64/7f4164e474776d226dbfcb98753131a4.js"></script>
         </div>
 
-        <!-- SERVER SELECTOR -->
+        <!-- SERVER BUTTONS (2) -->
         <div class="selector-label">Choose Server</div>
-        <div class="server-grid" id="serverGrid">
+        <div class="server-buttons">
             <!-- Server 1 -->
-            <div class="server-card" data-url="http://93.177.64.145:8355" data-name="Server Alpha">
+            <button class="server-btn" data-url="http://93.177.64.145:8355">
                 <span class="glow"></span>
-                <span class="icon">⚡</span>
-                <div class="name">Alpha</div>
-                <div class="addr">93.177.64.145:8355</div>
-                <div class="status">● Online</div>
-                <span class="click-hint">click to select</span>
-            </div>
+                <span class="left">
+                    <span class="icon">⚡</span>
+                    <span class="info">
+                        <span class="name">Server 1</span>
+                        <br />
+                        <span class="status">● Online</span>
+                    </span>
+                </span>
+                <span class="arrow">➜</span>
+            </button>
             <!-- Server 2 -->
-            <div class="server-card" data-url="http://160.191.77.60:8073" data-name="Server Beta">
+            <button class="server-btn" data-url="http://160.191.77.60:8073">
                 <span class="glow"></span>
-                <span class="icon">🌐</span>
-                <div class="name">Beta</div>
-                <div class="addr">160.191.77.60:8073</div>
-                <div class="status">● Online</div>
-                <span class="click-hint">click to select</span>
-            </div>
+                <span class="left">
+                    <span class="icon">🌐</span>
+                    <span class="info">
+                        <span class="name">Server 2</span>
+                        <br />
+                        <span class="status">● Online</span>
+                    </span>
+                </span>
+                <span class="arrow">➜</span>
+            </button>
         </div>
 
         <!-- 🔥 POPUNDER AD (Bottom) -->
@@ -724,13 +707,7 @@
 
     <script>
         // ============================================================
-        //  STATE
-        // ============================================================
-        let selectedServerUrl = null;
-        let isSubscribed = false;
-
-        // ============================================================
-        //  DOM REFS
+        //  SUBSCRIBE POPUP
         // ============================================================
         const popupOverlay = document.getElementById('popupOverlay');
         const subscribeBtn = document.getElementById('subscribeBtn');
@@ -738,11 +715,7 @@
         const loadingBar = document.getElementById('loadingBar');
         const loadingFill = document.getElementById('loadingFill');
         const mainContainer = document.getElementById('mainContainer');
-        const serverCards = document.querySelectorAll('.server-card');
 
-        // ============================================================
-        //  SUBSCRIBE LOGIC
-        // ============================================================
         let loadingInterval = null;
         let loadProgress = 0;
 
@@ -762,7 +735,6 @@
                     clearInterval(loadingInterval);
                     loadingInterval = null;
                     setTimeout(() => {
-                        isSubscribed = true;
                         popupOverlay.classList.add('hidden');
                         mainContainer.classList.remove('hidden');
                         subscribeBtn.disabled = false;
@@ -782,37 +754,27 @@
         });
 
         skipBtn.addEventListener('click', () => {
-            isSubscribed = true;
             popupOverlay.classList.add('hidden');
             mainContainer.classList.remove('hidden');
         });
 
         // ============================================================
-        //  SERVER SELECTION (only)
+        //  SERVER BUTTONS — OPEN URL IN NEW TAB
         // ============================================================
-        serverCards.forEach(card => {
-            card.addEventListener('click', () => {
-                serverCards.forEach(c => c.classList.remove('selected'));
-                card.classList.add('selected');
-                selectedServerUrl = card.dataset.url;
-                // subtle feedback
-                card.style.transition = 'transform 0.1s';
-                card.style.transform = 'scale(0.97)';
-                setTimeout(() => {
-                    card.style.transform = '';
-                }, 120);
-                console.log('✅ Selected server:', selectedServerUrl);
+        document.querySelectorAll('.server-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const url = this.dataset.url;
+                if (url) {
+                    window.open(url, '_blank');
+                    // optional: subtle feedback
+                    this.style.transform = 'scale(0.97)';
+                    setTimeout(() => { this.style.transform = ''; }, 150);
+                }
             });
         });
 
-        // Auto-select first server
-        if (serverCards.length > 0) {
-            serverCards[0].classList.add('selected');
-            selectedServerUrl = serverCards[0].dataset.url;
-        }
-
         // ============================================================
-        //  LINKS OPEN IN NEW TAB
+        //  SOCIAL LINKS OPEN IN NEW TAB
         // ============================================================
         document.querySelectorAll('.social-links a').forEach(link => {
             link.setAttribute('target', '_blank');
@@ -826,8 +788,7 @@
             }
         });
 
-        console.log('🚀 Usama\'s Bots — Server Selector ready.');
-        console.log('📡 Default server:', selectedServerUrl);
+        console.log('🚀 Usama\'s Bots — Two server buttons ready.');
     </script>
 
 </body>
