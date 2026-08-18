@@ -179,9 +179,6 @@
             padding: 0.4rem 0.2rem;
             text-align: center;
         }
-        .ad-social-wrapper script {
-            display: block;
-        }
         .ad-social-wrapper .ad-label {
             font-size: 0.5rem;
             text-transform: uppercase;
@@ -213,7 +210,7 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 1rem;
-            margin-bottom: 1.6rem;
+            margin-bottom: 0.5rem;
         }
 
         .server-card {
@@ -271,11 +268,6 @@
             color: #4ade80;
             border: 1px solid rgba(34, 197, 94, 0.10);
         }
-        .server-card .status.offline {
-            background: rgba(255, 100, 100, 0.08);
-            color: #f87171;
-            border-color: rgba(255, 100, 100, 0.08);
-        }
         .server-card .click-hint {
             position: absolute;
             bottom: 0.6rem;
@@ -313,115 +305,6 @@
         }
         .server-card.selected .glow {
             background: linear-gradient(135deg, rgba(123, 92, 240, 0.5), rgba(0, 180, 216, 0.25));
-        }
-
-        /* ===== CONNECT SECTION ===== */
-        .connect-area {
-            margin-top: 0.4rem;
-        }
-        .input-group {
-            display: flex;
-            gap: 0.6rem;
-            align-items: center;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 1.2rem;
-            padding: 0.2rem;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: border-color 0.3s, box-shadow 0.3s;
-        }
-        .input-group:focus-within {
-            border-color: rgba(123, 92, 240, 0.25);
-            box-shadow: 0 0 30px rgba(123, 92, 240, 0.03);
-        }
-        .input-group input {
-            flex: 1;
-            background: transparent;
-            border: none;
-            padding: 0.9rem 1.2rem;
-            font-size: 0.95rem;
-            font-weight: 500;
-            color: #fff;
-            outline: none;
-            font-family: 'Inter', sans-serif;
-            letter-spacing: 0.01em;
-            min-width: 0;
-        }
-        .input-group input::placeholder {
-            color: rgba(255, 255, 255, 0.2);
-            font-weight: 400;
-            font-size: 0.85rem;
-        }
-        .input-group .country-code {
-            padding: 0.9rem 0.4rem 0.9rem 1.2rem;
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: rgba(255, 255, 255, 0.3);
-            white-space: nowrap;
-        }
-        .input-group button {
-            background: linear-gradient(135deg, #7b5cf0, #6c3ce0);
-            border: none;
-            border-radius: 1rem;
-            padding: 0.85rem 1.8rem;
-            font-size: 0.85rem;
-            font-weight: 700;
-            color: #fff;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            font-family: 'Inter', sans-serif;
-            letter-spacing: 0.02em;
-            white-space: nowrap;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            box-shadow: 0 4px 24px rgba(123, 92, 240, 0.2);
-            position: relative;
-            overflow: hidden;
-        }
-        .input-group button:hover {
-            transform: scale(1.02);
-            box-shadow: 0 8px 40px rgba(123, 92, 240, 0.3);
-        }
-        .input-group button:active {
-            transform: scale(0.97);
-        }
-        .input-group button:disabled {
-            opacity: 0.4;
-            cursor: not-allowed;
-            transform: none !important;
-            box-shadow: none !important;
-        }
-        .input-group button .spinner {
-            display: none;
-            width: 16px;
-            height: 16px;
-            border: 2px solid rgba(255, 255, 255, 0.15);
-            border-top-color: #fff;
-            border-radius: 50%;
-            animation: spin 0.7s linear infinite;
-        }
-        .input-group button.loading .spinner {
-            display: block;
-        }
-        .input-group button.loading .btn-text {
-            display: none;
-        }
-
-        @keyframes spin {
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        .connect-hint {
-            text-align: center;
-            margin-top: 0.8rem;
-            font-size: 0.7rem;
-            color: rgba(255, 255, 255, 0.15);
-            letter-spacing: 0.04em;
-        }
-        .connect-hint span {
-            color: rgba(255, 255, 255, 0.25);
         }
 
         /* ===== FOOTER ===== */
@@ -675,6 +558,12 @@
             }
         }
 
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
         /* ===== RESPONSIVE ===== */
         @media (max-width: 540px) {
             .main-container {
@@ -699,29 +588,6 @@
             }
             .server-card .addr {
                 font-size: 0.6rem;
-            }
-            .input-group {
-                flex-wrap: wrap;
-                background: transparent;
-                border: none;
-                padding: 0;
-                gap: 0.5rem;
-            }
-            .input-group input {
-                background: rgba(255, 255, 255, 0.03);
-                border-radius: 1rem;
-                padding: 0.8rem 1rem;
-                border: 1px solid rgba(255, 255, 255, 0.05);
-                flex: 1 1 100%;
-            }
-            .input-group .country-code {
-                display: none;
-            }
-            .input-group button {
-                flex: 1 1 100%;
-                justify-content: center;
-                padding: 0.8rem 1.2rem;
-                border-radius: 1rem;
             }
             .popup-card {
                 padding: 2rem 1.5rem 1.8rem;
@@ -764,7 +630,6 @@
             border-radius: 4px;
         }
 
-        /* ===== UTILITY ===== */
         .hidden {
             display: none !important;
         }
@@ -805,7 +670,7 @@
         <header class="header">
             <div class="badge">Live Bots</div>
             <h1>Usama's Bots</h1>
-            <p class="subhead">Select your server &amp; <span>connect instantly</span></p>
+            <p class="subhead">Select your server to get started</p>
         </header>
 
         <!-- 🔥 SOCIAL BAR AD (Top) -->
@@ -837,21 +702,6 @@
             </div>
         </div>
 
-        <!-- CONNECT AREA -->
-        <div class="connect-area">
-            <div class="input-group">
-                <span class="country-code">+92</span>
-                <input type="tel" id="phoneInput" placeholder="Enter phone number" autocomplete="tel" />
-                <button id="connectBtn">
-                    <span class="spinner"></span>
-                    <span class="btn-text">Connect ➜</span>
-                </button>
-            </div>
-            <div class="connect-hint">
-                <span>⚡</span> Select a server, enter your number, and connect your WhatsApp
-            </div>
-        </div>
-
         <!-- 🔥 POPUNDER AD (Bottom) -->
         <div style="margin: 1.8rem 0 0.4rem 0; text-align: center; opacity: 0.6; border-top: 1px solid rgba(255,255,255,0.03); padding-top: 1.2rem;">
             <script src="https://movementssubscriptionobjection.com/99/79/ad/9979ad7c36d34ced0f8d94d9e1a0c49d.js"></script>
@@ -878,7 +728,6 @@
         // ============================================================
         let selectedServerUrl = null;
         let isSubscribed = false;
-        let isConnecting = false;
 
         // ============================================================
         //  DOM REFS
@@ -889,10 +738,7 @@
         const loadingBar = document.getElementById('loadingBar');
         const loadingFill = document.getElementById('loadingFill');
         const mainContainer = document.getElementById('mainContainer');
-
         const serverCards = document.querySelectorAll('.server-card');
-        const phoneInput = document.getElementById('phoneInput');
-        const connectBtn = document.getElementById('connectBtn');
 
         // ============================================================
         //  SUBSCRIBE LOGIC
@@ -915,12 +761,10 @@
                     loadingFill.style.width = '100%';
                     clearInterval(loadingInterval);
                     loadingInterval = null;
-                    // Done loading
                     setTimeout(() => {
                         isSubscribed = true;
                         popupOverlay.classList.add('hidden');
                         mainContainer.classList.remove('hidden');
-                        // Reset button
                         subscribeBtn.disabled = false;
                         subscribeBtn.classList.remove('loading');
                         loadingBar.classList.remove('active');
@@ -933,172 +777,57 @@
         }
 
         subscribeBtn.addEventListener('click', () => {
-            // Open YouTube channel in new tab
             window.open('https://youtube.com/@botswithusama', '_blank');
             startLoading();
         });
 
         skipBtn.addEventListener('click', () => {
-            // Skip directly (for users who already subscribed)
             isSubscribed = true;
             popupOverlay.classList.add('hidden');
             mainContainer.classList.remove('hidden');
         });
 
         // ============================================================
-        //  SERVER SELECTION
+        //  SERVER SELECTION (only)
         // ============================================================
         serverCards.forEach(card => {
             card.addEventListener('click', () => {
-                // Remove selected state from all
                 serverCards.forEach(c => c.classList.remove('selected'));
                 card.classList.add('selected');
                 selectedServerUrl = card.dataset.url;
-                // Visual feedback: subtle haptic-like
+                // subtle feedback
                 card.style.transition = 'transform 0.1s';
                 card.style.transform = 'scale(0.97)';
                 setTimeout(() => {
                     card.style.transform = '';
                 }, 120);
+                console.log('✅ Selected server:', selectedServerUrl);
             });
         });
 
-        // Auto-select first server by default
+        // Auto-select first server
         if (serverCards.length > 0) {
             serverCards[0].classList.add('selected');
             selectedServerUrl = serverCards[0].dataset.url;
         }
 
         // ============================================================
-        //  CONNECT LOGIC
-        // ============================================================
-        connectBtn.addEventListener('click', async () => {
-            if (isConnecting) return;
-
-            // Validate server selection
-            if (!selectedServerUrl) {
-                shakeElement(connectBtn);
-                return;
-            }
-
-            // Validate phone
-            const phone = phoneInput.value.trim();
-            if (!phone || phone.length < 4) {
-                phoneInput.style.borderColor = 'rgba(255,59,48,0.3)';
-                phoneInput.focus();
-                setTimeout(() => {
-                    phoneInput.style.borderColor = '';
-                }, 1500);
-                shakeElement(phoneInput);
-                return;
-            }
-
-            // Build target URL with phone param
-            const targetUrl = selectedServerUrl + '/connect?number=' + encodeURIComponent(phone);
-
-            isConnecting = true;
-            connectBtn.disabled = true;
-            connectBtn.classList.add('loading');
-
-            try {
-                const response = await fetch(targetUrl, {
-                    method: 'GET',
-                    mode: 'cors',
-                });
-
-                if (response.ok) {
-                    connectBtn.classList.remove('loading');
-                    connectBtn.querySelector('.btn-text').textContent = '✓ Connected!';
-                    setTimeout(() => {
-                        connectBtn.querySelector('.btn-text').textContent = 'Connect ➜';
-                        connectBtn.disabled = false;
-                        connectBtn.classList.remove('loading');
-                        isConnecting = false;
-                    }, 2500);
-                } else {
-                    throw new Error('Server responded with ' + response.status);
-                }
-            } catch (err) {
-                connectBtn.classList.remove('loading');
-                connectBtn.querySelector('.btn-text').textContent = '⚠️ Redirecting...';
-                setTimeout(() => {
-                    window.open(selectedServerUrl + '?number=' + encodeURIComponent(phone), '_blank');
-                    connectBtn.querySelector('.btn-text').textContent = 'Connect ➜';
-                    connectBtn.disabled = false;
-                    connectBtn.classList.remove('loading');
-                    isConnecting = false;
-                }, 800);
-            }
-        });
-
-        // Enter key on phone input triggers connect
-        phoneInput.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter') {
-                connectBtn.click();
-            }
-        });
-
-        // ============================================================
-        //  UTILITY: SHAKE ANIMATION
-        // ============================================================
-        function shakeElement(el) {
-            el.style.animation = 'none';
-            void el.offsetHeight;
-            el.style.animation = 'shake 0.4s ease';
-            setTimeout(() => {
-                el.style.animation = '';
-            }, 500);
-        }
-
-        // Inject shake keyframes if not present
-        (function injectShake() {
-            if (document.getElementById('shakeStyles')) return;
-            const style = document.createElement('style');
-            style.id = 'shakeStyles';
-            style.textContent = `
-                        @keyframes shake {
-                            0%, 100% { transform: translateX(0); }
-                            20% { transform: translateX(-6px); }
-                            40% { transform: translateX(6px); }
-                            60% { transform: translateX(-4px); }
-                            80% { transform: translateX(4px); }
-                        }
-                    `;
-            document.head.appendChild(style);
-        })();
-
-        // ============================================================
-        //  AUTO-FOCUS PHONE ON LOAD (after popup)
-        // ============================================================
-        const observer = new MutationObserver(() => {
-            if (!mainContainer.classList.contains('hidden')) {
-                setTimeout(() => {
-                    phoneInput.focus();
-                }, 600);
-                observer.disconnect();
-            }
-        });
-        observer.observe(mainContainer, { attributes: true, attributeFilter: ['class'] });
-
-        // ============================================================
-        //  PREVENT DEFAULT BEHAVIOR FOR LINKS (they open in new tab)
+        //  LINKS OPEN IN NEW TAB
         // ============================================================
         document.querySelectorAll('.social-links a').forEach(link => {
             link.setAttribute('target', '_blank');
             link.setAttribute('rel', 'noopener noreferrer');
         });
 
-        // ============================================================
-        //  KEYBOARD SHORTCUT: ESC to skip popup (for power users)
-        // ============================================================
+        // ESC to skip popup
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && !popupOverlay.classList.contains('hidden')) {
                 skipBtn.click();
             }
         });
 
-        console.log('🚀 Usama\'s Bots — Gateway loaded.');
-        console.log('📡 Selected server:', selectedServerUrl);
+        console.log('🚀 Usama\'s Bots — Server Selector ready.');
+        console.log('📡 Default server:', selectedServerUrl);
     </script>
 
 </body>
