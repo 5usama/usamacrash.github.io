@@ -1,673 +1,556 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Usama's Bots</title>
-    <meta name="description" content="Open this Web and use Free 🆓 WhatsApp bots : both MD and Bug Bot." />
-    <meta property="og:title" content="Usama's Bots" />
-    <meta property="og:description" content="Open this Web and use Free 🆓 WhatsApp bots : both MD and Bug Bot." />
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
+    <!-- Font Awesome 6 (Free) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <style>
-        /* ===== CSS VARIABLES (THEMES) ===== */
-        :root {
-            --bg-primary: #f8fafc;
-            --bg-secondary: #ffffff;
-            --bg-card: #ffffff;
-            --bg-input: #f1f5f9;
-            --text-primary: #0f172a;
-            --text-secondary: #475569;
-            --text-muted: #94a3b8;
-            --border-color: #e2e8f0;
-            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-            --primary: #2563eb;
-            --primary-hover: #1d4ed8;
-            --primary-light: #dbeafe;
-            --danger: #dc2626;
-            --danger-hover: #b91c1c;
-            --success: #16a34a;
-            --radius: 12px;
-            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        [data-theme="dark"] {
-            --bg-primary: #0f172a;
-            --bg-secondary: #1e293b;
-            --bg-card: #1e293b;
-            --bg-input: #334155;
-            --text-primary: #f1f5f9;
-            --text-secondary: #cbd5e1;
-            --text-muted: #64748b;
-            --border-color: #334155;
-            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
-            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4);
-            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.5);
-            --primary: #3b82f6;
-            --primary-hover: #60a5fa;
-            --primary-light: #1e3a5f;
-            --danger: #ef4444;
-            --danger-hover: #f87171;
-        }
-
-        /* ===== RESET & BASE ===== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            min-height: 100vh;
-            transition: background var(--transition), color var(--transition);
-            padding: 20px;
-        }
-
-        .container {
-            max-width: 1024px;
-            margin: 0 auto;
-        }
-
-        /* ===== NAVBAR ===== */
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 16px 24px;
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow-sm);
-            margin-bottom: 32px;
-            transition: background var(--transition), border var(--transition);
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 1.25rem;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-            color: var(--text-primary);
-            text-decoration: none;
-        }
-        .logo i {
-            color: var(--primary);
-            font-size: 1.4rem;
-        }
-        .logo span {
-            background: var(--primary);
-            color: white;
-            font-size: 0.6rem;
-            font-weight: 700;
-            padding: 2px 8px;
-            border-radius: 20px;
-            letter-spacing: 0.5px;
-        }
-
-        .nav-actions {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-
-        /* ===== THEME TOGGLE ===== */
-        .theme-toggle {
-            background: var(--bg-input);
-            border: 1px solid var(--border-color);
-            border-radius: 40px;
-            padding: 6px;
-            display: flex;
-            gap: 4px;
-            cursor: pointer;
-            transition: background var(--transition);
-            position: relative;
-            width: 64px;
-            height: 34px;
-            align-items: center;
-        }
-        .theme-toggle .thumb {
-            position: absolute;
-            width: 26px;
-            height: 26px;
-            background: var(--bg-card);
-            border-radius: 50%;
-            box-shadow: var(--shadow-md);
-            transition: transform var(--transition), background var(--transition);
-            left: 4px;
-        }
-        [data-theme="dark"] .theme-toggle .thumb {
-            transform: translateX(30px);
-            background: var(--primary);
-        }
-        .theme-toggle .icons {
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
-            padding: 0 6px;
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            z-index: 1;
-            pointer-events: none;
-        }
-        [data-theme="dark"] .theme-toggle .icons .fa-sun { color: #fbbf24; }
-        [data-theme="light"] .theme-toggle .icons .fa-moon { color: #6366f1; }
-
-        /* ===== HEADER SECTION ===== */
-        .page-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            flex-wrap: wrap;
-            gap: 16px;
-            margin-bottom: 32px;
-        }
-        .page-header h1 {
-            font-size: 1.8rem;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-        }
-        .page-header p {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            margin-top: 4px;
-        }
-        .badge-status {
-            background: var(--success);
-            color: white;
-            padding: 6px 14px;
-            border-radius: 40px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .badge-status i {
-            font-size: 0.5rem;
-        }
-
-        /* ===== STATS GRID ===== */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 16px;
-            margin-bottom: 32px;
-        }
-        .stat-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius);
-            padding: 20px 24px;
-            box-shadow: var(--shadow-sm);
-            transition: all var(--transition);
-        }
-        .stat-card:hover {
-            box-shadow: var(--shadow-md);
-            transform: translateY(-2px);
-        }
-        .stat-card .label {
-            color: var(--text-muted);
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .stat-card .value {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-top: 8px;
-            color: var(--text-primary);
-        }
-        .stat-card .sub {
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            margin-top: 4px;
-        }
-        .stat-card .dot {
-            display: inline-block;
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            margin-right: 6px;
-        }
-        .dot.green { background: var(--success); }
-        .dot.red { background: var(--danger); }
-        .dot.blue { background: var(--primary); }
-
-        /* ===== SEGMENTED CONTROL (MD / BUG) ===== */
-        .segmented-control {
-            display: flex;
-            background: var(--bg-input);
-            border-radius: 10px;
-            padding: 4px;
-            border: 1px solid var(--border-color);
-            margin-bottom: 24px;
-            transition: background var(--transition);
-            width: fit-content;
-        }
-        .seg-option {
-            padding: 10px 28px;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: all var(--transition);
-            color: var(--text-secondary);
-            background: transparent;
-            border: none;
             font-family: 'Inter', sans-serif;
+            background: #07090e;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            background-image: 
+                radial-gradient(circle at 15% 30%, rgba(16, 185, 129, 0.06) 0%, transparent 55%),
+                radial-gradient(circle at 85% 70%, rgba(59, 130, 246, 0.06) 0%, transparent 55%),
+                radial-gradient(circle at 50% 100%, rgba(16, 185, 129, 0.03) 0%, transparent 40%);
+        }
+
+        .main-container {
+            max-width: 780px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+        }
+
+        /* ===== MAIN CARD ===== */
+        .glass-card {
+            background: rgba(16, 19, 30, 0.88);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border-radius: 40px;
+            padding: 48px 40px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(255, 255, 255, 0.02) inset;
+            transition: all 0.3s ease;
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            margin-bottom: 40px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .icon-wrapper {
+            width: 58px;
+            height: 58px;
+            background: linear-gradient(145deg, #10b981, #047857);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            color: #fff;
+            box-shadow: 0 14px 28px -10px rgba(16, 185, 129, 0.35);
+            flex-shrink: 0;
+        }
+
+        .header-text h1 {
+            font-size: 26px;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+        }
+
+        .header-text p {
+            font-size: 14px;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.35);
+            margin-top: 4px;
+            letter-spacing: 0.2px;
             display: flex;
             align-items: center;
             gap: 8px;
         }
-        .seg-option i { font-size: 1rem; }
-        .seg-option.active {
-            background: var(--bg-card);
-            color: var(--text-primary);
-            box-shadow: var(--shadow-sm);
-        }
-        .seg-option.danger.active {
-            background: var(--danger);
-            color: white;
-            box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
-        }
-        .seg-option:hover:not(.active) {
-            color: var(--text-primary);
+
+        .pulse {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #10b981;
+            animation: pulse 1.8s ease-in-out infinite;
+            box-shadow: 0 0 16px rgba(16, 185, 129, 0.3);
         }
 
-        /* ===== MAIN CTA CARD ===== */
-        .cta-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius);
-            padding: 32px;
-            box-shadow: var(--shadow-sm);
-            margin-bottom: 32px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            transition: all var(--transition);
-        }
-        .cta-card .icon-big {
-            font-size: 3rem;
-            color: var(--primary);
-            margin-bottom: 12px;
-        }
-        .cta-card h3 {
-            font-size: 1.4rem;
-            font-weight: 700;
-            margin-bottom: 6px;
-        }
-        .cta-card p {
-            color: var(--text-secondary);
-            margin-bottom: 20px;
-            font-size: 0.95rem;
-        }
-        .btn-primary {
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 14px 48px;
-            border-radius: 40px;
-            font-weight: 700;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all var(--transition);
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            font-family: 'Inter', sans-serif;
-            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
-        }
-        .btn-primary:hover {
-            background: var(--primary-hover);
-            transform: scale(1.02);
-            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
-        }
-        .btn-primary.danger {
-            background: var(--danger);
-            box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
-        }
-        .btn-primary.danger:hover {
-            background: var(--danger-hover);
-            box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4);
-        }
-        .btn-primary:active { transform: scale(0.98); }
-        .btn-primary:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            transform: none;
+        @keyframes pulse {
+            0% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.3; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1); }
         }
 
-        /* ===== SOCIAL SECTION ===== */
-        .social-section {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius);
-            padding: 24px;
-            box-shadow: var(--shadow-sm);
+        /* ===== SERVER SELECTOR ===== */
+        .server-selector {
             margin-bottom: 32px;
-            transition: background var(--transition);
         }
-        .social-section .title {
-            font-weight: 700;
-            margin-bottom: 16px;
+
+        .selector-label {
             display: flex;
             align-items: center;
             gap: 10px;
-            color: var(--text-primary);
+            font-size: 13px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
         }
-        .social-grid {
+
+        .selector-label i {
+            font-size: 13px;
+            color: #10b981;
+        }
+
+        .server-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 12px;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
         }
-        .social-link {
+
+        .server-option {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1.5px solid rgba(255, 255, 255, 0.05);
+            border-radius: 22px;
+            padding: 24px 20px;
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.23, 1, 0.32, 1);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .server-option:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .server-option.active {
+            background: rgba(16, 185, 129, 0.06);
+            border-color: #10b981;
+            box-shadow: 0 0 0 1.5px #10b981, 0 12px 32px -16px rgba(16, 185, 129, 0.25);
+        }
+
+        .server-option .server-icon {
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.15);
+            margin-bottom: 4px;
+        }
+
+        .server-option.active .server-icon {
+            color: #10b981;
+        }
+
+        .server-option .name {
+            font-size: 18px;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: -0.3px;
+        }
+
+        .server-option .status-badge {
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 3px 14px;
+            border-radius: 100px;
+            background: rgba(255, 255, 255, 0.05);
+            color: rgba(255, 255, 255, 0.25);
+            letter-spacing: 0.5px;
+            align-self: flex-start;
+            margin-top: 4px;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .server-option.active .status-badge {
+            background: rgba(16, 185, 129, 0.15);
+            color: #10b981;
+            border-color: rgba(16, 185, 129, 0.15);
+        }
+
+        .server-option .hidden-url {
+            font-size: 0px;
+            /* completely hidden */
+            opacity: 0;
+            height: 0;
+            overflow: hidden;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        /* ===== CONNECT BUTTON ===== */
+        .action-area {
+            margin-top: 4px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .connect-btn {
+            width: 100%;
+            padding: 20px 28px;
+            background: linear-gradient(145deg, #10b981, #047857);
+            border: none;
+            border-radius: 60px;
+            font-size: 18px;
+            font-weight: 700;
+            color: #ffffff;
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 14px;
-            padding: 12px 16px;
-            background: var(--bg-input);
-            border-radius: 8px;
-            text-decoration: none;
-            color: var(--text-primary);
-            transition: all var(--transition);
-            border: 1px solid transparent;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            box-shadow: 0 14px 36px -14px rgba(16, 185, 129, 0.4);
+            font-family: 'Inter', sans-serif;
+            letter-spacing: 0.2px;
         }
-        .social-link:hover {
-            border-color: var(--border-color);
-            background: var(--bg-card);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-sm);
+
+        .connect-btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 18px 44px -14px rgba(16, 185, 129, 0.5);
         }
-        .social-link i {
-            font-size: 1.5rem;
-            width: 24px;
-            text-align: center;
+
+        .connect-btn:active {
+            transform: scale(0.97);
         }
-        .social-link .info {
-            font-size: 0.85rem;
+
+        .connect-btn i {
+            font-size: 20px;
+        }
+
+        .connect-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none !important;
+            box-shadow: none !important;
+        }
+
+        .info-bar {
+            display: flex;
+            justify-content: space-between;
+            padding: 0 4px;
+        }
+
+        .info-bar span {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.15);
+            letter-spacing: 0.2px;
             font-weight: 500;
         }
-        .social-link .info small {
-            display: block;
-            font-weight: 400;
-            color: var(--text-muted);
-            font-size: 0.7rem;
+
+        .info-bar i {
+            margin-right: 6px;
+            color: rgba(255, 255, 255, 0.1);
         }
 
         /* ===== FOOTER ===== */
-        .footer-bar {
+        .footer {
+            background: rgba(16, 19, 30, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-radius: 30px;
+            padding: 28px 32px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .footer .brand {
+            font-size: 13px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.15);
+            letter-spacing: 0.3px;
+        }
+
+        .footer .brand i {
+            color: #10b981;
+            margin: 0 4px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 60px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            color: rgba(255, 255, 255, 0.4);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .social-links a:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(255, 255, 255, 0.08);
+            color: #ffffff;
+            transform: translateY(-2px);
+        }
+
+        .social-links a i {
+            font-size: 18px;
+            width: 20px;
+            text-align: center;
+        }
+
+        .social-links a .channel-label {
+            font-size: 12px;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.2);
+        }
+
+        .footer-divider {
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.04), transparent);
+        }
+
+        .footer-bottom {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 12px;
-            padding: 16px 0;
-            border-top: 1px solid var(--border-color);
-            color: var(--text-muted);
-            font-size: 0.8rem;
-            margin-top: 16px;
+            width: 100%;
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.08);
+            letter-spacing: 0.2px;
         }
-        .footer-bar a {
-            color: var(--text-secondary);
+
+        .footer-bottom a {
+            color: rgba(255, 255, 255, 0.08);
             text-decoration: none;
-            transition: color var(--transition);
+            transition: 0.2s;
         }
-        .footer-bar a:hover {
-            color: var(--primary);
+
+        .footer-bottom a:hover {
+            color: rgba(255, 255, 255, 0.2);
         }
 
         /* ===== RESPONSIVE ===== */
-        @media (max-width: 640px) {
-            body { padding: 12px; }
-            .navbar { padding: 12px 16px; flex-wrap: wrap; gap: 12px; }
-            .page-header h1 { font-size: 1.4rem; }
-            .stats-grid { grid-template-columns: 1fr 1fr; }
-            .segmented-control { width: 100%; }
-            .seg-option { flex: 1; justify-content: center; padding: 10px 12px; font-size: 0.8rem; }
-            .cta-card { padding: 24px 16px; }
-            .social-grid { grid-template-columns: 1fr; }
-            .theme-toggle { width: 56px; height: 30px; }
-            [data-theme="dark"] .theme-toggle .thumb { transform: translateX(26px); }
-            .theme-toggle .thumb { width: 22px; height: 22px; left: 4px; }
+        @media (max-width: 600px) {
+            .glass-card {
+                padding: 28px 20px;
+                border-radius: 28px;
+            }
+            .server-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+            .header-text h1 {
+                font-size: 20px;
+            }
+            .icon-wrapper {
+                width: 48px;
+                height: 48px;
+                font-size: 22px;
+                border-radius: 14px;
+            }
+            .connect-btn {
+                padding: 16px 20px;
+                font-size: 16px;
+            }
+            .footer {
+                padding: 22px 18px;
+                border-radius: 24px;
+            }
+            .social-links a {
+                padding: 8px 16px;
+                font-size: 12px;
+            }
+            .social-links a i {
+                font-size: 16px;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                align-items: center;
+                gap: 4px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .glass-card {
+                padding: 20px 14px;
+            }
+            .server-option {
+                padding: 18px 16px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- ===== NAVBAR ===== -->
-        <nav class="navbar">
-            <a href="#" class="logo">
-                <i class="fas fa-robot"></i>
-                Usama's Bots
-                <span>v2.0</span>
-            </a>
-            <div class="nav-actions">
-                <div class="theme-toggle" id="themeToggle" role="button" aria-label="Toggle theme">
-                    <div class="thumb"></div>
-                    <div class="icons">
-                        <i class="fas fa-sun"></i>
-                        <i class="fas fa-moon"></i>
+
+    <div class="main-container">
+
+        <!-- ===== MAIN CARD ===== -->
+        <div class="glass-card">
+
+            <!-- Header -->
+            <div class="header">
+                <div class="icon-wrapper">
+                    <i class="fab fa-whatsapp"></i>
+                </div>
+                <div class="header-text">
+                    <h1>Usama's Bots</h1>
+                    <p><span class="pulse"></span> 2 servers online</p>
+                </div>
+            </div>
+
+            <!-- Server Selector -->
+            <div class="server-selector">
+                <div class="selector-label">
+                    <i class="fas fa-server"></i> Select Server
+                </div>
+
+                <div class="server-grid" id="serverGrid">
+                    <!-- Server 1 -->
+                    <div class="server-option active" data-url="http://93.177.64.145:8355">
+                        <div class="server-icon"><i class="fas fa-crown"></i></div>
+                        <span class="name">Server 1</span>
+                        <span class="status-badge"><i class="fas fa-circle" style="color:#10b981;font-size:8px;margin-right:4px;"></i> Live</span>
+                        <span class="hidden-url">http://93.177.64.145:8355</span>
+                    </div>
+
+                    <!-- Server 2 -->
+                    <div class="server-option" data-url="http://160.191.77.60:8073">
+                        <div class="server-icon"><i class="fas fa-server"></i></div>
+                        <span class="name">Server 2</span>
+                        <span class="status-badge"><i class="fas fa-circle" style="color:#f59e0b;font-size:8px;margin-right:4px;"></i> Standby</span>
+                        <span class="hidden-url">http://160.191.77.60:8073</span>
                     </div>
                 </div>
             </div>
-        </nav>
 
-        <!-- ===== PAGE HEADER ===== -->
-        <div class="page-header">
-            <div>
-                <h1>Dashboard</h1>
-                <p>Manage your WhatsApp bot servers efficiently.</p>
-            </div>
-            <div class="badge-status">
-                <i class="fas fa-circle"></i> All Systems Operational
-            </div>
-        </div>
+            <!-- Action Area -->
+            <div class="action-area">
+                <button class="connect-btn" id="connectBtn">
+                    <i class="fas fa-plug"></i> Connect Bot
+                </button>
 
-        <!-- ===== STATS GRID ===== -->
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div class="label"><span class="dot green"></span> MD Bot</div>
-                <div class="value" id="mdStatusText">Online</div>
-                <div class="sub">Endpoint: nodes.ravagee.tech:2005</div>
+                <div class="info-bar">
+                    <span><i class="far fa-clock"></i> Last ping: 1 min ago</span>
+                    <span><i class="fas fa-shield-alt"></i> TLS 1.3 encrypted</span>
+                </div>
             </div>
-            <div class="stat-card">
-                <div class="label"><span class="dot red"></span> Bug Bot</div>
-                <div class="value" id="bugStatusText">Standby</div>
-                <div class="sub">⚠️ Restricted Access</div>
-            </div>
-            <div class="stat-card">
-                <div class="label"><i class="fas fa-clock" style="color: var(--text-muted);"></i> Uptime</div>
-                <div class="value">99.9%</div>
-                <div class="sub">Last 30 days</div>
-            </div>
-        </div>
 
-        <!-- ===== SEGMENTED CONTROL ===== -->
-        <div class="segmented-control" id="botToggle">
-            <button class="seg-option active" data-bot="md" id="mdSeg">
-                <i class="fas fa-terminal"></i> MD Bot
-            </button>
-            <button class="seg-option danger" data-bot="bug" id="bugSeg">
-                <i class="fas fa-skull"></i> Bug Bot
-            </button>
-        </div>
-
-        <!-- ===== CTA CARD ===== -->
-        <div class="cta-card" id="ctaCard">
-            <div class="icon-big" id="ctaIcon"><i class="fas fa-play-circle"></i></div>
-            <h3 id="ctaTitle">Launch MD Bot Server</h3>
-            <p id="ctaDesc">Connect to the main MD bot server. Reliable and fast.</p>
-            <button class="btn-primary" id="actionBtn">
-                <i class="fas fa-arrow-right"></i> <span id="btnText">Open Server</span>
-            </button>
-        </div>
-
-        <!-- ===== SOCIAL SECTION ===== -->
-        <div class="social-section">
-            <div class="title"><i class="fas fa-users"></i> Community & Support</div>
-            <div class="social-grid">
-                <a href="https://youtube.com/@botswithusama" target="_blank" class="social-link">
-                    <i class="fab fa-youtube" style="color:#FF0000;"></i>
-                    <div class="info">YouTube <small>@botswithusama</small></div>
-                </a>
-                <a href="#" class="social-link" id="whatsappLink">
-                    <i class="fab fa-whatsapp" style="color:#25D366;"></i>
-                    <div class="info">WhatsApp <small>Group Chat</small></div>
-                </a>
-                <a href="#" class="social-link" id="telegramLink">
-                    <i class="fab fa-telegram" style="color:#0088cc;"></i>
-                    <div class="info">Telegram <small>Support Group</small></div>
-                </a>
-                <a href="#" class="social-link" id="telegramDirectLink">
-                    <i class="fab fa-telegram" style="color:#0088cc;"></i>
-                    <div class="info">Direct Contact <small>@UsamaDhuddi</small></div>
-                </a>
-            </div>
         </div>
 
         <!-- ===== FOOTER ===== -->
-        <div class="footer-bar">
-            <span>© 2026 Usama's Bots. All rights reserved.</span>
-            <div>
-                <a href="#" onclick="logoutUser(event)">Logout</a> · 
-                <a href="subscribe.html">Subscribe</a>
+        <div class="footer">
+            <div class="brand">
+                <i class="fas fa-bolt"></i> BOT MANAGER <i class="fas fa-bolt"></i>
+            </div>
+
+            <div class="social-links">
+                <a href="https://whatsapp.com/channel/0029VavSK8U8fewp1htKiS21" target="_blank">
+                    <i class="fab fa-whatsapp" style="color:#25D366;"></i>
+                    WhatsApp <span class="channel-label">| Channel</span>
+                </a>
+                <a href="https://chat.whatsapp.com/HItKQi26s0KHMteTzGp99b?s=cl&p=a&ilr=0" target="_blank">
+                    <i class="fab fa-whatsapp" style="color:#26A5E4;"></i>
+                    WhatsApp <span class="channel-label">| Group</span>
+                </a>
+            </div>
+
+            <div class="footer-divider"></div>
+
+            <div class="footer-bottom">
+                <span>© 2026 Usama's Bots — All rights reserved</span>
+                <span>
+                    <a href="#">Privacy</a> · <a href="#">Terms</a> · <a href="#">Status</a>
+                </span>
             </div>
         </div>
+
     </div>
 
-    <!-- 🔥 SOCIAL BAR AD - Top (Naya Ad) -->
-    <script src="https://movementssubscriptionobjection.com/7f/41/64/7f4164e474776d226dbfcb98753131a4.js"></script>
-    <!-- SOCIAL BAR AD END -->
-
-    <!-- 🔥 POPUNDER AD - Bottom (Pehla Wala Ad) -->
-    <script src="https://movementssubscriptionobjection.com/99/79/ad/9979ad7c36d34ced0f8d94d9e1a0c49d.js"></script>
-    <!-- POPUNDER AD END -->
-
     <script>
-        // ===== THEME TOGGLE =====
-        const themeToggle = document.getElementById('themeToggle');
-        const htmlElement = document.documentElement;
+        (function() {
+            const serverOptions = document.querySelectorAll('.server-option');
+            const connectBtn = document.getElementById('connectBtn');
+            let selectedUrl = 'http://93.177.64.145:8355'; // default
 
-        function setTheme(theme) {
-            htmlElement.setAttribute('data-theme', theme);
-            localStorage.setItem('theme', theme);
-        }
+            // --- Selector logic ---
+            serverOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    serverOptions.forEach(o => o.classList.remove('active'));
+                    this.classList.add('active');
 
-        function getPreferredTheme() {
-            const stored = localStorage.getItem('theme');
-            if (stored) return stored;
-            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                return 'dark';
+                    selectedUrl = this.dataset.url;
+
+                    const serverName = this.querySelector('.name')?.textContent?.trim() || 'Server';
+                    connectBtn.innerHTML = `<i class="fas fa-plug"></i> Connect to ${serverName}`;
+                });
+            });
+
+            // --- Connect button ---
+            connectBtn.addEventListener('click', function() {
+                this.disabled = true;
+                this.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Connecting...`;
+
+                setTimeout(() => {
+                    // Redirect to selected server
+                    window.location.href = selectedUrl;
+
+                    // Fallback if redirect doesn't happen
+                    setTimeout(() => {
+                        this.disabled = false;
+                        const active = document.querySelector('.server-option.active');
+                        const name = active?.querySelector('.name')?.textContent?.trim() || 'Server';
+                        this.innerHTML = `<i class="fas fa-plug"></i> Connect to ${name}`;
+                    }, 3000);
+                }, 1200);
+            });
+
+            // --- Init button text ---
+            const defaultServer = document.querySelector('.server-option.active');
+            if (defaultServer) {
+                const name = defaultServer.querySelector('.name')?.textContent?.trim() || 'Server';
+                connectBtn.innerHTML = `<i class="fas fa-plug"></i> Connect to ${name}`;
             }
-            return 'light';
-        }
 
-        // Apply initial theme
-        setTheme(getPreferredTheme());
-
-        themeToggle.addEventListener('click', () => {
-            const current = htmlElement.getAttribute('data-theme');
-            const next = current === 'dark' ? 'light' : 'dark';
-            setTheme(next);
-        });
-
-        // ===== BOT TOGGLE LOGIC =====
-        const mdSeg = document.getElementById('mdSeg');
-        const bugSeg = document.getElementById('bugSeg');
-        const actionBtn = document.getElementById('actionBtn');
-        const btnText = document.getElementById('btnText');
-        const ctaIcon = document.getElementById('ctaIcon');
-        const ctaTitle = document.getElementById('ctaTitle');
-        const ctaDesc = document.getElementById('ctaDesc');
-        const mdStatusText = document.getElementById('mdStatusText');
-        const bugStatusText = document.getElementById('bugStatusText');
-
-        let currentBot = 'md';
-
-        function setBotUI(bot) {
-            currentBot = bot;
-            mdSeg.classList.remove('active');
-            bugSeg.classList.remove('active');
-            actionBtn.classList.remove('danger');
-
-            if (bot === 'md') {
-                mdSeg.classList.add('active');
-                ctaIcon.innerHTML = '<i class="fas fa-play-circle"></i>';
-                ctaTitle.textContent = 'Launch MD Bot Server';
-                ctaDesc.textContent = 'Connect to the main MD bot server. Reliable and fast.';
-                btnText.textContent = 'Open Server';
-                actionBtn.onclick = () => window.open('http://project-satxznode.pterodactylxcz.my.id:2137', '_blank');
-                mdStatusText.textContent = 'Online';
-                mdStatusText.style.color = 'var(--success)';
-                bugStatusText.textContent = 'Standby';
-                bugStatusText.style.color = 'var(--text-muted)';
-            } else {
-                bugSeg.classList.add('active');
-                ctaIcon.innerHTML = '<i class="fas fa-triangle-exclamation" style="color: var(--danger);"></i>';
-                ctaTitle.textContent = '⚠️ Bug Bot — Dangerous Zone';
-                ctaDesc.textContent = 'Use with extreme caution. This bot executes advanced/unstable commands.';
-                btnText.textContent = 'Activate Bug Bot';
-                actionBtn.classList.add('danger');
-                actionBtn.onclick = () => {
-                    if (confirm('⚠️ Are you sure you want to activate the Bug Bot? Use at your own risk!')) {
-                        alert('Bug Bot activated (simulated). Add your custom logic here.');
-                        // Add actual bug bot logic here if needed
-                    }
-                };
-                mdStatusText.textContent = 'Active';
-                mdStatusText.style.color = 'var(--text-muted)';
-                bugStatusText.textContent = '⚠️ Danger';
-                bugStatusText.style.color = 'var(--danger)';
-            }
-        }
-
-        mdSeg.addEventListener('click', () => setBotUI('md'));
-        bugSeg.addEventListener('click', () => setBotUI('bug'));
-
-        // Init
-        setBotUI('md');
-
-        // ===== SOCIAL PLACEHOLDERS =====
-        document.getElementById('whatsappLink').addEventListener('click', (e) => {
-            e.preventDefault();
-            alert('Add your WhatsApp group invite link here.');
-        });
-        document.getElementById('telegramLink').addEventListener('click', (e) => {
-            e.preventDefault();
-            alert('Add your Telegram group invite link here.');
-        });
-        document.getElementById('telegramDirectLink').addEventListener('click', (e) => {
-            e.preventDefault();
-            alert('Add your Telegram direct profile link here.');
-        });
-
-        // ===== LOGOUT =====
-        function logoutUser(e) {
-            e.preventDefault();
-            if (confirm('Are you sure you want to logout?')) {
-                localStorage.clear();
-                sessionStorage.clear();
-                window.location.href = 'subscribe.html';
-            }
-        }
+        })();
     </script>
+
 </body>
 </html>
